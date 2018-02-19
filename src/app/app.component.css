@@ -1,0 +1,102 @@
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+
+.dashboard-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+    padding-right: 0;
+}
+
+#sidenav {
+    background-color : black;
+    color : #ffc72c;
+}
+
+mat-divider {
+    background-color : lightgray;
+}
+
+.student-avatar /deep/ .avatar-container {
+    display : inline;
+}
+
+#profile-block {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+#student-info-block {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#student-info-block #student-name{
+    margin-bottom: 0em;
+}
+
+#student-info-block #student-major{
+    margin-bottom: 1em;
+}
+
+#nav-footer mat-icon {
+    color : #ffc72cbf;
+}
+
+#nav-footer mat-icon.highlight {
+    color : #ffc72c !important;
+}
+
+.logo {
+    position : fixed; 
+    top : 0; 
+    right : 0;
+}
+
+.main {
+    margin-top: 64px; 
+    padding-bottom: 1em;
+}
+
+@media (max-width: 600px) {
+    .logo {
+        top : -4px; 
+    }  
+    .main {
+        margin-top: 56px;
+    }
+}
+
+#search-input {
+    position: fixed; 
+    top: 10px; 
+    right: 35px; 
+    width: 30%;
+}
+
+@media (min-width: 412px) {
+    #search-input {  
+        right: 15px; 
+    }  
+}
+
+@media (min-width: 468px) {
+    #search-input {  
+        right: 0px; 
+    }  
+}
+
+@media (min-width: 576px) {
+    #search-input {  
+        right: 110px; 
+    }  
+}
+
+@media (min-width: 600px) {
+    #search-input { 
+        top: 14px; 
+    }  
+}

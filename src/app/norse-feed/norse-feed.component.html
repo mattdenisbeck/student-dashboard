@@ -1,0 +1,17 @@
+<mat-card class="dashboard-card">
+  <mat-card-header class="dashboard-card-header">
+    <mat-card-title class="dashboard-card-title"><h5>Norse Feed</h5></mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <mat-nav-list>
+      <span *ngFor="let item of norseFeedItems" >
+        <a mat-list-item routerLink="{{ '../' + item.path }}" (click)="openDialog(item)">
+          <mat-icon matListIcon [ngClass]="item.iconColor">{{ item.icon }}</mat-icon>
+          <p matLine style="white-space:normal">{{ item.msg }}</p>
+          <mat-icon>arrow_forward</mat-icon>
+        </a>
+        <mat-divider color="accent"></mat-divider>
+      </span>
+    </mat-nav-list>
+  </mat-card-content>
+</mat-card>

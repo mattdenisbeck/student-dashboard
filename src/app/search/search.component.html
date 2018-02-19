@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <mat-card class="dashboard-card">
+        <mat-card-header class="dashboard-card-header">
+          <mat-card-title class="dashboard-card-title"><h5>myNKU Results</h5></mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <mat-nav-list>
+            <span *ngFor="let result of this.searchService.getResults()" >
+              <a mat-list-item routerLink="{{ '../' + result.path }}" style="height:auto;">
+                <mat-icon matListIcon>{{ result.icon }}</mat-icon>
+                <h6 matLine class="font-weight-bold" style="white-space:normal">{{ result.title }}</h6>
+                <p matLine class="font-weight-light font-italic" style="white-space:normal">{{ result.description }}</p>
+                <mat-icon>arrow_forward</mat-icon>
+              </a>
+              <mat-divider color="accent"></mat-divider>
+            </span>
+          </mat-nav-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col">
+        <mat-card class="dashboard-card">
+          <mat-card-header class="dashboard-card-header">
+            <mat-card-title class="dashboard-card-title"><h5>NKU.edu Results</h5></mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+              <div class="google-media-search" [innerHTML]="gcsesearch" #googlesearch></div>
+              <mat-divider color="accent"></mat-divider>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+</div>
+
+

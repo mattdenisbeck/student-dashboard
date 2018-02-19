@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <mat-card class="dashboard-card">
+        <mat-card-header class="dashboard-card-header">
+          <mat-card-title class="dashboard-card-title"><h5>List View</h5></mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <mat-nav-list>
+            <span *ngFor="let class of classes" >
+              <a mat-list-item style="height:auto;" (click)="openClassDetailDialog(class)">
+                <mat-icon matListIcon>{{ class.icon }}</mat-icon>
+                <h6 matLine class="font-weight-bold" style="white-space:normal">{{ class.number + ' ' + class.title }}</h6>
+                <p matLine class="font-weight-light font-italic" style="white-space:normal">{{ class.location }} | <span *ngFor="let day of class.days">{{day}} </span> | {{ class.startTime.toLocaleTimeString() }} - {{ class.endTime.toLocaleTimeString() }} </p>
+                <mat-icon>open_in_browser</mat-icon>
+                <!--<mat-icon>arrow_forward</mat-icon>-->
+              </a>
+              <mat-divider color="accent"></mat-divider>
+            </span>
+          </mat-nav-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+  

@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+/* Rules for sizing icons. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    background-color: rgb(250,250,250);
+}
+
+mat-card.dashboard-card {
+    padding : 0;
+    
+    margin-top: 1em;
+}
+mat-card-header.dashboard-card-header {
+    background-color : lightgray;
+    padding: 1em 0 0 1em;
+}
+mat-card-title.dashboard-card-title {
+    font-weight: bold;  
+}
+mat-card-content.dashboard-card-content {
+    padding : 1em 1em 1em 1em;
+}
+
+mat-card-actions.dashboard-card-actions {
+    padding : 0 1em 1em 1em;
+    margin : 0;
+}
+mat-card-actions.dashboard-card-actions.mat-card-actions:last-child {
+    padding-bottom: 1em;
+}
+
+.mat-tab-label {
+    flex: auto !important;
+    color: black !important;
+}
+.mat-tab-label-active {
+    background-color: rgba(255, 199, 44, 0.3);
+}
+
+.holdsDialog .mat-dialog-container {
+    padding: 0;
+}

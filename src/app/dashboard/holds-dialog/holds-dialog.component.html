@@ -1,0 +1,21 @@
+<div class="row"  style="background-color: #ffc72c; margin: 0; padding: 0;">
+  <div class="col" style="padding: .5em 0 0 1em">
+    <h2 mat-dialog-title class="mb-1">Holds</h2>
+  </div>
+  <div class="col text-right" style="padding-right: .25em">
+    <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+  </div>
+</div>
+<mat-dialog-content style="margin: 0; padding: 0;">
+  <mat-divider color="accent"></mat-divider>
+  <mat-nav-list class="pt-0">
+    <span *ngFor="let hold of holds">
+      <a mat-list-item cdkFocusInitial routerLink="{{ '../' + hold.path }}" (click)="closeSelf()">
+        <mat-icon matListIcon class="text-danger">warning</mat-icon>
+        <p matLine style="white-space:normal" class="font-weight-bold">{{ hold.msg }}</p>
+        <mat-icon>arrow_forward</mat-icon>
+      </a>
+      <mat-divider color="accent"></mat-divider>
+    </span>
+  </mat-nav-list>
+</mat-dialog-content>

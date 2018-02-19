@@ -1,0 +1,64 @@
+<mat-card class="dashboard-card">
+  <mat-card-header class="dashboard-card-header">
+    <mat-card-title class="dashboard-card-title"><h5>Vital Stats</h5></mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-auto col-xl-7">
+        <mat-divider [vertical]="true" class="d-none d-md-block" style="height: 100%;"></mat-divider>
+        <mat-list>
+          <mat-list-item style="height:auto; margin-bottom: .75em;">
+            <button mat-raised-button routerLink="schedule" class="btn-block">
+              <div class="row">
+                <div class="col-12 col-sm-6 text-left"><b>Major:</b></div>
+                <div class="col-12 col-sm-6 text-right">Computer Science</div>
+              </div>
+            </button>
+          </mat-list-item>
+          <mat-list-item style="height:auto; margin-bottom: .75em;">
+            <button mat-raised-button routerLink="schedule" class="btn-block">
+              <div class="row">
+                <div class="col-12 col-sm-6 text-left"><b>Academic Program:</b></div>
+                <div class="col-12 col-sm-6 text-right">Bachelor of Science</div>
+              </div>
+            </button>
+          </mat-list-item>
+          <mat-list-item style="height:auto; margin-bottom: .75em;">
+            <button mat-raised-button routerLink="schedule" class="btn-block">
+                <div class="row">
+                    <div class="col-12 col-sm-6 text-left"><b>College:</b></div>
+                    <div class="col-12 col-sm-6 text-right">College of Informatics</div>
+                </div>
+            </button>
+          </mat-list-item>
+          <mat-list-item style="height:auto; margin-bottom: .75em;">
+            <button mat-raised-button routerLink="registration" class="btn-block">
+              <div class="row">
+                  <div class="col-12 col-sm-6 text-left"><b>Registration Window:</b></div>
+                  <div class="col-12 col-sm-6 text-right">11/1 - 12/1</div>
+              </div>
+            </button>
+          </mat-list-item>
+        </mat-list>
+        <mat-divider [inset]="true" class="d-md-none" style="margin: 1.5em 0 .75em 0"></mat-divider>
+      </div>
+      <div class="col-12 col-md-auto col-xl-5">
+          <mat-list>
+              <mat-list-item style="height:auto; margin-bottom: .75em;">
+                  <button mat-raised-button type="button" routerLink="grades" class="text-right" style="background-color:#28a745; color:white; width:100%"><span class="float-left">Current GPA&nbsp;&nbsp;</span><span class="badge badge-light">3.37</span></button>
+              </mat-list-item>
+              <mat-list-item style="height:auto; margin-bottom: .75em;">
+                 <button mat-raised-button type="button" (click)="openHoldsDialog()" class="text-right" style="background-color:#dc3545; color:white; width:100%"><span class="float-left">Holds&nbsp;&nbsp;</span><span class="badge badge-light">1</span></button>
+              </mat-list-item>
+              <mat-list-item style="height:auto; margin-bottom: .75em;">
+                <button mat-raised-button type="button" routerLink="account" class="text-right" style="background-color:#dc3545; color:white; width:100%; "><span class="float-left">Balance Due&nbsp;&nbsp;</span><span class="badge badge-light">$2599.00</span></button>
+              </mat-list-item>
+              <mat-list-item style="height:auto; margin-bottom: .75em;">
+                <button mat-raised-button type="button" class="text-right" color="primary" style="width:100%"><span class="float-left">Victor Points&nbsp;&nbsp;</span><span class="badge badge-light">5</span></button>
+              </mat-list-item>
+            </mat-list>
+      </div>
+    </div>
+  </mat-card-content>
+ 
+</mat-card>

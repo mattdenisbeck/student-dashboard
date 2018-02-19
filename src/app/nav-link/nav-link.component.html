@@ -1,0 +1,14 @@
+<span *ngIf="link.leftNav">
+  <!-- Template for External Nav Links -->
+  <a mat-list-item *ngIf="link.external" href="{{ link.path }}" target="_blank">
+    <mat-icon matListIcon>{{ link.icon }}</mat-icon>
+    <h3 matLine> {{ link.title }} </h3><mat-icon>launch</mat-icon>
+    <mat-divider color="accent"></mat-divider>
+  </a>
+  <!-- Template for Internal Nav Links -->
+  <a mat-list-item *ngIf="!link.external" [ngClass]="{ 'currentNavLink': link.title == route }" routerLink="{{ link.path }}">
+    <mat-icon matListIcon>{{ link.icon }}</mat-icon>
+    <h3 matLine> {{ link.title }} </h3><mat-icon>chevron_right</mat-icon>
+    <mat-divider color="accent"></mat-divider>
+  </a>
+</span>

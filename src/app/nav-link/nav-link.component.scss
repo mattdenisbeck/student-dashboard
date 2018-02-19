@@ -1,0 +1,16 @@
+.mat-list-item {
+    color : #ffc72cbf;
+} 
+
+.mat-list-item:hover {
+    color : #ffc72c !important;
+}
+
+.mat-list-item:active, .currentNavLink {
+    color : #ffc72c;
+    background-color: rgb(66, 66, 66) !important;
+}
+
+mat-divider {
+    background-color : lightgray;
+}
