@@ -28,4 +28,8 @@ export class SearchComponent implements OnInit {
     // set search query from query param
     this.searchService.setQuery(decodeURI(this.router.url.split('=')[1]));
   }
+
+  searchOnKeyUp(query: string) {
+    this.searchService.setQuery(query);
+  }
 }

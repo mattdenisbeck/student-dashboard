@@ -33,7 +33,7 @@
         <div class="input-group input-group-sm" id="search-input">
           <input #searchBox (keyup)="searchOnKeyUp(searchBox.value)" type="text" class="form-control d-none d-sm-block" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
-            <a mat-raised-button color="primary" type="button" href="{{'/search?q=' + searchBox.value}}" style="min-width:0; padding:0 8px;"><mat-icon>search</mat-icon></a>
+            <a mat-raised-button color="primary" type="button" href="{{'/search?q=' + searchService.getQuery()}}" style="min-width:0; padding:0 8px;"><mat-icon>search</mat-icon></a>
           </div>
         </div>
         <img class="logo" src="assets/images/NKU_INF.png" alt="NKU Logo" height="64" >

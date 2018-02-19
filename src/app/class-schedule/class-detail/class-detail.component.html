@@ -8,20 +8,20 @@
 </div>
 <mat-dialog-content style="margin: 0; padding: 0;">
   <div class="container">
-    <dl class="row">
-        <dt class="col-5">Course Number</dt>
+    <dl class="row mt-3">
+        <dt class="col-5 text-right">Course Number</dt>
         <dd class="col-7">{{ course.number }}</dd>
-        <dt class="col-5">Course Title</dt>
+        <dt class="col-5 text-right">Course Title</dt>
         <dd class="col-7">{{ course.title }}</dd>
-        <dt class="col-5">Room</dt>
+        <dt class="col-5 text-right">Room</dt>
         <dd class="col-7">{{ course.location }}</dd>
-        <dt class="col-5">Instructor</dt>
+        <dt class="col-5 text-right">Instructor</dt>
         <dd class="col-7">{{ course.instructor }}</dd>
-        <dt class="col-5">Days</dt>
+        <dt class="col-5 text-right">Days</dt>
         <dd class="col-7"><span *ngFor="let day of course.days">{{ day }} </span></dd>
-        <dt class="col-5">Start Time</dt>
+        <dt class="col-5 text-right">Start Time</dt>
         <dd class="col-7">{{ course.startTime.toLocaleTimeString() }}</dd>
-        <dt class="col-5">End Time</dt>
+        <dt class="col-5 text-right">End Time</dt>
         <dd class="col-7">{{ course.endTime.toLocaleTimeString() }}</dd>
     </dl>
   </div>

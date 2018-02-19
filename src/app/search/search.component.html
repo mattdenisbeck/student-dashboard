@@ -1,4 +1,11 @@
 <div class="container">
+  <div class="row pt-3 d-flex d-sm-none">
+    <div class="col">
+      <div class="input-group input-group-sm" id="search-input">
+        <input #searchBox (keyup)="searchOnKeyUp(searchBox.value)" type="text" class="form-control" placeholder="Search" aria-label="Search">
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col">
       <mat-card class="dashboard-card">

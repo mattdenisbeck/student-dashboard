@@ -23,6 +23,7 @@ export class ClassScheduleComponent implements OnInit {
     const holdsDialogRef = this.classDetailDialog.open(ClassDetailComponent, {
       'panelClass': 'holdsDialog',
       'minWidth': '360px',
+      'maxWidth': '500px',
       'position': {'top': '100px'},
       'data': course
     });
