@@ -1,0 +1,20 @@
+<mat-card class="dashboard-card schedule-card mb-3">
+  <app-view-header 
+    [viewDate]="viewDate" 
+    [view]="view"
+    [title]="title"
+    (dateChange)="viewDateChange($event)">
+  </app-view-header>
+  <mat-card-content class="dashboard-card-content">
+      <mwl-calendar-day-view 
+        [viewDate]="viewDate" 
+        [events]="events"
+        [dayStartHour]="earlyClass - 1" 
+        dayStartMinute="0" 
+        [dayEndHour]="lateClass + 1" 
+        dayEndMinute="0"
+        eventWidth="280"
+        (eventClicked)="eventClicked($event.event)">
+      </mwl-calendar-day-view>
+  </mat-card-content>
+</mat-card>

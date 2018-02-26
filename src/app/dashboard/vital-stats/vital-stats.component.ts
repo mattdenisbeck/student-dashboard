@@ -16,7 +16,7 @@ export class VitalStatsComponent implements OnInit {
 
   openHoldsDialog() {
     const holdsDialogRef = this.holdsDialog.open(HoldsDialogComponent, {
-      'panelClass': 'holdsDialog',
+      'panelClass': 'allDialogs',
       'minWidth': '360px',
       'position': {'top': '100px'}
     });

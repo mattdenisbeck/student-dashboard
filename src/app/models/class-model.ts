@@ -3,6 +3,7 @@ export class ClassModel {
     title: string;
     location: string;
     days: string[];
+    day: string;  // used when generating list of upcoming classes
     startTime: Date;
     endTime: Date;
     instructor: string;

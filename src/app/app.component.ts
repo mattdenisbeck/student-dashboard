@@ -19,7 +19,7 @@ export class AppComponent implements OnDestroy, OnInit {
   menuIcon = 'menu';
   navLinks: NavLinkModel[];
   route: string;
-  opened: boolean;
+  opened = false;
   mobileQuery: MediaQueryList;
   showProfileAvatar: boolean;
   searchTerm: string;
@@ -39,7 +39,6 @@ export class AppComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    this.opened = false;
     this.getNavLinks();
     // change top bar title based on current route
     this.router.events.subscribe((val) => {

@@ -24,7 +24,7 @@ export class NorseFeedComponent implements OnInit {
     switch (item.feature) {
       case 'Holds' : {
         dialogRef = this.holdsDialog.open(HoldsDialogComponent, {
-          'panelClass': 'holdsDialog',
+          'panelClass': 'allDialogs',
           'minWidth': '360px',
           'position': {'top': '100px'}
         });

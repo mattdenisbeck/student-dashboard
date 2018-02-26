@@ -1,0 +1,16 @@
+<mat-card class="dashboard-card schedule-card mb-3">
+  <app-view-header [viewDate]="viewDate" [view]="view" [semester]="semester" [title]="title"></app-view-header>
+  <mat-card-content class="dashboard-card-content">
+    <mat-nav-list>
+      <span *ngFor="let class of classes" >
+        <a mat-list-item style="height:auto;" (click)="openClassDetailDialog(class)">
+          <mat-icon matListIcon>{{ class.icon }}</mat-icon>
+          <h6 matLine class="font-weight-bold" style="white-space:normal">{{ class.number + ' ' + class.title }}</h6>
+          <p matLine class="font-weight-light font-italic" style="white-space:normal">{{ class.location }} | <span *ngFor="let day of class.days">{{day}} </span> | {{ class.startTime.toLocaleTimeString() }} - {{ class.endTime.toLocaleTimeString() }} </p>
+          <mat-icon>open_in_browser</mat-icon>
+        </a>
+        <mat-divider color="accent"></mat-divider>
+      </span>
+    </mat-nav-list>
+  </mat-card-content>
+</mat-card>

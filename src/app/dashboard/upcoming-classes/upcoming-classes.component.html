@@ -5,11 +5,11 @@
     <mat-card-content class="dashboard-card-content">
       <mat-nav-list>
         <span *ngFor="let class of upcomingClasses">
-          <a mat-list-item routerLink="{{ class.path }}" style="height:auto;">
+          <a mat-list-item style="height:auto;" (click)="openDialog(class)">
             <mat-icon matListIcon>{{ class.icon }}</mat-icon>
             <h6 matLine style="white-space:normal" class="font-weight-bold">{{ class.number }} - {{ class.title }}</h6>
-            <p matLine style="white-space:normal" class="font-weight-light">{{ class.location }} - {{ class.day }} {{ class.startTime }} - {{ class.endTime }}</p>
-            <mat-icon>arrow_forward</mat-icon>
+            <p matLine style="white-space:normal" class="font-weight-light">{{ class.location }} - {{ class.day }} {{ class.startTime.toLocaleTimeString() }} - {{ class.endTime.toLocaleTimeString() }}</p>
+            <mat-icon>open_in_browser</mat-icon>
           </a>
           <mat-divider color="accent"></mat-divider>
         </span>

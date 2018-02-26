@@ -45,6 +45,72 @@ mat-card-actions.dashboard-card-actions.mat-card-actions:last-child {
     background-color: rgba(255, 199, 44, 0.3);
 }
 
-.holdsDialog .mat-dialog-container {
+.allDialogs .mat-dialog-container {
     padding: 0;
+}
+
+.mat-fab .mat-button-wrapper {
+    padding: 0 !important;
+}
+
+.mat-sidenav-container {
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    overflow: hidden !important;
+}
+
+.mat-card-header-text {
+    width: 100% !important;
+    margin-right: 0 !important;
+}
+
+@media (min-width: 576px) { 
+    .cal-day-view .cal-event-container {
+        width: 460px !important;
+    }
+}
+
+@media (min-width: 768px) { 
+    .cal-day-view .cal-event-container {
+        width: 500px !important;
+    }
+}
+
+@media (min-width: 960px) { 
+    .cal-day-view .cal-event-container {
+        width: 700px !important;
+    }
+}
+
+@media (min-width: 1140px) { 
+    .cal-day-view .cal-event-container {
+        width: 800px !important;
+    }
+}
+
+.cal-event-title {
+    color: black !important;
+    font-weight: bold;
+  }
+
+.cal-month-view .cal-event {
+    background-color: #FFC72C !important;
+    font-weight: normal !important;
+}
+
+.cal-month-view .cal-day-cell .cal-event {
+    background-color: black !important;
+    font-weight: normal !important;
+}
+
+.cal-month-view .cal-event-title {
+    color: #FFC72C !important;
+    font-weight: normal !important;
+}
+
+.cal-open {
+    background-color: #ededed;
 }

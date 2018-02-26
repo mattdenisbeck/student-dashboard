@@ -1,25 +1,82 @@
-<div class="container">
+<mat-tab-group (selectedTabChange)="onSelectTab($event)" dynamicHeight="true">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <span class="d-none d-sm-block">List View</span>
+      <span class="d-block d-sm-none">List</span>
+    </ng-template>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col scheduleView">
+          <app-list-view 
+            [classes]="classes" 
+            [semester]="semester"
+            [viewDate]="viewDate"
+            [view]="view"
+            [title]="title">
+          </app-list-view>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <span class="d-none d-sm-block">Daily View</span>
+      <span class="d-block d-sm-none">Day</span>
+    </ng-template>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col scheduleView">
+          <app-daily-view 
+            [viewDate]="viewDate" 
+            [events]="events"
+            [view]="view"
+            [title]="title">
+          </app-daily-view>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <span class="d-none d-sm-block">Weekly View</span>
+      <span class="d-block d-sm-none">Week</span>
+    </ng-template>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col scheduleView">
+          <app-weekly-view
+            [viewDate]="viewDate" 
+            [events]="events"
+            [view]="view"
+            [title]="title">
+          </app-weekly-view>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <span class="d-none d-sm-block">Monthly View</span>
+      <span class="d-block d-sm-none">Month</span>
+    </ng-template>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col scheduleView">
+          <app-monthly-view
+            [viewDate]="viewDate" 
+            [events]="events"
+            [view]="view"
+            [title]="title">
+          </app-monthly-view>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+<div class="container-fluid">
   <div class="row">
-    <div class="col">
-      <mat-card class="dashboard-card">
-        <mat-card-header class="dashboard-card-header">
-          <mat-card-title class="dashboard-card-title"><h5>List View</h5></mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <mat-nav-list>
-            <span *ngFor="let class of classes" >
-              <a mat-list-item style="height:auto;" (click)="openClassDetailDialog(class)">
-                <mat-icon matListIcon>{{ class.icon }}</mat-icon>
-                <h6 matLine class="font-weight-bold" style="white-space:normal">{{ class.number + ' ' + class.title }}</h6>
-                <p matLine class="font-weight-light font-italic" style="white-space:normal">{{ class.location }} | <span *ngFor="let day of class.days">{{day}} </span> | {{ class.startTime.toLocaleTimeString() }} - {{ class.endTime.toLocaleTimeString() }} </p>
-                <mat-icon>open_in_browser</mat-icon>
-                <!--<mat-icon>arrow_forward</mat-icon>-->
-              </a>
-              <mat-divider color="accent"></mat-divider>
-            </span>
-          </mat-nav-list>
-        </mat-card-content>
-      </mat-card>
+    <div class="col-12 text-right">
+      <button mat-fab id="downloadButton" type="button" color="primary"><mat-icon>file_download</mat-icon></button>
     </div>
   </div>
 </div>

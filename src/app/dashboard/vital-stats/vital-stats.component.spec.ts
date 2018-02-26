@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VitalStatsComponent } from './vital-stats.component';
+import { MatCardModule, MatDividerModule, MatListModule, MatDialogModule, MatIconModule } from '@angular/material';
 
 describe('VitalStatsComponent', () => {
   let component: VitalStatsComponent;
@@ -8,7 +9,16 @@ describe('VitalStatsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VitalStatsComponent ]
+      declarations: [
+        VitalStatsComponent
+      ],
+      imports: [
+        MatCardModule,
+        MatDividerModule,
+        MatListModule,
+        MatDialogModule,
+        MatIconModule
+      ]
     })
     .compileComponents();
   }));

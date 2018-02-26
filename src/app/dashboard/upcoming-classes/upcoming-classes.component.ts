@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ClassScheduleService } from '../../services/class-schedule.service';
+import { ClassModel } from '../../models/class-model';
+import { MatDialog } from '@angular/material';
+import { ClassDetailComponent } from '../../class-schedule/class-detail/class-detail.component';
 
 @Component({
   selector: 'app-upcoming-classes',
@@ -6,42 +10,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upcoming-classes.component.scss']
 })
 export class UpcomingClassesComponent implements OnInit {
-  upcomingClasses: {}[];
-  constructor() { }
+  upcomingClasses: ClassModel[];
+
+  constructor(private classScheduleService: ClassScheduleService, public classDialog: MatDialog) { }
 
   ngOnInit() {
-    this.upcomingClasses = Array(
-      {
-        'title' : 'Object Oriented Programming I',
-        'number' : 'CSC 360',
-        'location' : 'GH 334',
-        'day' : 'Monday',
-        'startTime' : '9:30 A.M.',
-        'endTime' : '10:45 A.M.',
-        'icon' : 'computer',
-        'path' : 'schedule'
-      },
-      {
-        'title' : 'Discrete Mathematics',
-        'number' : 'MAT 358 ',
-        'location' : 'MP 250',
-        'day' : 'Monday',
-        'startTime' : '1:00 P.M.',
-        'endTime' : '2:15 P.M.',
-        'icon' : 'multiline_chart',
-        'path' : 'schedule'
-      },
-      {
-        'title' : 'History of Western Europe',
-        'number' : 'HIS 226 ',
-        'location' : 'LAC 364',
-        'day' : 'Tuesday',
-        'startTime' : '10:00 A.M.',
-        'endTime' : '11:15 A.M.',
-        'icon' : 'public',
-        'path' : 'schedule'
-      }
-    );
+    this.upcomingClasses = this.classScheduleService.getUpcomingClasses(3);
   }
 
+  openDialog(course: ClassModel) {
+    let dialogRef: any;
+    dialogRef = this.classDialog.open(ClassDetailComponent, {
+      'panelClass': 'allDialogs',
+      'minWidth': '360px',
+      'maxWidth': '500px',
+      'position': {'top': '100px'},
+      'data': course
+    });
+  }
 }

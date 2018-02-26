@@ -14,6 +14,9 @@ import { AvatarModule } from 'ngx-avatar';
   ],
   declarations: [
     ProfileComponent
+  ],
+  exports: [
+    ProfileComponent
   ]
 })
 export class ProfileModule { }

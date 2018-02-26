@@ -31,13 +31,14 @@ import { AccountModule } from './account/account.module';
 import { SearchModule } from './search/search.module';
 import { SearchService } from './services/search.service';
 import { ClassScheduleService } from './services/class-schedule.service';
+import { CalendarModule } from 'angular-calendar';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogoutComponent,
     NavLinkComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +62,8 @@ import { ClassScheduleService } from './services/class-schedule.service';
     RegistrationModule,
     AdvisorsModule,
     AccountModule,
-    SearchModule
+    SearchModule,
+    CalendarModule.forRoot()
   ],
   providers: [
     NavLinksService,
