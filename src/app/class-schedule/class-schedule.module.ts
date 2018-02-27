@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClassScheduleComponent } from './class-schedule.component';
 import { MatCardModule, MatDividerModule, MatIconModule, MatListModule,
-  MatDialogModule, MatButtonModule, MatTabsModule } from '@angular/material';
+  MatDialogModule, MatButtonModule, MatTabsModule, MatTooltipModule } from '@angular/material';
 import { ClassDetailComponent } from './class-detail/class-detail.component';
 import { CalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,7 +23,8 @@ import { ViewHeaderComponent } from './view-header/view-header.component';
     MatDialogModule,
     CalendarModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTooltipModule
   ],
   declarations: [
     ClassScheduleComponent,
