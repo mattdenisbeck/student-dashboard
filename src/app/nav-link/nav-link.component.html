@@ -6,7 +6,7 @@
     <mat-divider color="accent"></mat-divider>
   </a>
   <!-- Template for Internal Nav Links -->
-  <a mat-list-item *ngIf="!link.external" [ngClass]="{ 'currentNavLink': link.title == route }" routerLink="{{ link.path }}">
+  <a mat-list-item *ngIf="!link.external" routerLink="{{ link.path }}" routerLinkActive="currentNavLink" [routerLinkActiveOptions]="{ exact: true }">
     <mat-icon matListIcon>{{ link.icon }}</mat-icon>
     <h3 matLine> {{ link.title }} </h3><mat-icon>chevron_right</mat-icon>
     <mat-divider color="accent"></mat-divider>

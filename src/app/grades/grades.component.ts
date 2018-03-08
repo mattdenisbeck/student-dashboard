@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-grades',
@@ -10,6 +11,7 @@ export class GradesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

@@ -1,9 +1,13 @@
 export class NavLinkModel {
-    title: string;
-    description: string;
-    path: string;
-    icon: string;
-    leftNav: boolean;
-    weight: number;
-    external: boolean;
+
+    constructor (
+        public title: string,
+        public description: string,
+        public path: string,
+        public icon: string,
+        public leftNav: boolean,
+        public weight: number,
+        public external: boolean,
+    ) { }
+
 }

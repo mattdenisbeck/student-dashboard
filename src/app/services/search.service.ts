@@ -4,7 +4,7 @@ import { NavLinkModel } from '../models/nav-link-model';
 
 @Injectable()
 export class SearchService {
-  private query: string;
+  private query = '';
   private allResults: NavLinkModel[];
   private results: NavLinkModel[];
 

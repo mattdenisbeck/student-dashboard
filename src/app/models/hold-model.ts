@@ -1,5 +1,9 @@
 export class HoldModel {
-    msg: string;
-    path: string;
-    external: boolean;
+
+    constructor (
+        msg: string,
+        path: string,
+        external: boolean,
+    ) { }
+
 }

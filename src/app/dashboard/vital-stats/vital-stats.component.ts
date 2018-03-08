@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { HoldsDialogComponent } from '../holds-dialog/holds-dialog.component';
+import { HoldsService } from '../../services/holds.service';
 
 @Component({
   selector: 'app-vital-stats',
@@ -9,9 +10,12 @@ import { HoldsDialogComponent } from '../holds-dialog/holds-dialog.component';
 })
 export class VitalStatsComponent implements OnInit {
 
-  constructor(public holdsDialog: MatDialog) { }
+  holdsCount: number;
+
+  constructor(public holdsDialog: MatDialog, public holdsService: HoldsService) { }
 
   ngOnInit() {
+    this.holdsCount = this.holdsService.getHolds().length;
   }
 
   openHoldsDialog() {

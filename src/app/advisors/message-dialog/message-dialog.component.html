@@ -1,0 +1,30 @@
+<div class="row"  style="background-color: #ffc72c; margin: 0; padding: 0;">
+  <div class="col" style="padding: .5em 0 0 1em">
+    <h2 mat-dialog-title class="mb-1">Advisor Message</h2>
+  </div>
+  <div class="col text-right" style="padding-right: .25em">
+    <button mat-icon-button mat-dialog-close><mat-icon class="md-24">close</mat-icon></button>
+  </div>
+</div>
+<mat-dialog-content cdkFocusInitial class="ml-0 mr-0 pt-3">
+  <form>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Email" value="{{ data.email }}" disabled>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="w-100"> 
+          <textarea #message matInput matTextareaAutosize matAutosizeMinRows="3" placeholder="Type message here..."></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="ml-0 mr-0 mb-2 pb-3 pl-3 pr-3 justify-content-end">
+  <button mat-raised-button color="accent" [mat-dialog-close]="false">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)=sendMessage(message.value)>Send</button>
+</mat-dialog-actions>

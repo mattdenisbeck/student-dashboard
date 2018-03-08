@@ -22,7 +22,6 @@ export class AppComponent implements OnDestroy, OnInit {
   opened = false;
   mobileQuery: MediaQueryList;
   showProfileAvatar: boolean;
-  searchTerm: string;
 
   private _mobileQueryListener: () => void;
 

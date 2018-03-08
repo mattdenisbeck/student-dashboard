@@ -1,0 +1,59 @@
+<div class="row"  style="background-color: #ffc72c; margin: 0; padding: 0;">
+  <div class="col" style="padding: .5em 0 0 1em">
+    <h2 mat-dialog-title class="mb-1">Request Appointment</h2>
+  </div>
+  <div class="col text-right" style="padding-right: .25em">
+    <button mat-icon-button mat-dialog-close><mat-icon class="md-24">close</mat-icon></button>
+  </div>
+</div>
+<mat-dialog-content cdkFocusInitial class="ml-0 mr-0 pt-3">
+  <form>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="w-100">
+          <input matInput placeholder="Email" value="{{ data.email }}" disabled>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="w-100"> 
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field floatLabel="always" class="appointment-form">
+          <mat-label>Start time</mat-label>
+          <mat-select #hourSelect placeholder="hour">
+            <mat-option value="08">08</mat-option>
+            <mat-option value="09">09</mat-option>
+            <mat-option value="10">10</mat-option>
+            <mat-option value="11">11</mat-option>
+            <mat-option value="12">12</mat-option>
+            <mat-option value="01">01</mat-option>
+            <mat-option value="02">02</mat-option>
+            <mat-option value="03">03</mat-option>
+            <mat-option value="04">04</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <span>&nbsp;:&nbsp;</span>
+        <mat-form-field floatLabel="always" class="appointment-form">
+          <mat-label></mat-label>
+          <mat-select placeholder="minute">
+            <mat-option value="00">00</mat-option>
+            <mat-option value="15">15</mat-option>
+            <mat-option value="30">30</mat-option>
+            <mat-option value="45">45</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <span *ngIf="hourSelect.value >= 8 && hourSelect.value < 12">&emsp;A.M.</span>
+        <span *ngIf="hourSelect.value == 12 || (hourSelect.value >= 1 && hourSelect.value < 8)">&emsp;P.M.</span>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="ml-0 mr-0 mb-2 pb-3 pl-3 pr-3 justify-content-end">
+  <button mat-raised-button color="accent" [mat-dialog-close]="false">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)=sendAppointmentRequest(message.value)>Send</button>
+</mat-dialog-actions>
+  

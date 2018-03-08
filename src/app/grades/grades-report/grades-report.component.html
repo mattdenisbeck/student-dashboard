@@ -1,0 +1,59 @@
+<mat-card class="dashboard-card grades-card mb-0">
+  <mat-card-header class="dashboard-card-header">
+    <mat-card-title class="dashboard-card-title">
+      <h5>
+        <small>
+          Grade Report 
+        </small>
+      </h5>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <mat-table [dataSource]="gradeReportData">
+      <!-- Row Title Column -->
+      <ng-container matColumnDef="rowTitle">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element" class="row-title text-truncate"><b>{{element.title}}</b></mat-cell>
+      </ng-container>
+    
+      <!-- Attempted Hours Column -->
+      <ng-container matColumnDef="attemptedHours">
+        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Attempted Hours </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.attemptedHours | number:'1.1-2'}} </mat-cell>
+      </ng-container>
+    
+      <!-- Earned Hours Column -->
+      <ng-container matColumnDef="earnedHours">
+        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Earned Hours </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.earnedHours | number:'1.1-2'}} </mat-cell>
+      </ng-container>
+
+      <!-- Quality Hours Column -->
+      <ng-container matColumnDef="qualityHours">
+        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Quality Hours </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.qualityHours | number:'1.1-2'}} </mat-cell>
+      </ng-container>
+
+      <!-- Quality Points Column -->
+      <ng-container matColumnDef="qualityPoints">
+        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Quality Points </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.qualityPoints | number:'1.1-2'}} </mat-cell>
+      </ng-container>
+
+      <!-- GPA Column -->
+      <ng-container matColumnDef="gpa">
+          <mat-header-cell *matHeaderCellDef class="text-center column-title"> GPA </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="text-center"> {{element.gpa | number:'1.1-2'}} </mat-cell>
+        </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="gradeReportDisplayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: gradeReportDisplayedColumns;"></mat-row>
+    </mat-table>
+    <mat-card-actions style="width:100%">
+      <div class="col text-right pb-1">
+        <button mat-icon-button id="pdfButton" type="button" matTooltip="Save PDF" matTooltipShowDelay="500"><mat-icon class="md-24">picture_as_pdf</mat-icon></button>
+        <button mat-icon-button id="downloadButton" type="button" class="mr-2" matTooltip="Download .CSV" matTooltipShowDelay="500"><mat-icon class="md-24">file_download</mat-icon></button>
+      </div>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

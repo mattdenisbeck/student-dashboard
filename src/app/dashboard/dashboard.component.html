@@ -1,19 +1,19 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid dashboard-container">
+  <div class="row dashboard-row">
     <div class="col-12 col-lg-8">
-      <div class="row">
+      <div class="row dashboard-row">
         <div class="col">
           <app-vital-stats *ngIf="showWidget.get('Vital Stats')"></app-vital-stats>
         </div>
       </div>
-      <div class="row">
+      <div class="row dashboard-row">
         <div class="col">
           <app-upcoming-classes *ngIf="showWidget.get('Upcoming Classes')"></app-upcoming-classes>
         </div>
       </div>
     </div>
     <div class="col-12 col-lg-4">
-      <div class="row">
+      <div class="row dashboard-row">
         <div class="col">
           <app-norse-feed *ngIf="showWidget.get('Norse Feed')"></app-norse-feed>
         </div>

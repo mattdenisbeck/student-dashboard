@@ -32,6 +32,7 @@ import { SearchModule } from './search/search.module';
 import { SearchService } from './services/search.service';
 import { ClassScheduleService } from './services/class-schedule.service';
 import { CalendarModule } from 'angular-calendar';
+import { GradesService } from './services/grades.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { CalendarModule } from 'angular-calendar';
     ShowProfileAvatarService,
     HoldsService,
     SearchService,
-    ClassScheduleService
+    ClassScheduleService,
+    GradesService
   ],
   bootstrap: [AppComponent]
 })

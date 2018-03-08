@@ -1,8 +1,12 @@
 export class NorseFeedItem {
-    msg: string;
-    feature: string;
-    path: string;
-    icon: string;
-    iconColor: string;
-    timestamp: Date;
+
+    constructor (
+        public msg: string,
+        public feature: string,
+        public path: string,
+        public icon: string,
+        public iconColor: string,
+        public timestamp: Date
+    ) { }
+
 }

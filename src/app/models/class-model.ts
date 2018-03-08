@@ -1,11 +1,15 @@
 export class ClassModel {
-    number: string;
-    title: string;
-    location: string;
-    days: string[];
-    day: string;  // used when generating list of upcoming classes
-    startTime: Date;
-    endTime: Date;
-    instructor: string;
-    icon: string;
+
+    constructor(
+        public number: string,
+        public title: string,
+        public location: string,
+        public days: string[],
+        public day: string,  // used when generating list of upcoming classes
+        public startTime: Date,
+        public endTime: Date,
+        public instructor: string,
+        public icon: string,
+    ) { }
+
 }

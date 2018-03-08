@@ -67,6 +67,15 @@ mat-card-actions.dashboard-card-actions.mat-card-actions:last-child {
     margin-right: 0 !important;
 }
 
+@media (max-width: 576px) {
+    .main {
+        padding-bottom: 0 !important;
+    }
+    .dashboard-card {  
+        margin-top: 0 !important; 
+    }
+}
+
 @media (min-width: 576px) { 
     .cal-day-view .cal-event-container {
         width: 460px !important;

@@ -1,11 +1,45 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to myNKU Advisors!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-  <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel luctus enim. Nam nulla ex, aliquet quis eros ac, porttitor ullamcorper lectus. Vestibulum sagittis a est convallis euismod. Maecenas ac dolor vitae libero convallis pellentesque. Aliquam erat volutpat. Vestibulum aliquam ligula vitae eros facilisis pharetra. Donec tincidunt, sapien sit amet maximus lobortis, sapien nunc pulvinar lorem, id imperdiet orci mauris sed tortor.
-      Donec turpis arcu, facilisis in facilisis non, sodales nec leo. Vivamus non dui sed nunc finibus scelerisque et ac ipsum. Praesent leo turpis, ultrices ac purus in, rutrum commodo ligula. Vivamus semper volutpat augue sit amet pellentesque. Integer eu est vitae ligula placerat blandit at sollicitudin magna. Aenean quam libero, ullamcorper id nisl eget, vulputate ullamcorper nisl. Aliquam aliquet pharetra sem quis rutrum. Nam a porta orci, et congue augue. Nunc blandit ut nulla nec maximus.
-      Proin a ultrices nulla. Ut interdum nisi id lorem dignissim imperdiet. Nulla at eros tempor, scelerisque urna ac, scelerisque sapien. Quisque gravida sollicitudin ligula, quis eleifend nisl suscipit ac. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus molestie a velit vel congue. Donec viverra eu odio nec faucibus.
-  </p>
+<div class="container-fluid pb-1">
+  <div class="row" *ngFor="let advisor of advisors">
+    <div class="col">
+      <mat-card class="dashboard-card mb-0">
+        <mat-card-header class="dashboard-card-header">
+          <mat-card-title class="dashboard-card-title">
+            <h5><small>{{ advisor.type }} Advisor</small></h5>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content" style="background-color: black; padding-top: 0; padding-bottom: 0;">
+          <div class="row">
+            <div class="col-12 col-sm-6 text-center pt-3 pb-3">
+              <ngx-avatar class="student-avatar" src="assets/images/avatar.jpg" size="80" [round]="true"></ngx-avatar>
+              <br>
+              <div class="mt-2">
+                <h5 style="color: #FFC72C;">{{ advisor.fName }} {{ advisor.lName }}</h5>
+                <h6 style="color: #FFC72C;">{{ advisor.department }} {{ advisor.position }}</h6>
+              </div>
+              <div class="mt-1">
+                <button mat-raised-button type="button" color="primary" class="mt-2 mr-2" (click)="openDialog(advisor.email, 'message')">Send Message</button>
+                <button mat-raised-button type="button" color="primary" class="mt-2" (click)="openDialog(advisor.email, 'appointment')">Request Appointment</button>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 pt-3 pb-4" style="background-color:rgb(250,250,250)">
+              <mat-nav-list>
+                <mat-list-item>
+                  <h6 matLine class="font-weight-bold">Office: <small class="float-right font-weight-light">{{ advisor.office }}</small></h6>
+                  <mat-divider color="accent"></mat-divider>
+                </mat-list-item>        
+                <mat-list-item>
+                  <h6 matLine class="font-weight-bold">Email: <small class="float-right font-weight-light">{{ advisor.email }}</small></h6>
+                  <mat-divider color="accent"></mat-divider>
+                </mat-list-item>
+                <mat-list-item>
+                  <h6 matLine style="white-space:normal" class="font-weight-bold">Phone: <small class="float-right font-weight-light">{{ advisor.phone }}</small></h6>
+                  <mat-divider color="accent"></mat-divider>
+                </mat-list-item>
+              </mat-nav-list>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>

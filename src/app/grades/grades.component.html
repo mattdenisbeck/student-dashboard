@@ -1,11 +1,37 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to myNKU Grades!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-  <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel luctus enim. Nam nulla ex, aliquet quis eros ac, porttitor ullamcorper lectus. Vestibulum sagittis a est convallis euismod. Maecenas ac dolor vitae libero convallis pellentesque. Aliquam erat volutpat. Vestibulum aliquam ligula vitae eros facilisis pharetra. Donec tincidunt, sapien sit amet maximus lobortis, sapien nunc pulvinar lorem, id imperdiet orci mauris sed tortor.
-      Donec turpis arcu, facilisis in facilisis non, sodales nec leo. Vivamus non dui sed nunc finibus scelerisque et ac ipsum. Praesent leo turpis, ultrices ac purus in, rutrum commodo ligula. Vivamus semper volutpat augue sit amet pellentesque. Integer eu est vitae ligula placerat blandit at sollicitudin magna. Aenean quam libero, ullamcorper id nisl eget, vulputate ullamcorper nisl. Aliquam aliquet pharetra sem quis rutrum. Nam a porta orci, et congue augue. Nunc blandit ut nulla nec maximus.
-      Proin a ultrices nulla. Ut interdum nisi id lorem dignissim imperdiet. Nulla at eros tempor, scelerisque urna ac, scelerisque sapien. Quisque gravida sollicitudin ligula, quis eleifend nisl suscipit ac. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus molestie a velit vel congue. Donec viverra eu odio nec faucibus.
-  </p>
+<div class="container-fluid pb-1">
+  <div class="row">
+    <div class="col grades-col">
+      <app-term-grades></app-term-grades>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-8 col-xl-9 grades-col">
+      <app-grades-report></app-grades-report>
+    </div>
+    <div class="col-12 col-lg-4 col-xl-3 grades-col">
+      <mat-card class="dashboard-card grades-card mb-3">
+        <mat-card-header class="dashboard-card-header">
+          <mat-card-title class="dashboard-card-title">
+            <h5>
+              <small>
+                Transcripts 
+              </small>
+            </h5>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <mat-card-actions>
+            <div class="col-12 mb-3">
+              <button mat-raised-button type="button" class="btn-block" color="primary">Unofficial Transcript&emsp;<mat-icon class="md-24">picture_as_pdf</mat-icon></button>
+            </div>
+            <div class="col-12 mb-1">
+              <button mat-raised-button type="button" class="btn-block" color="primary">Official Transcript&emsp;<mat-icon class="md-24">launch</mat-icon></button>
+            </div>
+          </mat-card-actions>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
 </div>
+

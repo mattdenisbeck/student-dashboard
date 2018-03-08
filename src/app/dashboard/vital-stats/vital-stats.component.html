@@ -1,6 +1,6 @@
 <mat-card class="dashboard-card">
   <mat-card-header class="dashboard-card-header">
-    <mat-card-title class="dashboard-card-title"><h5>Vital Stats</h5></mat-card-title>
+    <mat-card-title class="dashboard-card-title"><h5><small>Vital Stats</small></h5></mat-card-title>
   </mat-card-header>
   <mat-card-content class="dashboard-card-content">
     <div class="row justify-content-center">
@@ -48,7 +48,7 @@
                   <button mat-raised-button type="button" routerLink="grades" class="text-right" style="background-color:#28a745; color:white; width:100%"><span class="float-left">Current GPA&nbsp;&nbsp;</span><span class="badge badge-light">3.37</span></button>
               </mat-list-item>
               <mat-list-item style="height:auto; margin-bottom: .75em;">
-                 <button mat-raised-button type="button" (click)="openHoldsDialog()" class="text-right" style="background-color:#dc3545; color:white; width:100%"><span class="float-left">Holds&nbsp;&nbsp;</span><span class="badge badge-light">1</span></button>
+                 <button mat-raised-button type="button" (click)="openHoldsDialog()" class="text-right" style="background-color:#dc3545; color:white; width:100%"><span class="float-left">Holds&nbsp;&nbsp;</span><span class="badge badge-light">{{ holdsCount }}</span></button>
               </mat-list-item>
               <mat-list-item style="height:auto; margin-bottom: .75em;">
                 <button mat-raised-button type="button" routerLink="account" class="text-right" style="background-color:#dc3545; color:white; width:100%; "><span class="float-left">Balance Due&nbsp;&nbsp;</span><span class="badge badge-light">$2599.00</span></button>

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AdvisorsService } from '../services/advisors.service';
+import { AdvisorModel } from '../models/advisor-model';
+import { MessageDialogComponent } from './message-dialog/message-dialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { AppointmentDialogComponent } from './appointment-dialog/appointment-dialog.component';
 
 @Component({
   selector: 'app-advisors',
@@ -7,9 +12,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdvisorsComponent implements OnInit {
 
-  constructor() { }
+  advisors: AdvisorModel[];
+  advisorMessage: {};
+
+  constructor( private advisorsService: AdvisorsService, public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.advisors = this.advisorsService.getAdvisors();
+  }
+
+  openDialog(email: string, type: string) {
+    const config = {
+      'panelClass': 'allDialogs',
+      'width': '500px',
+      'minWidth': '360px',
+      'maxHeight': '400px',
+      'position': {'top': '100px'},
+      'data': {'email': email}
+    };
+
+    let dialogRef: MatDialogRef<any>;
+
+    switch (type) {
+      case 'appointment':
+        dialogRef = this.dialog.open(AppointmentDialogComponent, config);
+        break;
+      default:
+        dialogRef = this.dialog.open(MessageDialogComponent, config);
+    }
+
+    dialogRef.afterClosed().subscribe(result => {
+      // display error/confirmation message if needed
+    });
   }
 
 }
