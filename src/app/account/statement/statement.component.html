@@ -1,0 +1,69 @@
+<mat-card class="dashboard-card mb-0">
+  <mat-card-header class="dashboard-card-header">
+    <mat-card-title class="dashboard-card-title pr-3">
+      <span class="float-right" style="margin-top: -1em;">
+        <mat-form-field style="width: 170px;">
+          <input matInput value="{{balance | currency}}" readonly>
+          <span matPrefix><b>Balance Due:</b>&nbsp;&nbsp;</span>
+        </mat-form-field>
+      </span>
+      <h5><small>Account Statement</small></h5>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <div class="row justify-content-around mt-2">
+      <div class="col-sm-4 flex-container">
+        <mat-radio-group (change)="onPaymentTypeChange($event.value)">
+          <mat-radio-button value="full" checked="true">Pay in Full</mat-radio-button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <mat-radio-button value="partial">Partial Payment</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field>
+          <input matInput type="number" [(ngModel)]="paymentAmt" [readonly]="paymentType === 'full'">
+          <span matPrefix><b>$</b>&nbsp;</span>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Pay Bill Now</button>
+      </div>
+      <div class="d-none d-sm-block col-sm-auto">
+        <mat-divider vertical="true" style="height: 100%;"></mat-divider>
+      </div>
+      <div class="d-block d-sm-none col-12 py-4">
+        <mat-divider vertical="false" class="mx-3" style="width: 93%;"></mat-divider>
+      </div>
+      <div class="col-sm-7">
+        <div class="row no-gutters">
+          <div class="col flex-container">
+            <h6>Download Statements</h6>
+            <div>
+              <mat-form-field style="width: 74%;">
+                <mat-select placeholder="Academic Period">
+                  <mat-option *ngFor="let semester of semesters" [value]="semester">
+                    {{ semester }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <button mat-icon-button><mat-icon>picture_as_pdf</mat-icon></button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col flex-container">
+            <h6>IRS 1098-T</h6>
+            <div>
+              <mat-form-field style="width: 74%;">
+                <mat-select placeholder="Tax Year">
+                  <mat-option *ngFor="let year of taxYears" [value]="year">
+                    {{ year }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <button mat-icon-button><mat-icon>picture_as_pdf</mat-icon></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

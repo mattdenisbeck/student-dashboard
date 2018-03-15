@@ -1,0 +1,33 @@
+<div class="row"  style="background-color: #ffc72c; margin: 0; padding: 0;">
+  <div class="col-10" style="padding: .5em 0 0 1em">
+    <h2 mat-dialog-title class="mb-1">{{action}} Bank Account</h2>
+  </div>
+  <div class="col text-right" style="padding-right: .25em">
+    <button mat-icon-button mat-dialog-close><mat-icon class="md-24">close</mat-icon></button>
+  </div>
+</div>
+<mat-dialog-content cdkFocusInitial class="m-0 py-3">
+  <div class="container">
+    <form class="flex-container" #accountForm="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput placeholder="Nickname" [disabled]="action === 'Delete'" [(ngModel)]="account.nickname" name="nickname" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Account Holder" [disabled]="action !== 'Add'" [(ngModel)]="account.holder" name="holder" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Bank" [disabled]="action !== 'Add'" [(ngModel)]="account.bank" name="bank" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Routing Number" [disabled]="action !== 'Add'" [(ngModel)]="account.routing" name="routing" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Account Number" [disabled]="action !== 'Add'" [(ngModel)]="account.number" name="number" required>
+      </mat-form-field>
+      <mat-checkbox [(ngModel)]="account.isRefund" [disabled]="action === 'Delete'" labelPosition="before" name="refund">Refund account?</mat-checkbox>
+
+      <button *ngIf="action !== 'Delete'" mat-button type="submit" [disabled]="!accountForm.valid" color="primary">Submit</button>
+      <button *ngIf="action === 'Delete'" mat-button type="submit" color="warn">Confirm Delete?</button>
+    </form>
+  </div>
+</mat-dialog-content>

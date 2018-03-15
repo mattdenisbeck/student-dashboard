@@ -17,6 +17,10 @@ import { GradesReportComponent } from './grades-report/grades-report.component';
     MatSelectModule,
     MatTooltipModule
   ],
-  declarations: [GradesComponent, TermGradesComponent, GradesReportComponent]
+  declarations: [
+    GradesComponent,
+    TermGradesComponent,
+    GradesReportComponent
+  ]
 })
 export class GradesModule { }

@@ -7,35 +7,35 @@
       <div class="col-12 col-md-auto col-xl-7">
         <mat-divider [vertical]="true" class="d-none d-md-block" style="height: 100%;"></mat-divider>
         <mat-list>
-          <mat-list-item style="height:auto; margin-bottom: .75em;">
+          <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
             <button mat-raised-button routerLink="schedule" class="btn-block">
               <div class="row">
-                <div class="col-12 col-sm-6 text-left"><b>Major:</b></div>
-                <div class="col-12 col-sm-6 text-right">Computer Science</div>
+                <div class="col-6 col-sm-6 text-left"><b>Major:</b></div>
+                <div class="col-6 col-sm-6 text-right">Computer Science</div>
               </div>
             </button>
           </mat-list-item>
-          <mat-list-item style="height:auto; margin-bottom: .75em;">
+          <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
             <button mat-raised-button routerLink="schedule" class="btn-block">
               <div class="row">
-                <div class="col-12 col-sm-6 text-left"><b>Academic Program:</b></div>
-                <div class="col-12 col-sm-6 text-right">Bachelor of Science</div>
+                <div class="col-6 col-sm-6 text-left"><b>Academic Program:</b></div>
+                <div class="col-6 col-sm-6 text-right">Bachelor of Science</div>
               </div>
             </button>
           </mat-list-item>
-          <mat-list-item style="height:auto; margin-bottom: .75em;">
+          <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
             <button mat-raised-button routerLink="schedule" class="btn-block">
                 <div class="row">
-                    <div class="col-12 col-sm-6 text-left"><b>College:</b></div>
-                    <div class="col-12 col-sm-6 text-right">College of Informatics</div>
+                    <div class="col-6 col-sm-6 text-left"><b>College:</b></div>
+                    <div class="col-6 col-sm-6 text-right">College of Informatics</div>
                 </div>
             </button>
           </mat-list-item>
-          <mat-list-item style="height:auto; margin-bottom: .75em;">
+          <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
             <button mat-raised-button routerLink="registration" class="btn-block">
               <div class="row">
-                  <div class="col-12 col-sm-6 text-left"><b>Registration Window:</b></div>
-                  <div class="col-12 col-sm-6 text-right">11/1 - 12/1</div>
+                  <div class="col-6 col-sm-6 text-left"><b>Registration Window:</b></div>
+                  <div class="col-6 col-sm-6 text-right">11/1 - 12/1</div>
               </div>
             </button>
           </mat-list-item>
@@ -44,16 +44,16 @@
       </div>
       <div class="col-12 col-md-auto col-xl-5">
           <mat-list>
-              <mat-list-item style="height:auto; margin-bottom: .75em;">
-                  <button mat-raised-button type="button" routerLink="grades" class="text-right" style="background-color:#28a745; color:white; width:100%"><span class="float-left">Current GPA&nbsp;&nbsp;</span><span class="badge badge-light">3.37</span></button>
+              <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
+                  <button mat-raised-button type="button" routerLink="grades" class="text-right" style="background-color:#28a745; color:white; width:100%"><span class="float-left">Current GPA&nbsp;&nbsp;</span><span class="badge badge-light">{{ gpa | number : '1.2-2' }}</span></button>
               </mat-list-item>
-              <mat-list-item style="height:auto; margin-bottom: .75em;">
+              <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
                  <button mat-raised-button type="button" (click)="openHoldsDialog()" class="text-right" style="background-color:#dc3545; color:white; width:100%"><span class="float-left">Holds&nbsp;&nbsp;</span><span class="badge badge-light">{{ holdsCount }}</span></button>
               </mat-list-item>
-              <mat-list-item style="height:auto; margin-bottom: .75em;">
-                <button mat-raised-button type="button" routerLink="account" class="text-right" style="background-color:#dc3545; color:white; width:100%; "><span class="float-left">Balance Due&nbsp;&nbsp;</span><span class="badge badge-light">$2599.00</span></button>
+              <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
+                <button mat-raised-button type="button" routerLink="account" class="text-right" style="background-color:#dc3545; color:white; width:100%; "><span class="float-left">Balance Due&nbsp;&nbsp;</span><span class="badge badge-light">{{ accountBalance | currency }}</span></button>
               </mat-list-item>
-              <mat-list-item style="height:auto; margin-bottom: .75em;">
+              <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
                 <button mat-raised-button type="button" class="text-right" color="primary" style="width:100%"><span class="float-left">Victor Points&nbsp;&nbsp;</span><span class="badge badge-light">5</span></button>
               </mat-list-item>
             </mat-list>

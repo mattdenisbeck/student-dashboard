@@ -72,32 +72,13 @@ mat-card-actions.dashboard-card-actions.mat-card-actions:last-child {
         padding-bottom: 0 !important;
     }
     .dashboard-card {  
-        margin-top: 0 !important; 
+        margin-top: 0 !important;
+        margin-bottom: 0.75em !important; 
     }
 }
 
-@media (min-width: 576px) { 
-    .cal-day-view .cal-event-container {
-        width: 460px !important;
-    }
-}
-
-@media (min-width: 768px) { 
-    .cal-day-view .cal-event-container {
-        width: 500px !important;
-    }
-}
-
-@media (min-width: 960px) { 
-    .cal-day-view .cal-event-container {
-        width: 700px !important;
-    }
-}
-
-@media (min-width: 1140px) { 
-    .cal-day-view .cal-event-container {
-        width: 800px !important;
-    }
+.cal-day-view .cal-event-container {
+    width: 80% !important;
 }
 
 .cal-event-title {
@@ -122,4 +103,8 @@ mat-card-actions.dashboard-card-actions.mat-card-actions:last-child {
 
 .cal-open {
     background-color: #ededed;
+}
+
+.vital-stats-item .mat-list-item-content {
+    padding: 0 !important; 
 }

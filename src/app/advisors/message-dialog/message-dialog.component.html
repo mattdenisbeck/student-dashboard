@@ -7,18 +7,18 @@
   </div>
 </div>
 <mat-dialog-content cdkFocusInitial class="ml-0 mr-0 pt-3">
-  <form>
+  <form [formGroup]="form">
     <div class="row">
       <div class="col">
         <mat-form-field class="w-100">
-          <input matInput placeholder="Email" value="{{ data.email }}" disabled>
+          <input matInput id="email" placeholder="Email" formControlName="email">
         </mat-form-field>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <mat-form-field class="w-100"> 
-          <textarea #message matInput matTextareaAutosize matAutosizeMinRows="3" placeholder="Type message here..."></textarea>
+          <textarea #message id="message" matInput matTextareaAutosize matAutosizeMinRows="3" placeholder="Type message here..." formControlName="message"></textarea>
         </mat-form-field>
       </div>
     </div>
@@ -26,5 +26,5 @@
 </mat-dialog-content>
 <mat-dialog-actions class="ml-0 mr-0 mb-2 pb-3 pl-3 pr-3 justify-content-end">
   <button mat-raised-button color="accent" [mat-dialog-close]="false">Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)=sendMessage(message.value)>Send</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)=sendMessage(message.value) [disabled]="!form.valid">Send</button>
 </mat-dialog-actions>

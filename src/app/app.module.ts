@@ -33,6 +33,7 @@ import { SearchService } from './services/search.service';
 import { ClassScheduleService } from './services/class-schedule.service';
 import { CalendarModule } from 'angular-calendar';
 import { GradesService } from './services/grades.service';
+import { AccountService } from './services/account.service';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { GradesService } from './services/grades.service';
     HoldsService,
     SearchService,
     ClassScheduleService,
-    GradesService
+    GradesService,
+    AccountService
   ],
   bootstrap: [AppComponent]
 })

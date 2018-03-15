@@ -7,24 +7,24 @@
   </div>
 </div>
 <mat-dialog-content cdkFocusInitial class="ml-0 mr-0 pt-3">
-  <form>
+  <form [formGroup]="form"> 
     <div class="row">
       <div class="col">
         <mat-form-field class="w-100">
-          <input matInput placeholder="Email" value="{{ data.email }}" disabled>
+          <input matInput placeholder="Email" formControlName="email">
         </mat-form-field>
       </div>
     </div>
     <div class="row">
       <div class="col">
         <mat-form-field class="w-100"> 
-          <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+          <input #dateInput matInput [matDatepicker]="picker" [matDatepickerFilter]="noWeekendsFilter" [min]="minDate" [max]="maxDate" placeholder="Choose a date" formControlName="date">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker #picker disabled="false" [touchUi]="isMobile"></mat-datepicker>
         </mat-form-field>
         <mat-form-field floatLabel="always" class="appointment-form">
           <mat-label>Start time</mat-label>
-          <mat-select #hourSelect placeholder="hour">
+          <mat-select #hourSelect placeholder="hour" formControlName="hour">
             <mat-option value="08">08</mat-option>
             <mat-option value="09">09</mat-option>
             <mat-option value="10">10</mat-option>
@@ -39,7 +39,7 @@
         <span>&nbsp;:&nbsp;</span>
         <mat-form-field floatLabel="always" class="appointment-form">
           <mat-label></mat-label>
-          <mat-select placeholder="minute">
+          <mat-select #minuteSelect placeholder="minute" formControlName="minute">
             <mat-option value="00">00</mat-option>
             <mat-option value="15">15</mat-option>
             <mat-option value="30">30</mat-option>
@@ -54,6 +54,6 @@
 </mat-dialog-content>
 <mat-dialog-actions class="ml-0 mr-0 mb-2 pb-3 pl-3 pr-3 justify-content-end">
   <button mat-raised-button color="accent" [mat-dialog-close]="false">Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)=sendAppointmentRequest(message.value)>Send</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" (click)="sendAppointmentRequest(dateInput.value, hourSelect.value, minuteSelect.value)" [disabled]="!form.valid">Send</button>
 </mat-dialog-actions>
   

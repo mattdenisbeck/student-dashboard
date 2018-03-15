@@ -1,0 +1,27 @@
+@media (max-width: 576px) {
+    mat-card-content.dashboard-card-content {
+        padding : 0;
+    }
+    .row-title {
+        font-size: 80%;
+    }
+    .column-title {
+        font-size: 79%;
+    }
+    .table-data {
+        font-size: 80%;
+    }
+}
+
+.mat-header-row, .mat-row {
+    padding: 0 16px;
+}
+
+.mat-header-row {
+    background-color: #FFC72C;
+}
+
+.mat-header-cell {
+    color: black !important;
+    font-weight: bold !important;
+}

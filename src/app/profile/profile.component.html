@@ -11,14 +11,14 @@
       <h3><span style="background-color: rgba(0,0,0,0.8); padding: 0 1.5em 0 .5em;">Computer Science</span></h3>
     </div>
     <div class="col text-right" style="color:#ffc72c">
-      <h5><span style="background-color: rgba(0,0,0,0.8); padding: 0 .5em 0 1.5em;">GPA: 3.37</span></h5>
-      <h5><span style="background-color: rgba(0,0,0,0.8); padding: 0 .5em 0 1.5em;">Due: $2499.99</span></h5>
+      <h5><span style="background-color: rgba(0,0,0,0.8); padding: 0 .5em 0 1.5em;">GPA: {{ gpa | number : '1.2-2' }}</span></h5>
+      <h5><span style="background-color: rgba(0,0,0,0.8); padding: 0 .5em 0 1.5em;">Due: {{ accountBalance | currency}}</span></h5>
     </div>
   </div>
 </div>
 <div class="profile-body">
   <mat-tab-group dynamicHeight="true">
-    <mat-tab label="ABOUT">
+    <mat-tab label="About">
       <div class="container-fluid profile-container">
         <div class="row">
           <div class="col-12 col-lg-8">
@@ -43,11 +43,11 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="ACADEMICS" >
+    <mat-tab label="Academics" >
       <h1>Some more tab content</h1>
       <p>...</p>
     </mat-tab>
-    <mat-tab label="ACCOUNT" >
+    <mat-tab label="Account" >
       <h1>Some more tab content</h1>
       <p>...</p>
     </mat-tab>

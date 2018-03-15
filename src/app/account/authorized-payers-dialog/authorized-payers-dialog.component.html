@@ -1,0 +1,40 @@
+<div class="row"  style="background-color: #ffc72c; margin: 0; padding: 0;">
+  <div class="col-10" style="padding: .5em 0 0 1em">
+    <h2 mat-dialog-title class="mb-1">{{action}} Authorized Payer</h2>
+  </div>
+  <div class="col text-right" style="padding-right: .25em">
+    <button mat-icon-button mat-dialog-close><mat-icon class="md-24">close</mat-icon></button>
+  </div>
+</div>
+<mat-dialog-content cdkFocusInitial class="m-0 py-3">
+  <div class="container">
+    <form class="flex-container" #payerForm="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput placeholder="Name" [disabled]="action !== 'Add'" [(ngModel)]="payer.name" name="name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="email" placeholder="Email" [disabled]="action === 'Delete'" [(ngModel)]="payer.email" name="email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="startDatePicker" placeholder="Start Date" [disabled]="action === 'Delete'" [(ngModel)]="payer.startDate" name="startDate" required>
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="endDatePicker" placeholder="End Date" [disabled]="action === 'Delete'" [(ngModel)]="payer.endDate" name="endDate" required>
+        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field *ngIf="action === 'Delete'">
+        <input matInput [matDatepicker]="dateCreatedPicker" placeholder="Date Created" disabled [(ngModel)]="payer.dateCreated" name="dateCreated">
+        <mat-datepicker-toggle matSuffix [for]="dateCreatedPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dateCreatedPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field *ngIf="action === 'Delete'">
+        <input matInput placeholder="Changed By" disabled [(ngModel)]="payer.changedBy" name="changedBy">
+      </mat-form-field>
+      <button *ngIf="action !== 'Delete'" mat-button type="submit" [disabled]="!payerForm.valid" color="primary">Submit</button>
+      <button *ngIf="action === 'Delete'" mat-button type="submit" color="warn">Confirm Delete?</button>
+    </form>
+  </div>
+</mat-dialog-content>

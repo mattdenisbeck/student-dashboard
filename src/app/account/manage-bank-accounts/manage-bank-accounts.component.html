@@ -1,0 +1,75 @@
+<mat-card class="dashboard-card mb-0">
+  <mat-card-header class="dashboard-card-header">
+    <mat-card-title class="dashboard-card-title pr-3">
+      <span class="float-right" style="margin-top: -0.5em;">
+          <button mat-icon-button matTooltip="Add Checking Account" matTooltipShowDelay="700" (click)="openBankAccountDialog()"><mat-icon>add_circle_outline</mat-icon></button>
+      </span>
+      <h5><small>Manage Bank Accounts</small></h5>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <div *ngIf="accounts.data.length === 0">There are no bank accounts associated with your username.</div>
+    <mat-table [dataSource]="accounts" *ngIf="accounts.data.length > 0">
+        <!-- Account Nickname Column -->
+        <ng-container matColumnDef="nickname">
+          <mat-header-cell *matHeaderCellDef class="text-truncate">Nickname</mat-header-cell>
+          <mat-cell 
+            *matCellDef="let account" 
+            matTooltip="{{account.nickname}}"
+            matTooltipPosition="after"
+            class="row-title text-truncate"> 
+            <b>{{ account.nickname }}<span *ngIf="account.isRefund">*</span></b>
+          </mat-cell>
+        </ng-container>
+      
+        <!-- Account Holder Column -->
+        <ng-container matColumnDef="holder">
+          <mat-header-cell *matHeaderCellDef class="text-center column-title">Account Holder</mat-header-cell>
+          <mat-cell *matCellDef="let account" class="text-center table-data">{{ account.holder }}</mat-cell>
+        </ng-container>
+      
+        <!-- Routing Number Column -->
+        <ng-container matColumnDef="routing">
+          <mat-header-cell *matHeaderCellDef class="text-center column-title">Routing Number</mat-header-cell>
+          <mat-cell 
+            *matCellDef="let account" 
+            matTooltip="{{account.routing}}"
+            matTooltipPosition="after"
+            class="text-center text-truncate table-data">
+              {{ account.routing }} 
+          </mat-cell>
+        </ng-container>
+      
+        <!-- Bank Name Column -->
+        <ng-container matColumnDef="bank">
+          <mat-header-cell *matHeaderCellDef class="text-center column-title">Bank</mat-header-cell>
+          <mat-cell *matCellDef="let account" class="text-center table-data">{{ account.bank }}</mat-cell>
+        </ng-container>
+  
+        <!-- Account Number Column -->
+        <ng-container matColumnDef="number">
+          <mat-header-cell *matHeaderCellDef class="text-center column-title">Account Number</mat-header-cell>
+          <mat-cell 
+            *matCellDef="let account"
+            matTooltip="{{account.number}}"
+            matTooltipPosition="after" 
+            class="text-center text-truncate table-data">
+            {{ account.number }}
+          </mat-cell>
+        </ng-container>
+  
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef class="text-right column-title"></mat-header-cell>
+          <mat-cell *matCellDef="let account" class="text-right">
+            <button mat-icon-button matTooltip="Edit Account" matTooltipShowDelay="700" (click)="openBankAccountDialog(account)"><mat-icon>edit</mat-icon></button> 
+            <button mat-icon-button matTooltip="Delete Account" matTooltipShowDelay="700" (click)="openBankAccountDialog(account, 'delete')"><mat-icon>highlight_off</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <div *ngIf="accounts.data.length > 0" class="text-right pr-2"><small>* Refund Account</small></div>
+  </mat-card-content>
+</mat-card>

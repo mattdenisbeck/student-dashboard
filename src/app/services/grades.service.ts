@@ -6,6 +6,7 @@ export class GradesService {
   private finalGrades: {}[];
   private midtermGrades: {}[];
   private gradeReport: {}[];
+  private gpa: number;
 
   constructor() {
     this.finalGrades = [
@@ -90,6 +91,7 @@ export class GradesService {
         gpa: 3.74
       }
     ];
+    this.gpa = 3.78;
    }
 
   getGrades(semester: string, final: boolean) {
@@ -99,6 +101,10 @@ export class GradesService {
 
   getGradeReport() {
     return this.gradeReport;
+  }
+
+  getGPA() {
+    return this.gpa;
   }
 
 }
