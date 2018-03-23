@@ -50,22 +50,39 @@
               <mat-card-header class="dashboard-card-header">
                 <mat-card-title class="dashboard-card-title">
                   <span class="float-right mr-3" style="margin-top: -0.65em;">
-                      <button mat-icon-button matTooltip="Save Notification Preferences" matTooltipPosition="left" matTooltipShowDelay="500"><mat-icon class="material-icons md-24">save</mat-icon></button>
+                      <button mat-icon-button matTooltip="Save Dashboard Widget Preferences" matTooltipPosition="left" matTooltipShowDelay="500"><mat-icon class="material-icons md-24">save</mat-icon></button>
                   </span>
-                  <h5><small>Notifications</small></h5>
+                  <h5><small>Dashboard Widgets</small></h5>
                 </mat-card-title>
               </mat-card-header>
               <mat-card-content class="dashboard-card-content widgets-settings">
-                <mat-nav-list disableRipple="true">
-                  <span *ngFor="let notification of notifications" >
+                <mat-list>
+                  <span *ngFor="let widget of widgets">
                     <mat-list-item >
-                      <mat-icon matListIcon>{{ notification.icon }}</mat-icon>
-                      <p matLine style="white-space:normal">{{ notification.title }}</p>
-                      <mat-slide-toggle color="primary" checked="notification.show"></mat-slide-toggle>
+                      <mat-icon matListIcon class="d-none d-sm-block">{{ widget.icon }}</mat-icon>
+                      <p matLine style="white-space:normal">{{ widget.title }}</p>
+                      <mat-form-field class="mr-3" style="width: 60px;">
+                        <mat-select placeholder="Order" [(value)]="widget.order" [disabled]="widget.isDefault">
+                            <mat-option *ngFor="let num of orderValues" value="{{ num }}">{{ num }}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-form-field class="mr-3" style="width: 74px;" [ngClass]="{'not-allowed-cursor' : widget.isDefault}">
+                        <mat-select placeholder="Column" [(value)]="widget.column" [disabled]="widget.isDefault">
+                          <mat-option value="left">Left</mat-option>
+                          <mat-option value="right">Right</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <span *ngIf="widget.isDefault">
+                        <mat-icon class="text-danger" style="opacity:.5; cursor:not-allowed" *ngIf="widget.show">remove_circle_outline</mat-icon>
+                      </span>
+                      <span (click)="toggleWidget(widget)" *ngIf="!widget.isDefault">
+                        <mat-icon class="text-success" style="cursor:pointer" *ngIf="!widget.show">add_circle_outline</mat-icon>
+                        <mat-icon class="text-danger" style="cursor:pointer" *ngIf="widget.show">remove_circle_outline</mat-icon>
+                      </span>
                     </mat-list-item>
                     <mat-divider color="accent"></mat-divider>
                   </span>
-                </mat-nav-list>
+                </mat-list>
               </mat-card-content>
             </mat-card>
           </div>
@@ -78,23 +95,22 @@
               <mat-card-header class="dashboard-card-header">
                 <mat-card-title class="dashboard-card-title">
                   <span class="float-right mr-3" style="margin-top: -0.65em;">
-                      <button mat-icon-button matTooltip="Save Dashboard Widget Preferences" matTooltipPosition="left" matTooltipShowDelay="500"><mat-icon class="material-icons md-24">save</mat-icon></button>
+                      <button mat-icon-button matTooltip="Save Notification Preferences" matTooltipPosition="left" matTooltipShowDelay="500"><mat-icon class="material-icons md-24">save</mat-icon></button>
                   </span>
-                  <h5><small>Dashboard Widgets</small></h5>
+                  <h5><small>Notifications</small></h5>
                 </mat-card-title>
               </mat-card-header>
               <mat-card-content class="dashboard-card-content widgets-settings">
-                <mat-nav-list>
-                  <span *ngFor="let widget of widgets" >
-                    <mat-list-item (click)="toggleWidget(widget)">
-                      <mat-icon matListIcon>{{ widget.icon }}</mat-icon>
-                      <p matLine style="white-space:normal">{{ widget.title }}</p>
-                      <mat-icon  class="text-success" *ngIf="!widget.show">add_circle_outline</mat-icon>
-                      <mat-icon class="text-danger" *ngIf="widget.show">remove_circle_outline</mat-icon>
+                <mat-list>
+                  <span *ngFor="let notification of notifications" >
+                    <mat-list-item >
+                      <mat-icon matListIcon>{{ notification.icon }}</mat-icon>
+                      <p matLine style="white-space:normal">{{ notification.title }}</p>
+                      <mat-slide-toggle color="primary" checked="notification.show"></mat-slide-toggle>
                     </mat-list-item>
                     <mat-divider color="accent"></mat-divider>
                   </span>
-                </mat-nav-list>
+                </mat-list>
               </mat-card-content>
             </mat-card>
           </div>

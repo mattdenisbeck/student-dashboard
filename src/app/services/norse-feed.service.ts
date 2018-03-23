@@ -7,7 +7,7 @@ export class NorseFeedService {
     {
       'msg': 'New grade added for CSC 360',
       'feature': 'Grades',
-      'path' : 'grades',
+      'path' : '../grades',
       'icon' : 'assessment',
       'iconColor' : 'text-warning',
       'timestamp' : new Date ('2018-01-11T16:00:00')
@@ -23,7 +23,7 @@ export class NorseFeedService {
     {
       'msg': 'New grade added for CSC 240',
       'feature': 'Grades',
-      'path' : 'grades',
+      'path' : '../grades',
       'icon' : 'assessment',
       'iconColor' : 'text-warning',
       'timestamp' : new Date ('2018-01-10T16:00:00')
@@ -31,7 +31,7 @@ export class NorseFeedService {
     {
       'msg': 'Registration window now open!',
       'feature': 'Registration',
-      'path' : 'registration',
+      'path' : '../registration',
       'icon' : 'date_range',
       'iconColor' : 'text-success',
       'timestamp' : new Date ('2018-01-09T16:00:00')
@@ -39,7 +39,7 @@ export class NorseFeedService {
     {
       'msg': 'Overall GPA just increased to 3.37!',
       'feature': 'Grades',
-      'path' : 'grades',
+      'path' : '../grades',
       'icon' : 'track_changes',
       'iconColor' : 'text-success',
       'timestamp' : new Date ('2018-01-21T16:00:00')
@@ -47,7 +47,7 @@ export class NorseFeedService {
     {
       'msg': 'Tuition bill is due this week',
       'feature': 'Account',
-      'path' : 'account',
+      'path' : '../account',
       'icon' : 'local_atm',
       'iconColor' : 'text-danger',
       'timestamp' : new Date ('2018-01-19T16:00:00')
@@ -55,7 +55,7 @@ export class NorseFeedService {
     {
       'msg': 'Advisor information updated',
       'feature': 'Advisors',
-      'path' : 'advisors',
+      'path' : '../advisors',
       'icon' : 'assignment_ind',
       'iconColor' : 'text-warning',
       'timestamp' : new Date ('2018-01-16T16:00:00')

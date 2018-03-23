@@ -2,8 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
 import { VitalStatsComponent } from './vital-stats/vital-stats.component';
-import { UpcomingClassesComponent } from './upcoming-classes/upcoming-classes.component';
-import { NorseFeedComponent } from '../norse-feed/norse-feed.component';
+import { NorseFeedComponent } from './norse-feed/norse-feed.component';
 import { MatCardModule, MatDividerModule, MatListModule, MatIconModule, MatTabsModule, MatFormFieldModule,
   MatSliderModule, MatSlideToggleModule, MatDialogModule } from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
@@ -34,7 +33,6 @@ describe('DashboardComponent', () => {
       declarations: [
         DashboardComponent,
         VitalStatsComponent,
-        UpcomingClassesComponent,
         NorseFeedComponent,
         ProfileComponent,
         ClassScheduleComponent,

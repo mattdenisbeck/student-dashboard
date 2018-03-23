@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NorseFeedComponent } from './norse-feed.component';
-import { MatCardModule, MatDividerModule, MatListModule, MatIconModule, MatTabsModule, MatFormFieldModule, MatSlideToggleModule, MatDialog } from '@angular/material';
+import { MatCardModule, MatDividerModule, MatListModule, MatIconModule, MatTabsModule, MatFormFieldModule, MatSlideToggleModule,
+  MatDialog } from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
 import { ProfileComponent } from '../profile/profile.component';
 import { ClassScheduleComponent } from '../class-schedule/class-schedule.component';

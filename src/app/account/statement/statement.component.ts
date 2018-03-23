@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AccountService } from '../../services/account.service';
+import { MatDialog } from '@angular/material';
+import { PayBillDialogComponent } from '../pay-bill-dialog/pay-bill-dialog.component';
 
 @Component({
   selector: 'app-statement',
@@ -14,7 +16,8 @@ export class StatementComponent implements OnInit {
   semesters: string[];
   taxYears: string[];
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, public payBillDialog: MatDialog,
+    private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.balance = this.accountService.getBalance();
@@ -31,6 +34,23 @@ export class StatementComponent implements OnInit {
     } else {
       this.paymentAmt = 0;
     }
+  }
+
+  openPayBillDialog() {
+
+    const payBillDialogRef = this.payBillDialog.open(PayBillDialogComponent, {
+      'panelClass': 'allDialogs',
+      'minWidth': '360px',
+      'maxWidth': '600px',
+      'position': {'top': '100px'},
+      'data': {'paymentAmt': this.paymentAmt}
+    }).afterClosed().subscribe( result => {
+      this.balance = parseFloat(this.accountService.getBalance().toFixed(2));
+      this.paymentAmt = parseFloat(this.balance.toFixed(2));
+      this.paymentType = 'full';
+      this.changeDetectorRefs.detectChanges();
+    });
+
   }
 
 }

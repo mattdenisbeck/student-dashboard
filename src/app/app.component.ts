@@ -8,6 +8,8 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ShowProfileAvatarService } from './services/show-profile-avatar.service';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { SearchService } from './services/search.service';
+import { Student } from './models/student';
+import { StudentInfoService } from './services/student-info.service';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +24,13 @@ export class AppComponent implements OnDestroy, OnInit {
   opened = false;
   mobileQuery: MediaQueryList;
   showProfileAvatar: boolean;
+  student: Student;
 
   private _mobileQueryListener: () => void;
 
   constructor( private navLinksService: NavLinksService, private location: Location, private router: Router,
     changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private showAvatarService: ShowProfileAvatarService,
-    private searchService: SearchService ) {
+    private searchService: SearchService, private studentInfoService: StudentInfoService ) {
     this.mobileQuery = media.matchMedia('(max-width: 767px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -44,7 +47,7 @@ export class AppComponent implements OnDestroy, OnInit {
       this.route = this.navLinksService.getNavLinkTitle(this.location.path());
     });
     this.showAvatarService.currentShowProfileAvatar.subscribe(isShown => this.showProfileAvatar = isShown);
-
+    this.student = this.studentInfoService.getStudent();
   }
 
   toggleNav( fromMenu: boolean ) {

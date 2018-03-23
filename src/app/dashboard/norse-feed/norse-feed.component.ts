@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NorseFeedService } from '../services/norse-feed.service';
-import { NorseFeedItem } from '../models/norse-feed-item';
+import { NorseFeedService } from '../../services/norse-feed.service';
+import { NorseFeedItem } from '../../models/norse-feed-item';
 import { MatDialog } from '@angular/material';
-import { HoldsDialogComponent } from '../dashboard/holds-dialog/holds-dialog.component';
+import { HoldsDialogComponent } from '../holds-dialog/holds-dialog.component';
 
 @Component({
   selector: 'app-norse-feed',

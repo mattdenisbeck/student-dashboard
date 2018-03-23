@@ -23,3 +23,13 @@ mat-icon.mat-list-icon.mat-icon.material-icons {
     height:auto; 
     width: auto;
 }
+
+@media (max-width: 576px) {
+    .container-fluid {  
+        padding: 0 !important; 
+    }
+}
+
+.not-allowed-cursor {
+    cursor: not-allowed !important;
+}

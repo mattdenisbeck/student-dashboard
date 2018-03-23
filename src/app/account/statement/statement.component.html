@@ -14,15 +14,15 @@
     <div class="row justify-content-around mt-2">
       <div class="col-sm-4 flex-container">
         <mat-radio-group (change)="onPaymentTypeChange($event.value)">
-          <mat-radio-button value="full" checked="true">Pay in Full</mat-radio-button>
+          <mat-radio-button value="full" [checked]="paymentType === 'full'">Pay in Full</mat-radio-button>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <mat-radio-button value="partial">Partial Payment</mat-radio-button>
         </mat-radio-group>
         <mat-form-field>
-          <input matInput type="number" [(ngModel)]="paymentAmt" [readonly]="paymentType === 'full'">
+          <input matInput type="number" [(ngModel)]="paymentAmt" min="0" [max]="balance" [readonly]="paymentType === 'full'">
           <span matPrefix><b>$</b>&nbsp;</span>
         </mat-form-field>
-        <button mat-raised-button color="primary">Pay Bill Now</button>
+        <button mat-raised-button color="primary" (click)="openPayBillDialog()" [disabled]="paymentAmt > balance || paymentAmt <= 0">Pay Bill Now</button>
       </div>
       <div class="d-none d-sm-block col-sm-auto">
         <mat-divider vertical="true" style="height: 100%;"></mat-divider>

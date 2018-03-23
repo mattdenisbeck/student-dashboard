@@ -7,6 +7,7 @@ export class GradesService {
   private midtermGrades: {}[];
   private gradeReport: {}[];
   private gpa: number;
+  private majorGPA: number;
 
   constructor() {
     this.finalGrades = [
@@ -92,11 +93,18 @@ export class GradesService {
       }
     ];
     this.gpa = 3.78;
+    this.majorGPA = 3.9;
    }
 
   getGrades(semester: string, final: boolean) {
     // use semester parameter to perform back-end query
     return final ? this.finalGrades : this.midtermGrades;
+  }
+
+  // returns latest available grade data
+  // To Do: update implementation once backend service is available
+  getLatestGrades() {
+    return this.finalGrades;
   }
 
   getGradeReport() {
@@ -105,6 +113,10 @@ export class GradesService {
 
   getGPA() {
     return this.gpa;
+  }
+
+  getMajorGPA() {
+    return this.majorGPA;
   }
 
 }

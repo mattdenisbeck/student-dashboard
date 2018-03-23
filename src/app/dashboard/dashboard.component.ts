@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, ViewContainerRef, ViewChild } from '@angular/core';
 import { WidgetsService } from '../services/widgets.service';
+import { DashboardWidget } from '../models/dashboard-widget';
 
 
 @Component({
@@ -8,12 +9,27 @@ import { WidgetsService } from '../services/widgets.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  showWidget: Map<string, boolean>;
 
-  constructor(private widgetsService: WidgetsService) { }
+  widgets: DashboardWidget[];
+  @ViewChild('leftColumn', { read: ViewContainerRef }) leftViewContainerRef: ViewContainerRef;
+  @ViewChild('rightColumn', { read: ViewContainerRef }) rightViewContainerRef: ViewContainerRef;
+
+  constructor(private widgetsService: WidgetsService) {}
 
   ngOnInit() {
-    this.showWidget = this.widgetsService.getShowWidgets();
+
+    this.widgets = this.widgetsService.getWidgets();
+    for (const widget of this.widgets) {
+      if (widget.column === 'left') {
+        this.widgetsService.setRootViewContainerRef(this.leftViewContainerRef);
+      } else {
+        this.widgetsService.setRootViewContainerRef(this.rightViewContainerRef);
+      }
+      if (widget.show) {
+        this.widgetsService.addDynamicWidget(widget.factory);
+      }
+    }
+
   }
 
 }

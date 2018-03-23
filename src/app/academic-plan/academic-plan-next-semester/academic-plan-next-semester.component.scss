@@ -1,0 +1,35 @@
+@media (max-width: 576px) {
+    .grades-card {  
+        margin: 0 !important; 
+    }
+    .grades-col {  
+        padding: 0 !important; 
+    }    
+    mat-card-content.dashboard-card-content {
+        padding : 0;
+    }
+    .row-title {
+        font-size: 80%;
+    }
+    .column-title {
+        font-size: 79%;
+    }
+    mat-card-content .mat-card-actions {
+        padding-top : 1em;
+        padding-bottom : 1em;
+    }
+
+}
+
+.mat-header-row, .mat-row {
+    padding: 0 16px;
+}
+
+.mat-header-row {
+    background-color: #FFC72C;
+}
+
+.mat-header-cell {
+    color: black !important;
+    font-weight: bold !important;
+}

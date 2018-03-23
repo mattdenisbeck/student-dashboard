@@ -7,8 +7,8 @@
       </div>
     </div>
     <div class="col-7" style="color:#ffc72c; padding-left:2%;">
-      <h2><span style="background-color: rgba(0,0,0,0.8); padding: 0 1.5em 0 .5em;">Nicholas Norse</span></h2>
-      <h3><span style="background-color: rgba(0,0,0,0.8); padding: 0 1.5em 0 .5em;">Computer Science</span></h3>
+      <h2><span style="background-color: rgba(0,0,0,0.8); padding: 0 1.5em 0 .5em;">{{ student.name }}</span></h2>
+      <h3><span style="background-color: rgba(0,0,0,0.8); padding: 0 1.5em 0 .5em;">{{ student.major }}</span></h3>
     </div>
     <div class="col text-right" style="color:#ffc72c">
       <h5><span style="background-color: rgba(0,0,0,0.8); padding: 0 .5em 0 1.5em;">GPA: {{ gpa | number : '1.2-2' }}</span></h5>
@@ -20,23 +20,18 @@
   <mat-tab-group dynamicHeight="true">
     <mat-tab label="About">
       <div class="container-fluid profile-container">
-        <div class="row">
-          <div class="col-12 col-lg-8">
-            <div class="row">
-              <div class="col">
-                <app-norse-feed></app-norse-feed>
-              </div>
-            </div>
+        <div class="row pb-1">
+          <div class="col-12 col-lg-6 col-xl-7">
             <div class="row">
               <div class="col">
                 <app-norse-feed></app-norse-feed>
               </div>
             </div>
           </div>
-          <div class="col-12 col-lg-4">
+          <div class="col-12 col-lg-6 col-xl-5">
             <div class="row">
               <div class="col">
-                <app-norse-feed></app-norse-feed>
+                <app-student-info></app-student-info>
               </div>
             </div>
           </div>
@@ -44,12 +39,54 @@
       </div>
     </mat-tab>
     <mat-tab label="Academics" >
-      <h1>Some more tab content</h1>
-      <p>...</p>
+      <div class="container-fluid profile-container">
+        <div class="row pb-1">
+          <div class="col-12 col-xl-7">
+            <div class="row">
+              <div class="col">
+                <app-upcoming-classes></app-upcoming-classes>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <app-academic-plan-next-semester></app-academic-plan-next-semester>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xl-5">
+            <div class="row">
+              <div class="col">
+                <app-latest-grades></app-latest-grades>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </mat-tab>
     <mat-tab label="Account" >
-      <h1>Some more tab content</h1>
-      <p>...</p>
+      <div class="container-fluid profile-container">
+        <div class="row pb-1">
+          <div class="col-12 col-xl-7">
+            <div class="row">
+              <div class="col">
+                <app-upcoming-classes></app-upcoming-classes>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <app-academic-plan-next-semester></app-academic-plan-next-semester>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xl-5">
+            <div class="row">
+              <div class="col">
+                <app-latest-grades></app-latest-grades>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>

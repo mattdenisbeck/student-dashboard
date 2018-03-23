@@ -11,7 +11,7 @@
             <button mat-raised-button routerLink="schedule" class="btn-block">
               <div class="row">
                 <div class="col-6 col-sm-6 text-left"><b>Major:</b></div>
-                <div class="col-6 col-sm-6 text-right">Computer Science</div>
+                <div class="col-6 col-sm-6 text-right">{{ student.major }}</div>
               </div>
             </button>
           </mat-list-item>
@@ -19,7 +19,7 @@
             <button mat-raised-button routerLink="schedule" class="btn-block">
               <div class="row">
                 <div class="col-6 col-sm-6 text-left"><b>Academic Program:</b></div>
-                <div class="col-6 col-sm-6 text-right">Bachelor of Science</div>
+                <div class="col-6 col-sm-6 text-right">{{ student.program }}</div>
               </div>
             </button>
           </mat-list-item>
@@ -27,7 +27,7 @@
             <button mat-raised-button routerLink="schedule" class="btn-block">
                 <div class="row">
                     <div class="col-6 col-sm-6 text-left"><b>College:</b></div>
-                    <div class="col-6 col-sm-6 text-right">College of Informatics</div>
+                    <div class="col-6 col-sm-6 text-right">{{ student.college }}</div>
                 </div>
             </button>
           </mat-list-item>
@@ -35,7 +35,7 @@
             <button mat-raised-button routerLink="registration" class="btn-block">
               <div class="row">
                   <div class="col-6 col-sm-6 text-left"><b>Registration Window:</b></div>
-                  <div class="col-6 col-sm-6 text-right">11/1 - 12/1</div>
+                  <div class="col-6 col-sm-6 text-right">{{ student.registrationStart.toLocaleDateString() }} - {{ student.registrationEnd.toLocaleDateString() }}</div>
               </div>
             </button>
           </mat-list-item>

@@ -73,4 +73,9 @@ export class AccountService {
     // To Do: Persist account edit to database
   }
 
+  payBill(paymentAmt: number) {
+    // To Do: implement payment
+    this.balance = this.balance - paymentAmt;
+  }
+
 }

@@ -1,0 +1,31 @@
+<div class="row"  style="background-color: #ffc72c; margin: 0; padding: 0;">
+  <div class="col-10" style="padding: .5em 0 0 1em">
+    <h2 mat-dialog-title class="mb-1">Pay Bill</h2>
+  </div>
+  <div class="col text-right" style="padding-right: .25em">
+    <button mat-icon-button mat-dialog-close><mat-icon class="md-24">close</mat-icon></button>
+  </div>
+</div>
+<mat-dialog-content cdkFocusInitial class="m-0 py-3">
+  <div class="container">
+    <form class="flex-container" #payBillForm="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput placeholder="Payment Ammount" disabled [(ngModel)]="paymentAmt" name="paymentAmt" required>
+      </mat-form-field>
+      <mat-radio-group [(ngModel)]="paymentAccount" name="accountRadioGrp" required>
+        <div class="row" *ngFor="let account of accounts">
+          <div class="col-12">
+            <mat-radio-button [value]="account.number">{{ account.nickname }}</mat-radio-button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <mat-radio-button value="Credit Card">Credit Card</mat-radio-button>
+          </div> 
+        </div>
+      </mat-radio-group>
+      <button mat-button type="submit" [disabled]="!payBillForm.valid" color="primary">Send Payment?</button>
+    </form>
+  </div>
+</mat-dialog-content>
+  

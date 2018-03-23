@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './settings.component';
 import { MatCardModule, MatIconModule, MatListModule, MatSlideToggleModule, MatButtonModule, MatTooltipModule,
-   MatFormFieldModule, MatInputModule  } from '@angular/material';
+   MatFormFieldModule, MatInputModule, MatSelectModule  } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -14,7 +15,9 @@ import { MatCardModule, MatIconModule, MatListModule, MatSlideToggleModule, MatB
     MatButtonModule,
     MatTooltipModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    FormsModule
   ],
   declarations: [
     SettingsComponent

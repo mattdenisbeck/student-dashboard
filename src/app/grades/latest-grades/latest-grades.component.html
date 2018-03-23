@@ -1,0 +1,43 @@
+<mat-card class="dashboard-card">
+  <mat-card-header class="dashboard-card-header">
+    <mat-card-title class="dashboard-card-title">
+      <span class="float-right mr-2" style="margin-top:-0.65em;">
+        <button mat-icon-button routerLink="../grades"><mat-icon class="md-24">arrow_forward</mat-icon></button>
+      </span>
+      <h5>
+        <small>Latest Grades</small>
+        <mat-chip-list class="float-right mb-2" style="margin-top: .1em;">
+            <mat-chip selected="true" style="font-size:12px; padding: 3px 8px;"><b>Overall GPA:&nbsp;</b> {{ overallGPA | number:'1.2-2' }}</mat-chip>
+            <mat-chip selected="true" style="font-size:12px; padding: 3px 8px;"><b>Major GPA:&nbsp;</b> {{ majorGPA | number:'1.2-2' }}</mat-chip>
+          </mat-chip-list>
+      </h5>
+      
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <mat-table [dataSource]="latestGrades">
+      <!-- Course Column -->
+      <ng-container matColumnDef="course">
+        <mat-header-cell *matHeaderCellDef>Course</mat-header-cell>
+        <mat-cell 
+          *matCellDef="let element" 
+          matTooltip="{{element.courseNumber}} - {{element.courseSection}}: {{element.courseTitle}}"
+          matTooltipPosition="after" 
+          class="row-title text-truncate" > 
+          <b>{{element.courseNumber}}<span class="d-none d-sm-inline"> - {{element.courseSection}}</span></b><br>
+          <small class="d-none d-md-inline">{{element.courseTitle}}</small> 
+        </mat-cell>
+      </ng-container>
+    
+      <!-- Grade Column -->
+      <ng-container matColumnDef="grade">
+        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Grade </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="text-center"> {{element.grade}} </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-card-content>
+</mat-card>
+

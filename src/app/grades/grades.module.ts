@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GradesComponent } from './grades.component';
 import { MatTableModule, MatIconModule, MatCardModule, MatButtonModule, MatFormFieldModule, MatSelectModule,
-  MatTooltipModule} from '@angular/material';
+  MatTooltipModule, MatChipsModule} from '@angular/material';
 import { TermGradesComponent } from './term-grades/term-grades.component';
 import { GradesReportComponent } from './grades-report/grades-report.component';
+import { LatestGradesComponent } from './latest-grades/latest-grades.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
@@ -15,12 +17,18 @@ import { GradesReportComponent } from './grades-report/grades-report.component';
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule,
+    AppRoutingModule
   ],
   declarations: [
     GradesComponent,
     TermGradesComponent,
-    GradesReportComponent
+    GradesReportComponent,
+    LatestGradesComponent
+  ],
+  exports: [
+    LatestGradesComponent
   ]
 })
 export class GradesModule { }

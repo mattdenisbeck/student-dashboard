@@ -1,23 +1,23 @@
 <div class="container-fluid dashboard-container">
   <div class="row dashboard-row">
-    <div class="col-12 col-lg-8">
+    <div class="col-12 col-lg-7">
       <div class="row dashboard-row">
         <div class="col">
-          <app-vital-stats *ngIf="showWidget.get('Vital Stats')"></app-vital-stats>
-        </div>
-      </div>
-      <div class="row dashboard-row">
-        <div class="col">
-          <app-upcoming-classes *ngIf="showWidget.get('Upcoming Classes')"></app-upcoming-classes>
+          <ng-template #leftColumn></ng-template>
         </div>
       </div>
     </div>
-    <div class="col-12 col-lg-4">
+    <div class="col-12 col-lg-5">
       <div class="row dashboard-row">
         <div class="col">
-          <app-norse-feed *ngIf="showWidget.get('Norse Feed')"></app-norse-feed>
+          <ng-template #rightColumn></ng-template>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row dashboard-row">
+    <div class="col-12 text-center">
+      <p class="lead mb-3 px-3"><small>Want to add/remove Dashboard widgets? <a routerLink="../settings" style="white-space:nowrap;">Go to Settings.</a></small></p>
     </div>
   </div>
 </div>

@@ -5,11 +5,16 @@
   <mat-card-content class="dashboard-card-content">
     <mat-nav-list>
       <span *ngFor="let item of norseFeedItems" >
-        <a mat-list-item routerLink="{{ '../' + item.path }}" (click)="openDialog(item)">
+        <a mat-list-item routerLink="{{ item.path }}" *ngIf="item.path">
           <mat-icon matListIcon [ngClass]="item.iconColor">{{ item.icon }}</mat-icon>
           <p matLine style="white-space:normal">{{ item.msg }}</p>
           <mat-icon>arrow_forward</mat-icon>
         </a>
+        <a mat-list-item (click)="openDialog(item)" *ngIf="!item.path">
+            <mat-icon matListIcon [ngClass]="item.iconColor">{{ item.icon }}</mat-icon>
+            <p matLine style="white-space:normal">{{ item.msg }}</p>
+            <mat-icon>arrow_forward</mat-icon>
+          </a>
         <mat-divider color="accent"></mat-divider>
       </span>
     </mat-nav-list>

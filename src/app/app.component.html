@@ -6,8 +6,8 @@
         <div class="col text-center">
           <ngx-avatar class="student-avatar" src="assets/images/avatar.jpg" size="100" [round]="true"></ngx-avatar>
           <div id="student-info-block">
-            <h5 id="student-name">Nicholas Norse</h5>
-            <h6 id="student-major"><i>Computer Science</i></h6>
+            <h5 id="student-name">{{ student.name }}</h5>
+            <h6 id="student-major"><i>{{ student.major }}</i></h6>
           </div>
           <a mat-raised-button color="primary" routerLink="/profile" (click)="toggleNav(true)"><strong>Profile</strong></a>
         </div>

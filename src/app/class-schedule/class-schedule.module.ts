@@ -11,6 +11,8 @@ import { DailyViewComponent } from './daily-view/daily-view.component';
 import { WeeklyViewComponent } from './weekly-view/weekly-view.component';
 import { MonthlyViewComponent } from './monthly-view/monthly-view.component';
 import { ViewHeaderComponent } from './view-header/view-header.component';
+import { UpcomingClassesComponent } from './upcoming-classes/upcoming-classes.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
@@ -24,7 +26,8 @@ import { ViewHeaderComponent } from './view-header/view-header.component';
     CalendarModule,
     BrowserAnimationsModule,
     MatTabsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    AppRoutingModule
   ],
   declarations: [
     ClassScheduleComponent,
@@ -33,10 +36,14 @@ import { ViewHeaderComponent } from './view-header/view-header.component';
     DailyViewComponent,
     WeeklyViewComponent,
     MonthlyViewComponent,
-    ViewHeaderComponent
+    ViewHeaderComponent,
+    UpcomingClassesComponent
   ],
   entryComponents: [
     ClassDetailComponent,
+  ],
+  exports: [
+    UpcomingClassesComponent,
   ]
 })
 export class ClassScheduleModule { }

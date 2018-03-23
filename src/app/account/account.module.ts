@@ -9,6 +9,7 @@ import { ManageBankAccountsComponent } from './manage-bank-accounts/manage-bank-
 import { AuthorizedPayersComponent } from './authorized-payers/authorized-payers.component';
 import { BankAccountDialogComponent } from './bank-account-dialog/bank-account-dialog.component';
 import { AuthorizedPayersDialogComponent } from './authorized-payers-dialog/authorized-payers-dialog.component';
+import { PayBillDialogComponent } from './pay-bill-dialog/pay-bill-dialog.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { AuthorizedPayersDialogComponent } from './authorized-payers-dialog/auth
     MatTableModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatRadioModule
   ],
   declarations: [
     AccountComponent,
@@ -34,10 +36,12 @@ import { AuthorizedPayersDialogComponent } from './authorized-payers-dialog/auth
     AuthorizedPayersComponent,
     BankAccountDialogComponent,
     AuthorizedPayersDialogComponent,
+    PayBillDialogComponent,
   ],
   entryComponents: [
     BankAccountDialogComponent,
     AuthorizedPayersDialogComponent,
+    PayBillDialogComponent,
   ]
 })
 export class AccountModule { }

@@ -10,6 +10,9 @@ export class ClassModel {
         public endTime: Date,
         public instructor: string,
         public icon: string,
+        public credits?: number,
+        public status?: string,
+        public section?: string,
     ) { }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WidgetsService } from '../services/widgets.service';
 import { NotificationsService } from '../services/notifications.service';
+import { DashboardWidget } from '../models/dashboard-widget';
 
 @Component({
   selector: 'app-settings',
@@ -8,7 +9,8 @@ import { NotificationsService } from '../services/notifications.service';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-  widgets: {title: string, show: boolean, icon: string}[];
+  widgets: DashboardWidget[];
+  orderValues: number[];
   notifications: {title: string, show: boolean, icon: string}[];
   profilePic: string;
   bannerPic: string;
@@ -17,6 +19,10 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     this.widgets = this.widgetsService.getWidgets();
+    this.orderValues = [];
+    for ( let i = 1; i <= this.widgets.length; i++) {
+      this.orderValues.push(i);
+    }
     this.notifications = this.notificationsService.getNotifications();
     this.profilePic = null;
     this.bannerPic = null;

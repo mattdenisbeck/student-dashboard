@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class NotificationsService {
   private notificationPrefs: Map<string, boolean>;
-  private notifications: {title: string, show: boolean, icon: string}[]; 
+  private notifications: {title: string, show: boolean, icon: string}[];
 
   constructor() {
     this.notifications = [

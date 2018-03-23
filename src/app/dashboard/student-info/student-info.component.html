@@ -1,0 +1,76 @@
+<mat-card class="dashboard-card">
+  <mat-card-header class="dashboard-card-header">
+    <mat-card-title class="dashboard-card-title"><h5><small>My Info</small></h5></mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <mat-list class="pt-0">
+      <mat-list-item style="height:auto;">
+        <dl class="row w-100 mb-0 mt-2">
+          <dt class="col-sm-5 col-xl-4">Name: </dt>
+          <dd class="col-sm-7 col-xl-8">{{ student.name }}</dd>
+        </dl>
+      </mat-list-item>
+      <mat-divider inset="true" ></mat-divider>
+      <mat-list-item style="height:auto;">
+        <dl class="row w-100 mb-0 mt-2">
+          <dt class="col-sm-5 col-xl-4">Email: </dt>
+          <dd class="col-sm-7 col-xl-8">{{ student.email }}</dd>
+        </dl>
+      </mat-list-item>
+      <mat-divider inset="true" ></mat-divider>
+      <mat-list-item style="height:auto;">
+        <dl class="row w-100 mb-0 mt-2">
+          <dt class="col-sm-5 col-xl-4">Class: </dt>
+          <dd class="col-sm-7 col-xl-8">{{ student.classRank }}</dd>
+        </dl>
+      </mat-list-item>
+      <mat-divider inset="true" ></mat-divider>
+      <mat-list-item style="height:auto;">
+        <dl class="row w-100 mb-0 mt-2">
+          <dt class="col-sm-5 col-xl-4">Major: </dt>
+          <dd class="col-sm-7 col-xl-8">{{ student.major }}</dd>
+        </dl>
+      </mat-list-item>
+      <mat-divider inset="true" ></mat-divider>
+      <mat-list-item style="height:auto;">
+        <dl class="row w-100 mb-0 mt-2">
+          <dt class="col-sm-5 col-xl-4">Academic Program: </dt>
+          <dd class="col-sm-7 col-xl-8">{{ student.program }} in {{ student.major }}</dd>
+        </dl>
+      </mat-list-item>
+      <mat-divider inset="true" ></mat-divider>
+      <mat-list-item style="height:auto;">
+        <dl class="row w-100 mb-0 mt-2">
+          <dt class="col-sm-5 col-xl-4">Registration Window: </dt>
+          <dd class="col-sm-7 col-xl-8">{{ student.registrationStart.toLocaleDateString() }} - {{ student.registrationEnd.toLocaleDateString() }}</dd>
+        </dl>
+      </mat-list-item>
+      <mat-divider inset="true" ></mat-divider>
+      <mat-list-item style="height:auto;">
+        <dl class="row w-100 mb-0 mt-2">
+          <dt class="col-sm-5 col-xl-4">Advisors: </dt>
+          <dd class="col-sm-7 col-xl-8"><span *ngFor="let advisor of advisors; last as isLast">{{advisor.fName}} {{advisor.lName}}<span *ngIf="!isLast">, </span></span></dd>
+        </dl>
+      </mat-list-item>
+      <mat-divider inset="true" ></mat-divider>
+      <mat-list-item style="height:auto;">
+        <dl class="row w-100 mb-0 mt-2">
+          <dt class="col-sm-5 col-xl-4">Victor Points: </dt>
+          <dd class="col-sm-7 col-xl-8">5</dd>
+        </dl>
+      </mat-list-item>
+      <mat-divider inset="true" ></mat-divider>
+      <mat-list-item style="height:auto;">
+        <dl class="row w-100 mb-0 mt-2">
+          <dt class="col-xl-4">Bio: </dt>
+          <dd class="col-xl-8">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dapibus euismod suscipit. 
+            Etiam ut mi lorem. Phasellus ultrices, diam ac facilisis consectetur, libero neque scelerisque neque, 
+            ac feugiat enim nibh sit amet lacus. Vivamus vulputate, ex eget vulputate scelerisque, 
+            enim neque tincidunt mi, sed dapibus augue urna vel lorem.
+          </dd>
+        </dl>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
