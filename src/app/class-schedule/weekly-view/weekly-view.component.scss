@@ -17,5 +17,9 @@ mat-icon.mat-list-icon.mat-icon.material-icons {
 @media (max-width: 576px) {
     .schedule-card {  
         margin: 0 !important; 
-    }  
+    } 
+    .dashboard-card-content {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    } 
 }

@@ -1,7 +1,4 @@
-@media (max-width: 576px) {
-    .grades-col {  
-        padding: 0 !important; 
-    }    
+@media (max-width: 576px) { 
     mat-card-content.dashboard-card-content {
         padding : 0;
     }
@@ -11,7 +8,7 @@
     .column-title {
         font-size: 79%;
     }
-    mat-card-content .mat-card-actions {
+    mat-card-content.mat-card-actions {
         padding-top : 1em;
         padding-bottom : 1em;
     }

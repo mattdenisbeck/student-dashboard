@@ -71,12 +71,28 @@ mat-card-actions.dashboard-card-actions.mat-card-actions:last-child {
     .main {
         padding-bottom: 0 !important;
     }
+    .container-fluid {
+        padding: 0;
+    }
     .dashboard-card {  
         margin-top: 0 !important;
         margin-bottom: 0.75em !important; 
     }
+    .allDialogs .mat-dialog-container {
+        margin-top: -10% !important;
+    }
+    .mat-drawer-content {
+        overflow-x: hidden !important;
+    }
 }
 
+@media (max-width: 815px) {
+    .allDialogs .mat-dialog-container {
+        margin-top: -15% !important;
+    }
+}
+
+/* Class Schedule Styling*/
 .cal-day-view .cal-event-container {
     width: 80% !important;
 }
@@ -103,8 +119,4 @@ mat-card-actions.dashboard-card-actions.mat-card-actions:last-child {
 
 .cal-open {
     background-color: #ededed;
-}
-
-.vital-stats-item .mat-list-item-content {
-    padding: 0 !important; 
 }

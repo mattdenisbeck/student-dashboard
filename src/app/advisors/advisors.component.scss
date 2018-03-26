@@ -1,9 +1,3 @@
 .student-avatar /deep/ .avatar-container {
     display : inline;
 }
-
-@media (max-width: 576px) {
-    .container-fluid{
-        padding: 0;
-    }
-}

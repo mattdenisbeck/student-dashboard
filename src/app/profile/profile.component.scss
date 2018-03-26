@@ -9,16 +9,8 @@
     width: 100%;
 }
 
-
-
 @media (max-width: 768px) {
     .profile-avatar {
         display : none; 
     }  
-}
-
-@media (max-width: 576px) {
-    .profile-container {  
-        padding: 0 !important; 
-    }
 }

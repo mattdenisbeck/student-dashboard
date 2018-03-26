@@ -1,11 +1,11 @@
 <mat-card-header class="dashboard-card-header">
   <mat-card-title class="dashboard-card-title">
-    <span *ngIf="view !== 'list'" class="float-right" style="margin-top:-0.65em;">
+    <span *ngIf="view !== 'list'" class="float-right" style="margin-top:-0.5em;">
       <button mat-icon-button style="margin-right:-10px;" mwlCalendarPreviousView [(viewDate)]="viewDate" [view]="view" (click)="changeDate()"><mat-icon>chevron_left</mat-icon></button>
       <button mat-icon-button style="margin-right:-10px;" mwlCalendarToday [(viewDate)]="viewDate" (click)="changeDate()"><mat-icon class="md-24">radio_button_checked</mat-icon></button>
       <button mat-icon-button mwlCalendarNextView [(viewDate)]="viewDate" [view]="view" (click)="changeDate()"><mat-icon>chevron_right</mat-icon></button>
     </span>
-    <h5>
+    <h5 class="mt-1">
       <small>
         <span class="d-none d-sm-inline">{{ title }}&emsp;|&emsp;</span>
         <span *ngIf="view === 'list'">{{ semester }}</span>

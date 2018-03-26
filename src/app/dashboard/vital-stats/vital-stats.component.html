@@ -4,45 +4,45 @@
   </mat-card-header>
   <mat-card-content class="dashboard-card-content">
     <div class="row justify-content-center">
-      <div class="col-12 col-md-auto col-xl-7">
-        <mat-divider [vertical]="true" class="d-none d-md-block" style="height: 100%;"></mat-divider>
+      <div class="col-12 col-xl-7">
+        <mat-divider [vertical]="true" class="d-none d-xl-block" style="height: 100%;"></mat-divider>
         <mat-list>
           <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
             <button mat-raised-button routerLink="schedule" class="btn-block">
-              <div class="row">
-                <div class="col-6 col-sm-6 text-left"><b>Major:</b></div>
-                <div class="col-6 col-sm-6 text-right">{{ student.major }}</div>
+              <div class="row justify-content-between">
+                <div class="col-6 col-md-auto text-left"><b>Major:</b></div>
+                <div class="col-6 col-md-auto text-right">{{ student.major }}</div>
               </div>
             </button>
           </mat-list-item>
           <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
             <button mat-raised-button routerLink="schedule" class="btn-block">
-              <div class="row">
-                <div class="col-6 col-sm-6 text-left"><b>Academic Program:</b></div>
-                <div class="col-6 col-sm-6 text-right">{{ student.program }}</div>
+              <div class="row justify-content-between">
+                <div class="col-6 col-md-auto text-left"><b>Academic Program:</b></div>
+                <div class="col-6 col-md-auto text-right">{{ student.program }}</div>
               </div>
             </button>
           </mat-list-item>
           <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
             <button mat-raised-button routerLink="schedule" class="btn-block">
-                <div class="row">
-                    <div class="col-6 col-sm-6 text-left"><b>College:</b></div>
-                    <div class="col-6 col-sm-6 text-right">{{ student.college }}</div>
+                <div class="row justify-content-between">
+                    <div class="col-6 col-md-auto text-left"><b>College:</b></div>
+                    <div class="col-6 col-md-auto text-right">{{ student.college }}</div>
                 </div>
             </button>
           </mat-list-item>
           <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
             <button mat-raised-button routerLink="registration" class="btn-block">
-              <div class="row">
-                  <div class="col-6 col-sm-6 text-left"><b>Registration Window:</b></div>
-                  <div class="col-6 col-sm-6 text-right">{{ student.registrationStart.toLocaleDateString() }} - {{ student.registrationEnd.toLocaleDateString() }}</div>
+              <div class="row justify-content-between">
+                  <div class="col-6 col-md-auto text-left"><b>Registration Window:</b></div>
+                  <div class="col-6 col-md-auto text-right">{{ student.registrationStart.toLocaleDateString() }} - {{ student.registrationEnd.toLocaleDateString() }}</div>
               </div>
             </button>
           </mat-list-item>
         </mat-list>
-        <mat-divider [inset]="true" class="d-md-none" style="margin: 1.5em 0 .75em 0"></mat-divider>
+        <mat-divider [inset]="true" class="d-xl-none" style="margin: 1.5em 0 .75em 0"></mat-divider>
       </div>
-      <div class="col-12 col-md-auto col-xl-5">
+      <div class="col-12 col-xl-5">
           <mat-list>
               <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
                   <button mat-raised-button type="button" routerLink="grades" class="text-right" style="background-color:#28a745; color:white; width:100%"><span class="float-left">Current GPA&nbsp;&nbsp;</span><span class="badge badge-light">{{ gpa | number : '1.2-2' }}</span></button>
