@@ -6,6 +6,8 @@ import { AcademicPlanNextSemesterComponent } from '../academic-plan/academic-pla
 import { DashboardWidget } from '../models/dashboard-widget';
 import { StudentInfoComponent } from '../dashboard/student-info/student-info.component';
 import { LatestGradesComponent } from '../grades/latest-grades/latest-grades.component';
+import { AllCardBalanceComponent } from '../account/all-card-balance/all-card-balance.component';
+import { TuitionBalanceComponent } from '../account/tuition-balance/tuition-balance.component';
 
 @Injectable()
 export class WidgetsService {
@@ -29,6 +31,10 @@ export class WidgetsService {
         this.factoryResolver.resolveComponentFactory(StudentInfoComponent)),
       new DashboardWidget('Latest Grades', true, 'assessment', '4', 'left',
         this.factoryResolver.resolveComponentFactory(LatestGradesComponent)),
+      new DashboardWidget('All Card Balance', true, 'local_atm', '3', 'right',
+        this.factoryResolver.resolveComponentFactory(AllCardBalanceComponent)),
+      new DashboardWidget('Tuition Balance', true, 'attach_money', '4', 'right',
+        this.factoryResolver.resolveComponentFactory(TuitionBalanceComponent)),
     ];
 
     // build map of which widgets to show
@@ -41,7 +47,17 @@ export class WidgetsService {
   }
 
   getWidgets() {
-    return this.widgets.sort( (widget1, widget2) => parseInt(widget1.order, 10) - parseInt(widget2.order, 10) );
+    return this.widgets.sort(
+      (widget1, widget2) => {
+        if ( widget1.column === 'left' && widget2.column === 'right' ) {
+          return -1;
+        } else if ( widget1.column === 'right' && widget2.column === 'left' ) {
+          return 1;
+        } else {
+          return parseInt(widget1.order, 10) - parseInt(widget2.order, 10);
+        }
+      }
+    );
   }
 
   toggleWidget(title: string) {

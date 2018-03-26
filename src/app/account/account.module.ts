@@ -10,6 +10,9 @@ import { AuthorizedPayersComponent } from './authorized-payers/authorized-payers
 import { BankAccountDialogComponent } from './bank-account-dialog/bank-account-dialog.component';
 import { AuthorizedPayersDialogComponent } from './authorized-payers-dialog/authorized-payers-dialog.component';
 import { PayBillDialogComponent } from './pay-bill-dialog/pay-bill-dialog.component';
+import { AllCardBalanceComponent } from './all-card-balance/all-card-balance.component';
+import { TuitionBalanceComponent } from './tuition-balance/tuition-balance.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
@@ -27,7 +30,8 @@ import { PayBillDialogComponent } from './pay-bill-dialog/pay-bill-dialog.compon
     MatDialogModule,
     MatCheckboxModule,
     MatDatepickerModule,
-    MatRadioModule
+    MatRadioModule,
+    AppRoutingModule
   ],
   declarations: [
     AccountComponent,
@@ -37,11 +41,19 @@ import { PayBillDialogComponent } from './pay-bill-dialog/pay-bill-dialog.compon
     BankAccountDialogComponent,
     AuthorizedPayersDialogComponent,
     PayBillDialogComponent,
+    AllCardBalanceComponent,
+    TuitionBalanceComponent,
   ],
   entryComponents: [
     BankAccountDialogComponent,
     AuthorizedPayersDialogComponent,
     PayBillDialogComponent,
+  ],
+  exports: [
+    ManageBankAccountsComponent,
+    AuthorizedPayersComponent,
+    AllCardBalanceComponent,
+    TuitionBalanceComponent
   ]
 })
 export class AccountModule { }

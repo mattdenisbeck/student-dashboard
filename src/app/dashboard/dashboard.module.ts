@@ -13,6 +13,9 @@ import { StudentInfoComponent } from './student-info/student-info.component';
 import { UpcomingClassesComponent } from '../class-schedule/upcoming-classes/upcoming-classes.component';
 import { AcademicPlanNextSemesterComponent } from '../academic-plan/academic-plan-next-semester/academic-plan-next-semester.component';
 import { LatestGradesComponent } from '../grades/latest-grades/latest-grades.component';
+import { AccountModule } from '../account/account.module';
+import { AllCardBalanceComponent } from '../account/all-card-balance/all-card-balance.component';
+import { TuitionBalanceComponent } from '../account/tuition-balance/tuition-balance.component';
 
 @NgModule({
   imports: [
@@ -26,7 +29,8 @@ import { LatestGradesComponent } from '../grades/latest-grades/latest-grades.com
     MatTableModule,
     MatTooltipModule,
     ClassScheduleModule,
-    AcademicPlanModule
+    AcademicPlanModule,
+    AccountModule
   ],
   declarations: [
     DashboardComponent,
@@ -42,7 +46,9 @@ import { LatestGradesComponent } from '../grades/latest-grades/latest-grades.com
     UpcomingClassesComponent,
     AcademicPlanNextSemesterComponent,
     StudentInfoComponent,
-    LatestGradesComponent
+    LatestGradesComponent,
+    AllCardBalanceComponent,
+    TuitionBalanceComponent
   ],
   exports: [
     NorseFeedComponent,

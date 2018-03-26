@@ -9,6 +9,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ClassScheduleModule } from '../class-schedule/class-schedule.module';
 import { GradesModule } from '../grades/grades.module';
 import { AcademicPlanModule } from '../academic-plan/academic-plan.module';
+import { AccountModule } from '../account/account.module';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { AcademicPlanModule } from '../academic-plan/academic-plan.module';
     MatChipsModule,
     ClassScheduleModule,
     GradesModule,
-    AcademicPlanModule
+    AcademicPlanModule,
+    AccountModule
   ],
   declarations: [
     ProfileComponent,

@@ -1,0 +1,19 @@
+<mat-card class="dashboard-card mb-0">
+  <mat-card-header class="dashboard-card-header">
+    <mat-card-title class="dashboard-card-title pr-3">
+      <h5><small>All Card Balance</small></h5>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <h5 class="mt-1">{{balance | currency}}</h5>
+        <mat-divider [inset]="true"></mat-divider>
+      </div>
+      <div class="col-auto">
+        <a mat-raised-button href="https://get.cbord.com/nku/full/prelogin.php" target="_blank" color="primary" style="text-decoration: none">Add Money <mat-icon>launch</mat-icon></a>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
