@@ -13,7 +13,7 @@ import { TuitionBalanceComponent } from '../account/tuition-balance/tuition-bala
 export class WidgetsService {
   rootViewContainer: any;
   factoryResolver: any;
-  private showWidgets: Map<string, boolean>;
+
   private widgets: DashboardWidget[];
 
   constructor( @Inject(ComponentFactoryResolver) factoryResolver) {
@@ -37,13 +37,6 @@ export class WidgetsService {
         this.factoryResolver.resolveComponentFactory(TuitionBalanceComponent)),
     ];
 
-    // build map of which widgets to show
-    this.showWidgets = new Map<string, boolean>();
-    this.widgets.forEach( widget => this.showWidgets.set(widget.title, widget.show));
-  }
-
-  getShowWidgets() {
-    return this.showWidgets;
   }
 
   getWidgets() {
@@ -58,10 +51,6 @@ export class WidgetsService {
         }
       }
     );
-  }
-
-  toggleWidget(title: string) {
-    this.showWidgets.get(title) ? this.showWidgets.set(title, false) : this.showWidgets.set(title, true);
   }
 
   setRootViewContainerRef(viewContainerRef) {

@@ -1,43 +1,27 @@
 import { Injectable } from '@angular/core';
+import { NotificationPreference } from '../models/notification-preference';
 
 @Injectable()
 export class NotificationsService {
   private notificationPrefs: Map<string, boolean>;
-  private notifications: {title: string, show: boolean, icon: string}[];
+  private notifications: NotificationPreference[];
 
   constructor() {
     this.notifications = [
-      {
-        'title' : 'Graduation Status Updated',
-        'show' : true,
-        'icon' : 'school'
-      },
-      {
-        'title' : 'New Grade Posted',
-        'show' : true,
-        'icon' : 'assessment'
-      },
-      {
-        'title' : 'Upcoming Class',
-        'show' : true,
-        'icon' : 'event'
-      }
+      new NotificationPreference('Graduation Status Updated', true, 'school'),
+      new NotificationPreference('New Grade Posted', true, 'assessment'),
+      new NotificationPreference('Upcoming Class', true, 'event'),
+      new NotificationPreference('Account Balance Due Updated', true, 'attach_money'),
+      new NotificationPreference('Holds Updated', true, 'warning'),
+      new NotificationPreference('Advisors Updated', true, 'assignment_ind'),
+      new NotificationPreference('Registration Window Open', true, 'date_range'),
+      new NotificationPreference('Add/Drop Schedule', true, 'swap_vert'),
     ];
 
-    // build map of which widgets to show
-    this.notificationPrefs = new Map<string, boolean>();
-    this.notifications.forEach( notification => this.notificationPrefs.set(notification.title, notification.show));
-  }
-
-  getNotificationPrefs() {
-    return this.notificationPrefs;
   }
 
   getNotifications() {
     return this.notifications;
   }
 
-  toggleNotification(title: string) {
-    this.notificationPrefs.get(title) ? this.notificationPrefs.set(title, false) : this.notificationPrefs.set(title, true);
-  }
 }

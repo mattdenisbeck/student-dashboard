@@ -18,10 +18,10 @@ import { StudentInfoService } from './services/student-info.service';
 })
 export class AppComponent implements OnDestroy, OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
-  menuIcon = 'menu';
+  menuIcon = 'close';
   navLinks: NavLinkModel[];
   route: string;
-  opened = false;
+  opened = true;
   mobileQuery: MediaQueryList;
   showProfileAvatar: boolean;
   student: Student;
@@ -41,6 +41,10 @@ export class AppComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
+    if (this.mobileQuery.matches) {
+      this.opened = false;
+      this.menuIcon = 'menu';
+    }
     this.getNavLinks();
     // change top bar title based on current route
     this.router.events.subscribe((val) => {

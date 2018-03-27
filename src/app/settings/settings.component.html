@@ -106,7 +106,7 @@
                     <mat-list-item >
                       <mat-icon matListIcon>{{ notification.icon }}</mat-icon>
                       <p matLine style="white-space:normal">{{ notification.title }}</p>
-                      <mat-slide-toggle color="primary" checked="notification.show"></mat-slide-toggle>
+                      <mat-slide-toggle color="primary" [checked]="notification.show" (change)="toggleNotifications(notification)"></mat-slide-toggle>
                     </mat-list-item>
                     <mat-divider color="accent"></mat-divider>
                   </span>

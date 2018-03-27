@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WidgetsService } from '../services/widgets.service';
 import { NotificationsService } from '../services/notifications.service';
 import { DashboardWidget } from '../models/dashboard-widget';
+import { NotificationPreference } from '../models/notification-preference';
 
 @Component({
   selector: 'app-settings',
@@ -11,7 +12,7 @@ import { DashboardWidget } from '../models/dashboard-widget';
 export class SettingsComponent implements OnInit {
   widgets: DashboardWidget[];
   orderValues: number[];
-  notifications: {title: string, show: boolean, icon: string}[];
+  notifications: NotificationPreference[];
   profilePic: string;
   bannerPic: string;
 
@@ -28,14 +29,12 @@ export class SettingsComponent implements OnInit {
     this.bannerPic = null;
   }
 
-  toggleWidget(widget: {title: string, show: boolean, icon: string}) {
+  toggleWidget(widget: DashboardWidget) {
     widget.show ? widget.show = false : widget.show = true;
-    this.widgetsService.toggleWidget(widget.title);
   }
 
-  toggleNotifications(notification: {title: string, show: boolean, icon: string}) {
+  toggleNotifications(notification: NotificationPreference) {
     notification.show ? notification.show = false : notification.show = true;
-    this.notificationsService.toggleNotification(notification.title);
   }
 
   onProfileFileInput(event) {
