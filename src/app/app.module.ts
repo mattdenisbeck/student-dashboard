@@ -36,6 +36,7 @@ import { GradesService } from './services/grades.service';
 import { AccountService } from './services/account.service';
 import { StudentInfoService } from './services/student-info.service';
 import { AcademicPlanService } from './services/academic-plan.service';
+import { ProfileBannerService } from './services/profile-banner.service';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { AcademicPlanService } from './services/academic-plan.service';
     GradesService,
     AccountService,
     StudentInfoService,
-    AcademicPlanService
+    AcademicPlanService,
+    ProfileBannerService,
   ],
   bootstrap: [AppComponent]
 })

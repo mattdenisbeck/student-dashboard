@@ -1,5 +1,5 @@
 <div class="position-relative d-none d-sm-block" style="height:auto;">
-  <img src="./assets/images/banner.jpg" class="img-fluid" alt="bannerImg">
+  <img [src]="'./assets/images/' + bannerImg" class="img-fluid" alt="bannerImg">
   <div class="row align-items-end position-absolute profile-header no-gutters" style="padding-left:5%;">
     <div class="col-2 profile-avatar" *ngIf="showProfileAvatar">
       <div class="row align-items-center justify-content-center" style="background-color: rgba(0,0,0,0.8);  border-radius: 100%; height:130px; width:130px; margin-left:0;">
@@ -16,8 +16,8 @@
     </div>
   </div>
 </div>
-<div class="profile-body">
-  <mat-tab-group dynamicHeight="true">
+<div class="profile-body" style="min-height:800px">
+  <mat-tab-group dynamicHeight="false">
     <mat-tab label="About">
       <div class="container-fluid">
         <div class="row pb-1">

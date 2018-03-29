@@ -6,9 +6,24 @@
 
 .dashboard-toolbar {
     position: fixed;
-    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    top: 0px;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past.*/ 
     z-index: 2;
-    padding-right: 0;
+}
+
+#search-input {
+    position: fixed; 
+    top: 10px; 
+    right: 35px; 
+    width: 30%;
+    padding-right: 1em;
+}
+
+.logo {
+    position : fixed; 
+    top : 0; 
+    right : 0;
+    padding-right: 10px;
 }
 
 #sidenav {
@@ -50,12 +65,6 @@ mat-divider {
     color : #ffc72c !important;
 }
 
-.logo {
-    position : fixed; 
-    top : 0; 
-    right : 0;
-}
-
 .main {
     margin-top: 64px; 
     padding-bottom: 1em;
@@ -70,12 +79,7 @@ mat-divider {
     }
 }
 
-#search-input {
-    position: fixed; 
-    top: 10px; 
-    right: 35px; 
-    width: 30%;
-}
+
 
 @media (min-width: 412px) {
     #search-input {  

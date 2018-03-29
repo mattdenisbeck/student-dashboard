@@ -7,49 +7,6 @@
               <mat-card-header class="dashboard-card-header">
                 <mat-card-title class="dashboard-card-title">
                   <span class="float-right mr-3" style="margin-top: -0.65em;">
-                      <button mat-icon-button matTooltip="Save Profile Pics" matTooltipPosition="left" matTooltipShowDelay="500"><mat-icon class="material-icons md-24">save</mat-icon></button>
-                  </span>
-                  <h5><small>Profile Pictures</small></h5>
-                </mat-card-title>
-              </mat-card-header>
-              <mat-card-content class="dashboard-card-content">
-                <div class="row pb-3 align-items-center">
-                  <div class="col-8">
-                    <mat-form-field hintLabel="JPG, PNG, or GIF" style="width:100%">
-                      <input matInput placeholder="Profile Pic" [value]="profilePic" readonly="true">
-                    </mat-form-field>
-                  </div>
-                  <div class="col-4 text-right">
-                    <button mat-raised-button color="primary" (click)="profileFileInput.click()">
-                      <span>Select File</span>
-                      <input #profileFileInput type="file" (change)="onProfileFileInput($event)" style="display:none;" />
-                    </button>
-                  </div>
-                </div>
-                <mat-divider color="accent" inset="true"></mat-divider>
-                <div class="row pt-3 align-items-center">
-                  <div class="col-8">
-                    <mat-form-field hintLabel="JPG, PNG, or GIF" style="width:100%">
-                      <input matInput placeholder="Banner Pic" [value]="bannerPic" readonly="true">
-                    </mat-form-field>
-                  </div>
-                  <div class="col-4 text-right">
-                    <button mat-raised-button color="primary" (click)="bannerFileInput.click()">
-                      <span>Select File</span>
-                      <input #bannerFileInput type="file" (change)="onBannerFileInput($event)" style="display:none;" />
-                    </button>
-                  </div>
-                </div>
-              </mat-card-content>
-            </mat-card>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <mat-card class="dashboard-card">
-              <mat-card-header class="dashboard-card-header">
-                <mat-card-title class="dashboard-card-title">
-                  <span class="float-right mr-3" style="margin-top: -0.65em;">
                       <button mat-icon-button matTooltip="Save Dashboard Widget Preferences" matTooltipPosition="left" matTooltipShowDelay="500"><mat-icon class="material-icons md-24">save</mat-icon></button>
                   </span>
                   <h5><small>Dashboard Widgets</small></h5>
@@ -111,6 +68,32 @@
                     <mat-divider color="accent"></mat-divider>
                   </span>
                 </mat-list>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-card class="dashboard-card">
+              <mat-card-header class="dashboard-card-header">
+                <mat-card-title class="dashboard-card-title">
+                  <span class="float-right mr-3" style="margin-top: -0.65em;">
+                      <button mat-icon-button matTooltip="Save Profile Pics" matTooltipPosition="left" matTooltipShowDelay="500"><mat-icon class="material-icons md-24">save</mat-icon></button>
+                  </span>
+                  <h5><small>Profile Banner Image</small></h5>
+                </mat-card-title>
+              </mat-card-header>
+              <mat-card-content class="dashboard-card-content">
+                <mat-radio-group (change)="onBannerImgChange($event.value)">
+                  <div class="row pb-3" *ngFor="let banner of banners">
+                    <div class="col-12">
+                      <mat-radio-button [value]="banner.title" color="primary" [checked]="banner.active === true">
+                        {{banner.title}}
+                      </mat-radio-button>
+                      <img src="{{ './assets/images/' + banner.fName}}" class="img-fluid" alt="">
+                    </div>
+                  </div>
+                </mat-radio-group>
               </mat-card-content>
             </mat-card>
           </div>

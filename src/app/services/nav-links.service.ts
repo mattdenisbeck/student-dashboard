@@ -3,160 +3,30 @@ import { NavLinkModel } from '../models/nav-link-model';
 
 @Injectable()
 export class NavLinksService {
+
   navlinks: NavLinkModel[] = [
-    {
-      'title': 'Dashboard',
-      'description': 'The description of the dashboard, includes Holds, Vital Stats, and Norse Feed',
-      'path' : '',
-      'icon' : 'home',
-      'leftNav' : true,
-      'weight' : 1,
-      'external' : false
-    },
-    {
-      'title': 'Class Schedule',
-      'description': 'The description of the Class Schedule',
-      'path' : '/schedule',
-      'icon' : 'event',
-      'leftNav' : true,
-      'weight' : 2,
-      'external' : false
-    },
-    {
-      'title': 'Grades',
-      'description': 'The description of the Grades',
-      'path' : '/grades',
-      'icon' : 'assessment',
-      'leftNav' : true,
-      'weight' : 3,
-      'external' : false
-    },
-    {
-      'title': 'Academic Plan',
-      'description': 'The description of the Academic Plan',
-      'path' : '/academic-plan',
-      'icon' : 'border_color',
-      'leftNav' : true,
-      'weight' : 4,
-      'external' : false
-    },
-    {
-      'title': 'Degree Audit',
-      'description': 'The description of the Degree Audit',
-      'path' : '/degree-audit',
-      'icon' : 'assignment_turned_in',
-      'leftNav' : true,
-      'weight' : 5,
-      'external' : false
-    },
-    {
-      'title': 'Registration',
-      'description': 'The description of the Registration',
-      'path' : '/registration',
-      'icon' : 'date_range',
-      'leftNav' : true,
-      'weight' : 6,
-      'external' : false
-    },
-    {
-      'title': 'Advisors',
-      'description': 'The description of the Advisors',
-      'path' : '/advisors',
-      'icon' : 'assignment_ind',
-      'leftNav' : true,
-      'weight' : 7,
-      'external' : false
-    },
-    {
-      'title': 'Account',
-      'description': 'The description of the Account',
-      'path' : '/account',
-      'icon' : 'local_atm',
-      'leftNav' : true,
-      'weight' : 8,
-      'external' : false
-    },
-    {
-      'title': 'Canvas',
-      'description': 'The description of the Canvas',
-      'path' : 'https://learnonline.nku.edu/',
-      'icon' : 'school',
-      'leftNav' : true,
-      'weight' : 20,
-      'external' : true
-    },
-    {
-      'title': 'Order Books',
-      'description': 'The description of the Order Books',
-      'path' : 'https://mynku.nku.edu/irj/servlet/prt/portal/prtroot/pcd!3aportal_content!2fNKUContent!2fcom.nku.folder.roles!2fcom.nku.pct.role.st_services!2fcom.nku.pct.workset.st_academics!2fcom.nku.pct.cm.iview.book_now',
-      'icon' : 'import_contacts',
-      'leftNav' : true,
-      'weight' : 28,
-      'external' : true
-    },
-    {
-      'title': 'Apply for Graduation',
-      'description': 'The description of the Apply for Graduation',
-      'path' : 'https://mynku.nku.edu/irj/servlet/prt/portal/prtroot/pcd!3aportal_content!2fNKUContent!2fcom.nku.folder.roles!2fcom.nku.pct.role.st_services!2fcom.nku.pct.workset.st_academics!2fcom.nku.pct.cm.page.apply_graduation!2fcom.nku.pct.cm.iView.apply_graduation',
-      'icon' : 'school',
-      'leftNav' : true,
-      'weight' : 29,
-      'external' : true
-    },
-    {
-      'title': 'Program Change',
-      'description': 'The description of the Program Change',
-      'path' : 'https://mynku.nku.edu/irj/servlet/prt/portal/prtmode/preview/prtroot/pcd!3aportal_content!2fNKUContent!2fcom.nku.folder.iviews!2fcom.nku.pct.folder.st_services!2fcom.nku.pct.folder.program_change!2fcom.nku.pct.iview.change_program_0',
-      'icon' : 'swap_horiz',
-      'leftNav' : true,
-      'weight' : 29,
-      'external' : true
-    },
-    {
-      'title': 'Parking Services',
-      'description': 'The description of the Parking Services',
-      'path' : 'https://inside.nku.edu/parking.html',
-      'icon' : 'local_parking',
-      'leftNav' : true,
-      'weight' : 30,
-      'external' : true
-    },
-    {
-      'title': 'Profile',
-      'description': 'The description of the Profile',
-      'path' : '/profile',
-      'icon' : 'account_circle',
-      'leftNav' : false,
-      'weight' : 99,
-      'external' : false
-    },
-    {
-      'title': 'Search',
-      'description': 'The description of the Search',
-      'path' : '/search',
-      'icon' : 'search',
-      'leftNav' : false,
-      'weight' : 99,
-      'external' : false
-    },
-    {
-      'title': 'Settings',
-      'description': 'The description of the Settings',
-      'path' : '/settings',
-      'icon' : 'settings',
-      'leftNav' : false,
-      'weight' : 99,
-      'external' : false
-    },
-    {
-      'title': 'Logout',
-      'description': 'The description of the Logout',
-      'path' : '/logout',
-      'icon' : 'power_settings_new',
-      'leftNav' : false,
-      'weight' : 99,
-      'external' : false
-    }
+    new NavLinkModel('Dashboard', 'The description of the dashboard, includes Holds, Vital Stats, and Norse Feed', '',
+      'dashboard', true, 1, false),
+    new NavLinkModel('Class Schedule', 'The description of the Class Schedule', '/schedule', 'event', true, 2, false),
+    new NavLinkModel('Grades', 'The description of the Grades', '/grades', 'assessment', true, 3, false),
+    new NavLinkModel('Academic Plan', 'The description of the Academic Plan', '/academic-plan', 'border_color', true, 4, false),
+    new NavLinkModel('Degree Audit', 'The description of the Degree Audit', '/degree-audit', 'assignment_turned_in', true, 5, false),
+    new NavLinkModel('Registration', 'The description of the Registration', '/registration', 'date_range', true, 6, false),
+    new NavLinkModel('Advisors', 'The description of the Advisors', '/advisors', 'assignment_ind', true, 7, false),
+    new NavLinkModel('Account', 'The description of the Account', '/account', 'local_atm', true, 8, false),
+    new NavLinkModel('Canvas', 'The description of the Canvas', 'https://learnonline.nku.edu/', 'school', true, 20, true),
+    // tslint:disable-next-line:max-line-length
+    new NavLinkModel('Order Books', 'The description of the Order Books', 'https://mynku.nku.edu/irj/servlet/prt/portal/prtroot/pcd!3aportal_content!2fNKUContent!2fcom.nku.folder.roles!2fcom.nku.pct.role.st_services!2fcom.nku.pct.workset.st_academics!2fcom.nku.pct.cm.iview.book_now', 'import_contacts', true, 28, true),
+    // tslint:disable-next-line:max-line-length
+    new NavLinkModel('Apply for Graduation', 'The description of the Apply for Graduation', 'https://mynku.nku.edu/irj/servlet/prt/portal/prtroot/pcd!3aportal_content!2fNKUContent!2fcom.nku.folder.roles!2fcom.nku.pct.role.st_services!2fcom.nku.pct.workset.st_academics!2fcom.nku.pct.cm.page.apply_graduation!2fcom.nku.pct.cm.iView.apply_graduation', 'school', true, 29, true),
+    // tslint:disable-next-line:max-line-length
+    new NavLinkModel('Program Change', 'The description of the Program Change', 'https://mynku.nku.edu/irj/servlet/prt/portal/prtmode/preview/prtroot/pcd!3aportal_content!2fNKUContent!2fcom.nku.folder.iviews!2fcom.nku.pct.folder.st_services!2fcom.nku.pct.folder.program_change!2fcom.nku.pct.iview.change_program_0', 'swap_horiz', true, 30, true),
+    // tslint:disable-next-line:max-line-length
+    new NavLinkModel('Parking Services', 'The description of the Parking Services', 'https://inside.nku.edu/parking.html', 'local_parking', true, 31, true),
+    new NavLinkModel('Profile', 'The description of the Profile', '/profile', 'account_circle', false, 99, false),
+    new NavLinkModel('Search', 'The description of the Search', '/search', 'search', false, 99, false),
+    new NavLinkModel('Settings', 'The description of the Settings', '/settings', 'settings', false, 99, false),
+    new NavLinkModel('Logout', 'The description of the Logout', '/logout', 'power_settings_new', false, 99, false),
   ];
 
   constructor() { }

@@ -2,7 +2,6 @@ import { Component, OnInit, Inject, ViewContainerRef, ViewChild } from '@angular
 import { WidgetsService } from '../services/widgets.service';
 import { DashboardWidget } from '../models/dashboard-widget';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,7 +16,6 @@ export class DashboardComponent implements OnInit {
   constructor(private widgetsService: WidgetsService) {}
 
   ngOnInit() {
-
     this.widgets = this.widgetsService.getWidgets();
     for (const widget of this.widgets) {
       if (widget.column === 'left') {

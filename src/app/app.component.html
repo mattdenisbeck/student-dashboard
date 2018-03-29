@@ -1,4 +1,4 @@
-<mat-sidenav-container (backdropClick)="toggleNav(true)" >
+<mat-sidenav-container (backdropClick)="toggleNav(true)">
   <mat-sidenav id="sidenav" #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true" fixedTopGap="0" style="height:100%; display:flex; flex-direction:column">
     <div style="flex:1; overflow:auto;">
     <div id="profile-block" class="container">
@@ -20,7 +20,7 @@
     </div>
     <div id="nav-footer" style="background-color:black;" >
       <mat-divider color="accent"></mat-divider>
-      <div style="padding: .25em;">
+      <div style="padding: 1em .25em .25em .5em;">
         <a routerLink="logout" (click)="toggleNav(true)"><mat-icon [ngClass]="{ 'highlight': route === 'Logout' }">power_settings_new</mat-icon></a>
         <a routerLink="settings" (click)="toggleNav(true)"><mat-icon [ngClass]="{ 'highlight': route === 'Settings' }">settings</mat-icon></a>
       </div>
@@ -30,15 +30,16 @@
     <mat-toolbar color="accent" class="dashboard-toolbar">
       <span class="mr-2"><button mat-icon-button (click)="toggleNav(false)"><i class="material-icons md-36">{{ menuIcon }}</i></button></span>
       <span class="fill-remaining-space">{{ route }}</span>
-        <div class="input-group input-group-sm" id="search-input">
-          <input #searchBox (keyup)="searchOnKeyUp(searchBox.value)" type="text" class="form-control d-none d-sm-block" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <a mat-raised-button color="primary" href="{{'/search?q=' + searchService.getQuery()}}" style="min-width:0; padding:0 8px;"><mat-icon>search</mat-icon></a>
-          </div>
+      <div class="input-group input-group-sm" id="search-input">
+        <input #searchBox (keyup)="searchOnKeyUp(searchBox.value)" type="text" class="form-control d-none d-sm-block" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <a mat-raised-button color="primary" href="{{'/search?q=' + searchService.getQuery()}}" style="min-width:0; padding:0 8px;"><mat-icon>search</mat-icon></a>
         </div>
-        <img class="logo" src="assets/images/NKU_INF.png" alt="NKU Logo" height="64" >
+      </div>
+      <img class="logo" src="assets/images/NKU_INF.png" alt="NKU Logo" height="64" >
     </mat-toolbar>
-    <div class="main">
+
+    <div class="main" #maindiv>
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>

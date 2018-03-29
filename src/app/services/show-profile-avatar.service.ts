@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class ShowProfileAvatarService {
 
-  private showProfileAvatar = new BehaviorSubject<boolean>(true);
+  private showProfileAvatar = new BehaviorSubject<boolean>(false);
   currentShowProfileAvatar = this.showProfileAvatar.asObservable();
 
   constructor() { }

@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { NavLinksService } from './services/nav-links.service';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { NavLinkModel } from './models/nav-link-model';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ShowProfileAvatarService } from './services/show-profile-avatar.service';
@@ -18,6 +18,7 @@ import { StudentInfoService } from './services/student-info.service';
 })
 export class AppComponent implements OnDestroy, OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild('maindiv') maindiv: ElementRef;
   menuIcon = 'close';
   navLinks: NavLinkModel[];
   route: string;
@@ -30,7 +31,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   constructor( private navLinksService: NavLinksService, private location: Location, private router: Router,
     changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private showAvatarService: ShowProfileAvatarService,
-    private searchService: SearchService, private studentInfoService: StudentInfoService ) {
+    private searchService: SearchService, private studentInfoService: StudentInfoService, ) {
     this.mobileQuery = media.matchMedia('(max-width: 767px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -41,9 +42,18 @@ export class AppComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
+    // scroll back to top of page on navitation
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      this.maindiv.nativeElement.parentElement.scrollTop = 0;
+    });
+
     if (this.mobileQuery.matches) {
       this.opened = false;
       this.menuIcon = 'menu';
+      this.showAvatarService.change(true);
     }
     this.getNavLinks();
     // change top bar title based on current route
