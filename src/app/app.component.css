@@ -14,7 +14,7 @@
 #search-input {
     position: fixed; 
     top: 10px; 
-    right: 35px; 
+    right: 45px; 
     width: 30%;
     padding-right: 1em;
 }
@@ -35,36 +35,6 @@ mat-divider {
     background-color : lightgray;
 }
 
-.student-avatar /deep/ .avatar-container {
-    display : inline;
-}
-
-#profile-block {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-}
-
-#student-info-block {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
-
-#student-info-block #student-name{
-    margin-bottom: 0em;
-}
-
-#student-info-block #student-major{
-    margin-bottom: 1em;
-}
-
-#nav-footer mat-icon {
-    color : #ffc72cbf;
-}
-
-#nav-footer mat-icon.highlight {
-    color : #ffc72c !important;
-}
-
 .main {
     margin-top: 64px; 
     padding-bottom: 1em;
@@ -78,8 +48,6 @@ mat-divider {
         margin-top: 56px;
     }
 }
-
-
 
 @media (min-width: 412px) {
     #search-input {  
@@ -103,4 +71,42 @@ mat-divider {
     #search-input { 
         top: 14px; 
     }  
+}
+
+@media (min-width: 768px) {
+    #search-input { 
+        width: 24%;
+    }  
+}
+
+@media (min-width: 835px) {
+    #search-input { 
+        width: 30%;
+    }  
+}
+
+.nav-header {
+    -webkit-flex: initial; /* Safari 6.1+ */
+    -ms-flex: initial; /* IE 10 */ 
+    flex: initial;
+}
+
+.nav-main {
+    -webkit-flex: auto; /* Safari 6.1+ */
+    -ms-flex: auto; /* IE 10 */ 
+    flex: auto;
+    overflow:auto;
+}
+.nav-footer {
+    -webkit-flex: initial; /* Safari 6.1+ */
+    -ms-flex: initial; /* IE 10 */ 
+    flex: initial;
+}
+
+.nav-footer mat-icon {
+    color : #ffc72cbf;
+}
+
+.nav-footer mat-icon.highlight {
+    color : #ffc72c !important;
 }

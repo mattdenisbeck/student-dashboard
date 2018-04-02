@@ -1,24 +1,15 @@
 <mat-sidenav-container (backdropClick)="toggleNav(true)">
   <mat-sidenav id="sidenav" #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true" fixedTopGap="0" style="height:100%; display:flex; flex-direction:column">
-    <div style="flex:1; overflow:auto;">
-    <div id="profile-block" class="container">
-      <div class="row">
-        <div class="col text-center">
-          <ngx-avatar class="student-avatar" src="assets/images/avatar.jpg" size="100" [round]="true"></ngx-avatar>
-          <div id="student-info-block">
-            <h5 id="student-name">{{ student.name }}</h5>
-            <h6 id="student-major"><i>{{ student.major }}</i></h6>
-          </div>
-          <a mat-raised-button color="primary" routerLink="/profile" (click)="toggleNav(true)"><strong>Profile</strong></a>
-        </div>
-      </div>
+    <div class="nav-header">
+      <app-nav-header [student]="student" [route]="route" (clickProfileBtn)="toggleNav($event)"></app-nav-header>
     </div>
-    <mat-nav-list>
-      <mat-divider color="accent"></mat-divider>
-      <app-nav-link *ngFor="let link of navLinks" [link]="link" [route]="route" (click)="toggleNav(true)"></app-nav-link>
-    </mat-nav-list>
+    <div class="nav-main">
+      <mat-nav-list class="pt-0">
+        <mat-divider color="accent"></mat-divider>
+        <app-nav-link *ngFor="let link of navLinks" [link]="link" [route]="route" (click)="toggleNav(true)"></app-nav-link>
+      </mat-nav-list>
     </div>
-    <div id="nav-footer" style="background-color:black;" >
+    <div class="nav-footer" style="background-color:black;" >
       <mat-divider color="accent"></mat-divider>
       <div style="padding: 1em .25em .25em .5em;">
         <a routerLink="logout" (click)="toggleNav(true)"><mat-icon [ngClass]="{ 'highlight': route === 'Logout' }">power_settings_new</mat-icon></a>

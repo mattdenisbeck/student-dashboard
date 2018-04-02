@@ -1,0 +1,26 @@
+<div id="profile-block" class="container d-none d-sm-block">
+  <div class="row">
+    <div class="col text-center">
+      <ngx-avatar class="student-avatar" src="assets/images/avatar.jpg" size="100" [round]="true"></ngx-avatar>
+      <div id="student-info-block">
+        <h5 id="student-name">{{ student.name }}</h5>
+        <h6 id="student-major"><i>{{ student.major }}</i></h6>
+      </div>
+      <a mat-raised-button color="primary" routerLink="/profile" (click)="toggleNav()"><strong>Profile</strong></a>
+    </div>
+  </div>
+</div>
+<div class="container d-block d-sm-none" >
+  <a class="row py-1" routerLink="/profile" (click)="toggleNav()" [ngClass]="route === 'Profile' ? 'currentNavLink' : ''">
+    <div class="col-auto pt-2">
+      <ngx-avatar class="student-avatar" src="assets/images/avatar.jpg" size="50" [round]="true"></ngx-avatar>
+    </div>
+    <div class="col-auto">
+      <div id="student-info-block">
+        <h5 id="student-name"><small>{{ student.name }}</small></h5>
+        <h6 id="student-major"><small><i>{{ student.major }}</i></small></h6>
+      </div>
+    </div>
+  </a>
+</div>
+<mat-divider color="accent"></mat-divider>

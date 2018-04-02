@@ -1,0 +1,39 @@
+#profile-block {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.student-avatar /deep/ .avatar-container {
+    display : inline;
+}
+
+#student-info-block {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#student-info-block #student-name{
+    margin-bottom: 0em;
+}
+
+#student-info-block #student-major{
+    margin-bottom: 1em;
+}
+
+a {
+    color : #ffc72cbf;
+    text-decoration: none;
+} 
+
+a:focus {
+    outline: 0;
+}
+
+a:hover {
+    color : #ffc72c ;
+}
+
+a:active, .currentNavLink {
+    color : #ffc72c !important;
+    background-color: rgb(66, 66, 66) !important;
+}

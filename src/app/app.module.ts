@@ -37,6 +37,7 @@ import { AccountService } from './services/account.service';
 import { StudentInfoService } from './services/student-info.service';
 import { AcademicPlanService } from './services/academic-plan.service';
 import { ProfileBannerService } from './services/profile-banner.service';
+import { NavHeaderComponent } from './nav-header/nav-header.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ProfileBannerService } from './services/profile-banner.service';
     LogoutComponent,
     NavLinkComponent,
     PageNotFoundComponent,
+    NavHeaderComponent,
   ],
   imports: [
     BrowserModule,
