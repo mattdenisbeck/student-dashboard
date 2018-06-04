@@ -9,14 +9,24 @@ import { GradesService } from '../../services/grades.service';
 })
 export class GradesReportComponent implements OnInit {
 
-  gradeReportData: MatTableDataSource<{}>;
+  gradeReportData: MatTableDataSource<any>;
   gradeReportDisplayedColumns = ['rowTitle', 'attemptedHours', 'earnedHours', 'qualityHours', 'qualityPoints', 'gpa'];
-
+  error: string;
 
   constructor(private gradesService: GradesService) { }
 
   ngOnInit() {
-    this.gradeReportData = new MatTableDataSource(this.gradesService.getGradeReport());
+    this.gradesService.getGradeReport()
+        .subscribe(resp => {
+          // get headers
+          const keys = resp.headers.keys();
+          const headers = keys.map(key =>
+            `${key}: ${resp.headers.get(key)}`);
+          // set grades from response body
+          this.gradeReportData = new MatTableDataSource(resp.body);
+        },
+        err => { this.error = err; }
+        );
   }
 
 }

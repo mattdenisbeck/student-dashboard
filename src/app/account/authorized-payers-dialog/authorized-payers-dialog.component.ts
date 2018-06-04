@@ -25,7 +25,7 @@ export class AuthorizedPayersDialogComponent implements OnInit {
       this.action = 'Add';
     }
     if (this.data.payer) {
-      this.payer = new AuthorizedPayer(this.data.payer.name, this.data.payer.startDate, this.data.payer.endDate,
+      this.payer = new AuthorizedPayer(this.data.payer.id, this.data.payer.name, this.data.payer.startDate, this.data.payer.endDate,
         this.data.payer.email, this.data.payer.dateCreated, this.data.payer.changedBy);
     } else {
       this.payer = new AuthorizedPayer();
@@ -35,18 +35,31 @@ export class AuthorizedPayersDialogComponent implements OnInit {
   onSubmit() {
     switch (this.action) {
       case 'Delete':
-        this.accountService.deletePayer(this.payer);
+        this.accountService.deletePayer(this.payer)
+          .subscribe(
+            resp => { this.dialogRef.close(); },
+            err => { this.dialogRef.close(err); }
+          );
         break;
       case 'Add':
         this.payer.dateCreated = new Date( Date.now() );
         this.payer.changedBy = 'Generic User';
-        this.accountService.addPayer(this.payer);
+        this.accountService.addPayer(this.payer)
+          .subscribe(
+            resp => { this.dialogRef.close(); },
+            err => { this.dialogRef.close(err); }
+          );
         break;
       case 'Edit':
-        this.accountService.editPayer(this.payer);
-        break;
+        this.accountService.editPayer(this.payer)
+          .subscribe(
+            resp => { this.dialogRef.close(); },
+            err => { this.dialogRef.close(err); }
+          );
+         break;
+      default:
+        this.dialogRef.close();
     }
-    this.dialogRef.close();
   }
 
 }

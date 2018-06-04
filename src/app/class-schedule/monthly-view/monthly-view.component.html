@@ -6,19 +6,23 @@
     (dateChange)="viewDateChange($event)">
   </app-view-header>
   <mat-card-content class="dashboard-card-content">
-      <mwl-calendar-month-view 
-        [viewDate]="viewDate" 
-        [events]="events"
-        (eventClicked)="eventClicked($event.event)"
-        [activeDayIsOpen]="activeDayIsOpen"
-        (dayClicked)="dayClicked($event.day)"> 
-      </mwl-calendar-month-view>
-      <mat-card-actions>
-        <div class="col text-right pb-1">
-          <button mat-icon-button id="pdfButton" type="button" class="mr-2" matTooltip="Save as PDF" matTooltipShowDelay="500"><mat-icon class="md-24">picture_as_pdf</mat-icon></button>
-          <button mat-icon-button id="downloadButton" type="button" class="mr-2" matTooltip="Download .ICS file" matTooltipShowDelay="500"><mat-icon class="md-24">file_download</mat-icon></button>
-        </div>
-      </mat-card-actions>
+    <div>
+      <mat-progress-bar *ngIf="!events && !error" mode="indeterminate" ></mat-progress-bar>
+      <div *ngIf="error" class="alert alert-danger mb-0" role="alert">{{ error }}</div>
+    </div>
+    <mwl-calendar-month-view *ngIf="events" 
+      [viewDate]="viewDate" 
+      [events]="events"
+      (eventClicked)="eventClicked($event.event)"
+      [activeDayIsOpen]="activeDayIsOpen"
+      (dayClicked)="dayClicked($event.day)"> 
+    </mwl-calendar-month-view>
+    <mat-card-actions>
+      <div class="col text-right pb-1">
+        <button mat-icon-button id="pdfButton" type="button" class="mr-2" matTooltip="Save as PDF" matTooltipShowDelay="500"><mat-icon class="md-24">picture_as_pdf</mat-icon></button>
+        <button mat-icon-button id="downloadButton" type="button" class="mr-2" matTooltip="Download .ICS file" matTooltipShowDelay="500"><mat-icon class="md-24">file_download</mat-icon></button>
+      </div>
+    </mat-card-actions>
   </mat-card-content>
   
 </mat-card>

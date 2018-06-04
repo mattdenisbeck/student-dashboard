@@ -14,6 +14,7 @@ export class MonthlyViewComponent implements OnInit {
   @Input() events: CalendarEvent[];
   @Input() view: string;
   @Input() title: string;
+  @Input() error: string;
   activeDayIsOpen = true;
   constructor(public classDetailDialog: MatDialog) { }
 

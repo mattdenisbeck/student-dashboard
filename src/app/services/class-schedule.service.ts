@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { ClassModel } from '../models/class-model';
+import { CallApiService } from './call-api.service';
+import { CalendarEvent } from 'calendar-utils';
 
 @Injectable()
 export class ClassScheduleService {
@@ -8,51 +12,15 @@ export class ClassScheduleService {
   private today = new Date( Date.now() );
   private tomorrow = new Date();
 
-  constructor() {
+  constructor(private callApiService: CallApiService) {
     this.tomorrow.setDate(this.today.getDate() + 1);
-
-    this.classes = [
-      {
-        'number': 'CSC 360',
-        'title': 'Object Oriented Programming I',
-        'location': 'GH 334',
-        'days': ['Monday', 'Wednesday', 'Friday'],
-        'day': '',
-        'startTime': new Date('1970-01-01 09:30'),
-        'endTime': new Date('1970-01-01 10:45'),
-        'instructor': 'Jane Doe',
-        'icon': 'computer'
-      },
-      {
-        'number': 'MAT 358',
-        'title': 'Discrete Mathematics',
-        'location': 'MP 250',
-        'days': ['Monday', 'Wednesday', 'Friday'],
-        'day': '',
-        'startTime': new Date('1970-01-01 13:00'),
-        'endTime': new Date('1970-01-01 14:15'),
-        'instructor': 'John Doe',
-        'icon': 'multiline_chart'
-      },
-      {
-        'number': 'HIS 226',
-        'title': 'History of Western Europe',
-        'location': 'LAC 364',
-        'days': ['Tuesday', 'Thursday'],
-        'day': '',
-        'startTime': new Date('1970-01-01 10:00'),
-        'endTime': new Date('1970-01-01 11:15'),
-        'instructor': 'John Q. Professor',
-        'icon': 'public'
-      }
-    ];
   }
 
-  getClasses() {
-    return this.classes;
+  getClasses(): Observable<HttpResponse<ClassModel[]>> {
+    return this.callApiService.get('api/classes', 'Class Schedule');
   }
 
-  getUpcomingClasses(howMany: number) {
+  getUpcomingClasses(howMany: number, schedule: ClassModel[]) {
     const dayOfWeek = this.today.getDay();
     let week: string[];
     const upcoming: ClassModel[] = [];
@@ -81,9 +49,9 @@ export class ClassScheduleService {
     }
     for ( let i = 0; i < week.length; i++ ) {
       const day = week[i];
-      for ( let j = 0; j < this.classes.length; j++ ) {
-        if (this.classes[j].days.indexOf(day) >= 0) {
-          const course: ClassModel = Object.assign({}, this.classes[j]);
+      for ( let j = 0; j < schedule.length; j++ ) {
+        if (schedule[j].days.indexOf(day) >= 0) {
+          const course: ClassModel = Object.assign({}, schedule[j]);
           course.day = day;
           if ( (day === week[0] && course.startTime.getHours() > this.today.getHours()) || (day !== week[0]) ) {
             upcoming.push(course);
@@ -94,121 +62,8 @@ export class ClassScheduleService {
     return upcoming.slice(0, howMany);
   }
 
-  getScheduleEvents() {
-    // this should call a back end service for all events in a semester
-    // then format that data into CalendarEvent[]
-    return [
-      {
-        start: new Date( this.today.setHours(16, 0) ),
-        end: new Date( this.today.setHours(18, 0) ),
-        title: 'CSC 360 - Object Oriented Programming I',
-        color: {
-          primary: 'black',
-          secondary: '#fbc63c'
-        },
-        meta: {
-          course: {
-            'number': 'CSC 360',
-            'title': 'Object Oriented Programming I',
-            'location': 'GH 334',
-            'days': ['Monday', 'Wednesday', 'Friday'],
-            'day': '',
-            'startTime': new Date('1970-01-01 09:30'),
-            'endTime': new Date('1970-01-01 10:45'),
-            'instructor': 'Jane Doe',
-            'icon': 'computer'
-          }
-        }
-      },
-      {
-        start: new Date( this.today.setHours(15, 0) ),
-        end: new Date( this.today.setHours(15, 30) ),
-        title: 'MAT 358 - Discrete Mathematics',
-        color: {
-          primary: 'black',
-          secondary: '#FFC72C'
-        },
-        meta: {
-          course: {
-            'number': 'MAT 358',
-            'title': 'Discrete Mathematics',
-            'location': 'MP 250',
-            'days': ['Monday', 'Wednesday', 'Friday'],
-            'day': '',
-            'startTime': new Date('1970-01-01 13:00'),
-            'endTime': new Date('1970-01-01 14:15'),
-            'instructor': 'John Doe',
-            'icon': 'multiline_chart'
-          }
-        }
-      },
-      {
-        start: new Date( this.today.setHours(10, 0) ),
-        end: new Date( this.today.setHours(11, 0) ),
-        title: 'HIS 226 - History of Western Europe',
-        color: {
-          primary: 'black',
-          secondary: '#FFC72C'
-        },
-        meta: {
-          course: {
-            'number': 'HIS 226',
-            'title': 'History of Western Europe',
-            'location': 'LAC 364',
-            'days': ['Tuesday', 'Thursday'],
-            'day': '',
-            'startTime': new Date('1970-01-01 10:00'),
-            'endTime': new Date('1970-01-01 11:15'),
-            'instructor': 'John Q. Professor',
-            'icon': 'public'
-          }
-        }
-      },
-      {
-        start: new Date( this.today.setHours(13, 30) ),
-        end: new Date( this.today.setHours(14, 0) ),
-        title: 'CSC 360 - Object Oriented Programming I',
-        color: {
-          primary: 'black',
-          secondary: '#FFC72C'
-        },
-        meta: {
-          course: {
-            'number': 'CSC 360',
-            'title': 'Object Oriented Programming I',
-            'location': 'GH 334',
-            'days': ['Monday', 'Wednesday', 'Friday'],
-            'day': '',
-            'startTime': new Date('1970-01-01 09:30'),
-            'endTime': new Date('1970-01-01 10:45'),
-            'instructor': 'Jane Doe',
-            'icon': 'computer'
-          }
-        }
-      },
-      {
-        start: new Date(this.tomorrow.setHours(12, 0)),
-        end: new Date(this.tomorrow.setHours(14, 0)),
-        title: 'MAT 358 - Discrete Mathematics',
-        color: {
-          primary: 'black',
-          secondary: '#FFC72C'
-        },
-        meta: {
-          course: {
-            'number': 'MAT 358',
-            'title': 'Discrete Mathematics',
-            'location': 'MP 250',
-            'days': ['Monday', 'Wednesday', 'Friday'],
-            'day': '',
-            'startTime': new Date('1970-01-01 13:00'),
-            'endTime': new Date('1970-01-01 14:15'),
-            'instructor': 'John Doe',
-            'icon': 'multiline_chart'
-          }
-        }
-      }
-    ];
+  getScheduleEvents(): Observable<HttpResponse<CalendarEvent[]>> {
+    return this.callApiService.get('api/scheduleEvents', 'Class Schedule');
   }
 
 }

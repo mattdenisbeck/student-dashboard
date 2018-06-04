@@ -15,6 +15,7 @@ export class ListViewComponent implements OnInit {
   @Input() viewDate: Date;
   @Input() view: string;
   @Input() title: string;
+  @Input() error: string;
 
   constructor(public classDetailDialog: MatDialog) { }
 

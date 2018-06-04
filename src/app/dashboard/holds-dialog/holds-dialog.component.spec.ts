@@ -7,8 +7,8 @@ import { MatIconModule, MatDividerModule, MatListModule, MatDialogModule, MatCar
 import { AppRoutingModule } from '../../app-routing.module';
 import { DashboardComponent } from '../dashboard.component';
 import { VitalStatsComponent } from '../vital-stats/vital-stats.component';
-import { UpcomingClassesComponent } from '../upcoming-classes/upcoming-classes.component';
-import { NorseFeedComponent } from '../../norse-feed/norse-feed.component';
+import { UpcomingClassesComponent } from '../../class-schedule/upcoming-classes/upcoming-classes.component';
+import { NorseFeedComponent } from '../norse-feed/norse-feed.component';
 import { ProfileComponent } from '../../profile/profile.component';
 import { ClassScheduleComponent } from '../../class-schedule/class-schedule.component';
 import { GradesComponent } from '../../grades/grades.component';

@@ -13,6 +13,7 @@ export class DailyViewComponent implements OnInit {
   @Input() events: CalendarEvent[];
   @Input() view: string;
   @Input() title: string;
+  @Input() error: string;
   earlyClass: number;
   lateClass: number;
 

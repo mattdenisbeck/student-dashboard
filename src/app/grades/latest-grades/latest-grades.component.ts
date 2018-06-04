@@ -9,17 +9,28 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class LatestGradesComponent implements OnInit {
 
-  latestGrades: MatTableDataSource<{}>;
+  latestGrades: MatTableDataSource<any>;
   overallGPA: number;
   majorGPA: number;
   displayedColumns = ['course', 'grade'];
+  error: string;
 
   constructor(private gradesService: GradesService) { }
 
   ngOnInit() {
     this.overallGPA = this.gradesService.getGPA();
     this.majorGPA = this.gradesService.getMajorGPA();
-    this.latestGrades = new MatTableDataSource(this.gradesService.getLatestGrades());
+    this.gradesService.getLatestGrades()
+        .subscribe(resp => {
+          // get headers
+          const keys = resp.headers.keys();
+          const headers = keys.map(key =>
+            `${key}: ${resp.headers.get(key)}`);
+          // set grades from response body
+          this.latestGrades = new MatTableDataSource(resp.body);
+        },
+        err => { this.error = err; }
+        );
   }
 
 }

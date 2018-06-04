@@ -1,114 +1,39 @@
 import { Injectable } from '@angular/core';
+import { HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CallApiService } from './call-api.service';
 
 @Injectable()
 export class GradesService {
 
-  private finalGrades: {}[];
-  private midtermGrades: {}[];
-  private gradeReport: {}[];
+  private courseGrades: {}[];
   private gpa: number;
   private majorGPA: number;
 
-  constructor() {
-    this.finalGrades = [
-      {
-        courseNumber: 'CSC 360',
-        courseSection: '001',
-        courseTitle: 'Object Oriented Programming I',
-        grade: 'A-',
-        attemptedHours: 3.0,
-        earnedHours: 3.0,
-        qualityHours: 3.0,
-        qualityPoints: 12.0
-      },
-      {
-        courseNumber: 'MAT 358',
-        courseSection: '001',
-        courseTitle: 'Discrete Mathematics',
-        grade: 'B',
-        attemptedHours: 3.0,
-        earnedHours: 3.0,
-        qualityHours: 3.0,
-        qualityPoints: 12.0
-      },
-      {
-        courseNumber: 'HIS 226',
-        courseSection: '002',
-        courseTitle: 'History of Western Europe',
-        grade: 'A',
-        attemptedHours: 3.0,
-        earnedHours: 3.0,
-        qualityHours: 3.0,
-        qualityPoints: 12.0
-      }
-    ];
-    this.midtermGrades = [
-      {
-        courseNumber: 'CSC 360',
-        courseSection: '001',
-        courseTitle: 'Object Oriented Programming I',
-        grade: 'B+',
-        attemptedHours: 3.0,
-        earnedHours: 3.0,
-        qualityHours: 3.0,
-        qualityPoints: 12.0
-      },
-      {
-        courseNumber: 'MAT 358',
-        courseSection: '001',
-        courseTitle: 'Discrete Mathematics',
-        grade: 'C',
-        attemptedHours: 3.0,
-        earnedHours: 3.0,
-        qualityHours: 3.0,
-        qualityPoints: 12.0
-      },
-      {
-        courseNumber: 'HIS 226',
-        courseSection: '002',
-        courseTitle: 'History of Western Europe',
-        grade: 'A-',
-        attemptedHours: 3.0,
-        earnedHours: 3.0,
-        qualityHours: 3.0,
-        qualityPoints: 12.0
-      }
-    ];
-    this.gradeReport = [
-      {
-        title: 'Current Term',
-        attemptedHours: 12.0,
-        earnedHours: 12.0,
-        qualityHours: 12.0,
-        qualityPoints: 48.0,
-        gpa: 4.0
-      },
-      {
-        title: 'Cumulative',
-        attemptedHours: 45.0,
-        earnedHours: 45.0,
-        qualityHours: 45.0,
-        qualityPoints: 168.0,
-        gpa: 3.74
-      }
-    ];
+  constructor(private callApiService: CallApiService) {
     this.gpa = 3.78;
     this.majorGPA = 3.9;
-   }
+  }
 
-  getGrades(semester: string, final: boolean) {
+  getGrades(semester: string, final: boolean): Observable<HttpResponse<any>> {
     // use semester parameter to perform back-end query
-    return final ? this.finalGrades : this.midtermGrades;
+    const resource = final ? 'finalGrades' : 'midtermGrades';
+    const name = final ? 'Final Grades' : 'Midterm Grades';
+    return this.callApiService.get('api/' + resource, name);
   }
 
   // returns latest available grade data
   // To Do: update implementation once backend service is available
-  getLatestGrades() {
-    return this.finalGrades;
+  getLatestGrades(): Observable<HttpResponse<any>> {
+    return this.callApiService.get('api/latestGrades', 'Latest Grades');
   }
 
-  getGradeReport() {
-    return this.gradeReport;
+  getGradeReport(): Observable<HttpResponse<any>> {
+    return this.callApiService.get('api/gradeReport', 'Grade Report');
+  }
+
+  getCourseGrades(): Observable<HttpResponse<any>> {
+    return this.callApiService.get('api/courseGrades', 'Course Grades');
   }
 
   getGPA() {

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile.component';
 import { MatTabsModule, MatCardModule, MatDividerModule, MatListModule, MatIconModule, MatButtonModule,
   MatTableModule, MatTooltipModule, MatChipsModule} from '@angular/material';
-import { AvatarModule } from 'ngx-avatar';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { ClassScheduleModule } from '../class-schedule/class-schedule.module';
@@ -15,7 +14,6 @@ import { AccountModule } from '../account/account.module';
   imports: [
     CommonModule,
     MatTabsModule,
-    AvatarModule,
     MatCardModule,
     MatDividerModule,
     MatListModule,

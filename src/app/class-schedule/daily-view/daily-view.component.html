@@ -6,21 +6,25 @@
     (dateChange)="viewDateChange($event)">
   </app-view-header>
   <mat-card-content class="dashboard-card-content">
-      <mwl-calendar-day-view 
-        [viewDate]="viewDate" 
-        [events]="events"
-        [dayStartHour]="earlyClass - 1" 
-        dayStartMinute="0" 
-        [dayEndHour]="lateClass + 1" 
-        dayEndMinute="0"
-        eventWidth="280"
-        (eventClicked)="eventClicked($event.event)">
-      </mwl-calendar-day-view>
-      <mat-card-actions>
-        <div class="col text-right pr-4 pb-1">
-          <button mat-icon-button id="pdfButton" type="button" class="mr-2" matTooltip="Save as PDF" matTooltipShowDelay="500"><mat-icon class="md-24">picture_as_pdf</mat-icon></button>
-          <button mat-icon-button id="downloadButton" type="button" class="mr-2" matTooltip="Download .ICS file" matTooltipShowDelay="500"><mat-icon class="md-24">file_download</mat-icon></button>
-        </div>
-      </mat-card-actions>
+    <div class="my-2 mx-2">
+      <mat-progress-bar *ngIf="!events && !error" mode="indeterminate" ></mat-progress-bar>
+      <div *ngIf="error" class="alert alert-danger mb-0" role="alert">{{ error }}</div>
+    </div>
+    <mwl-calendar-day-view *ngIf="events"
+      [viewDate]="viewDate" 
+      [events]="events"
+      [dayStartHour]="earlyClass - 1" 
+      dayStartMinute="0" 
+      [dayEndHour]="lateClass + 1" 
+      dayEndMinute="0"
+      eventWidth="280"
+      (eventClicked)="eventClicked($event.event)">
+    </mwl-calendar-day-view>
+    <mat-card-actions>
+      <div class="col text-right pr-4 pb-1">
+        <button mat-icon-button id="pdfButton" type="button" class="mr-2" matTooltip="Save as PDF" matTooltipShowDelay="500"><mat-icon class="md-24">picture_as_pdf</mat-icon></button>
+        <button mat-icon-button id="downloadButton" type="button" class="mr-2" matTooltip="Download .ICS file" matTooltipShowDelay="500"><mat-icon class="md-24">file_download</mat-icon></button>
+      </div>
+    </mat-card-actions>
   </mat-card-content>
 </mat-card>

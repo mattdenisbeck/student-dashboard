@@ -4,60 +4,67 @@
       <span class="float-right mr-2" style="margin-top:-0.65em;">
         <button mat-icon-button routerLink="../academic-plan"><mat-icon class="md-24">arrow_forward</mat-icon></button>
       </span>
-      <h5><small>Academic Plan for Next Semester <span style="white-space: nowrap">({{ upcomingSemester }})</span></small></h5>
+      <h5><small>Academic Plan for Next Semester <span *ngIf="!error" style="white-space: nowrap">({{ upcomingSemester }})</span></small></h5>
     </mat-card-title>
   </mat-card-header>
   <mat-card-content class="dashboard-card-content">
-    <div *ngIf="dataSource.data.length === 0">You have no courses planned for next semester. <a routerLink="../academic-plan">Add courses to your plan.</a></div>
-    <mat-table [dataSource]="dataSource" *ngIf="dataSource.data.length > 0">
+    <div *ngIf="error" class="alert alert-danger mb-0" role="alert">{{ error }}</div>
+    <div *ngIf="dataSource && dataSource.data.length === 0">You have no courses planned for next semester. <a routerLink="../academic-plan">Add courses to your plan.</a></div>
+    <div class="table-container">
+    <table mat-table [dataSource]="dataSource" *ngIf="dataSource && dataSource.data.length > 0">
       <!-- Course Column -->
       <ng-container matColumnDef="course">
-        <mat-header-cell *matHeaderCellDef class="column-title">Course</mat-header-cell>
-        <mat-cell 
+        <th mat-header-cell *matHeaderCellDef class="column-title">Course</th>
+        <td mat-cell 
           *matCellDef="let element" 
           matTooltip="{{element.number}} - {{element.section}}: {{element.title}}"
           matTooltipPosition="after" 
-          class="row-title text-truncate" > 
-          <b>{{element.number}}<span class="d-none d-sm-inline"> - {{element.section}}</span></b><br>
-          <small class="d-none d-sm-inline">{{element.title}}</small><br>
-        </mat-cell>
+          class="row-title text-truncate">
+          <div> 
+            <b>{{element.number}}<span class="d-none d-sm-inline"> - {{element.section}}</span></b><br>
+            <small class="d-none d-sm-inline">{{element.title}}</small><br>
+          </div>
+      </td>
       </ng-container>
 
       <!-- Days Column -->
       <ng-container matColumnDef="days">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title">Days</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-center"> 
-          <small>
-            <span *ngFor="let day of element.days"><span>{{abreviateDay(day, false)}}</span><br></span>
-          </small> 
-        </mat-cell>
+        <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Days</div></th>
+        <td mat-cell *matCellDef="let element">
+          <div class="mx-auto text-center"> 
+            <small><span *ngFor="let day of element.days"><span>{{abreviateDay(day, false)}}</span><br></span></small>
+          </div> 
+        </td>
       </ng-container>
 
       <!-- Time Column -->
       <ng-container matColumnDef="time">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title">Time</mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-center text-truncate"> 
-          <small>
-            {{ element.startTime.toLocaleTimeString() }}<br> 
-            {{ element.endTime.toLocaleTimeString() }}
-          </small> 
-        </mat-cell>
+        <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Time</div></th>
+        <td mat-cell *matCellDef="let element" class="text-truncate"> 
+          <div class="mx-auto text-center">
+            <small>
+              {{ element.startTime }}<br> 
+              {{ element.endTime }}
+            </small>
+          </div> 
+        </td>
       </ng-container>
     
       <!-- Credit Column -->
       <ng-container matColumnDef="credit">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Credits </mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-center"> {{element.credits}} </mat-cell>
+        <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Credits</div></th>
+        <td mat-cell *matCellDef="let element"><div class="mx-auto text-center">{{element.credits}}</div></td>
       </ng-container>
 
       <!-- Status Column -->
       <ng-container matColumnDef="status">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Status </mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-center"><small>{{element.status}}</small></mat-cell>
+        <th mat-header-cell *matHeaderCellDef class="text-center column-title"><div class="mx-auto text-center">Status</div></th>
+        <td mat-cell *matCellDef="let element"><div class="mx-auto text-center"><small>{{element.status}}</small></div></td>
       </ng-container>
     
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    </table>
+    </div>
   </mat-card-content>
 </mat-card>

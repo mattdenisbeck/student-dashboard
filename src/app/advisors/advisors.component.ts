@@ -18,7 +18,16 @@ export class AdvisorsComponent implements OnInit {
   constructor( private advisorsService: AdvisorsService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.advisors = this.advisorsService.getAdvisors();
+    this.advisorsService.getAdvisors()
+        .subscribe(resp => {
+          // get headers
+          const keys = resp.headers.keys();
+          const headers = keys.map(key =>
+            `${key}: ${resp.headers.get(key)}`);
+
+          // set advisors from response body
+          this.advisors = resp.body;
+        });
   }
 
   openDialog(email: string, type: string) {

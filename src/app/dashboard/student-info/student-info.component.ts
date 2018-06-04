@@ -14,11 +14,20 @@ export class StudentInfoComponent implements OnInit {
   student: Student;
   advisors: AdvisorModel[];
 
-  constructor(private studentInfoService: StudentInfoService, private advisorService: AdvisorsService) { }
+  constructor(private studentInfoService: StudentInfoService, private advisorsService: AdvisorsService) { }
 
   ngOnInit() {
     this.student = this.studentInfoService.getStudent();
-    this.advisors = this.advisorService.getAdvisors();
+    this.advisorsService.getAdvisors()
+        .subscribe(resp => {
+          // get headers
+          const keys = resp.headers.keys();
+          const headers = keys.map(key =>
+            `${key}: ${resp.headers.get(key)}`);
+
+          // set advisors from response body
+          this.advisors = resp.body;
+        });
   }
 
 }

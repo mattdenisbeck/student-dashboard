@@ -8,68 +8,74 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content class="dashboard-card-content">
-    <div *ngIf="accounts.data.length === 0">There are no bank accounts associated with your username.</div>
-    <mat-table [dataSource]="accounts" *ngIf="accounts.data.length > 0">
+    <mat-progress-bar *ngIf="!accounts && !error" mode="indeterminate"></mat-progress-bar>
+    <div *ngIf="error" class="alert alert-danger mb-0" role="alert">{{ error }}</div>
+    <div *ngIf="accounts && accounts.data.length === 0">There are no bank accounts associated with your username.</div>
+    <div class="table-container" *ngIf="accounts && accounts.data.length > 0">
+      <table mat-table [dataSource]="accounts">
         <!-- Account Nickname Column -->
         <ng-container matColumnDef="nickname">
-          <mat-header-cell *matHeaderCellDef class="text-truncate">Nickname</mat-header-cell>
-          <mat-cell 
+          <th mat-header-cell *matHeaderCellDef class="text-truncate">Nickname</th>
+          <td mat-cell 
             *matCellDef="let account" 
             matTooltip="{{account.nickname}}"
             matTooltipPosition="after"
-            class="row-title text-truncate"> 
-            <b>{{ account.nickname }}<span *ngIf="account.isRefund">*</span></b>
-          </mat-cell>
+            class="row-title"> 
+            <div><b>{{ account.nickname }}<span *ngIf="account.isRefund">*</span></b></div>
+        </td>
         </ng-container>
       
         <!-- Account Holder Column -->
         <ng-container matColumnDef="holder">
-          <mat-header-cell *matHeaderCellDef class="text-center column-title">Account Holder</mat-header-cell>
-          <mat-cell *matCellDef="let account" class="text-center table-data">{{ account.holder }}</mat-cell>
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Account Holder</div></th>
+          <td mat-cell *matCellDef="let account" class="table-data"><div class="mx-auto text-center">{{ account.holder }}</div></td>
         </ng-container>
       
         <!-- Routing Number Column -->
         <ng-container matColumnDef="routing">
-          <mat-header-cell *matHeaderCellDef class="text-center column-title">Routing Number</mat-header-cell>
-          <mat-cell 
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Routing Number</div></th>
+          <td mat-cell 
             *matCellDef="let account" 
             matTooltip="{{account.routing}}"
             matTooltipPosition="after"
-            class="text-center text-truncate table-data">
-              {{ account.routing }} 
-          </mat-cell>
+            class="text-truncate table-data">
+            <div class="mx-auto text-center">{{ account.routing }}</div>
+          </td>
         </ng-container>
       
         <!-- Bank Name Column -->
         <ng-container matColumnDef="bank">
-          <mat-header-cell *matHeaderCellDef class="text-center column-title">Bank</mat-header-cell>
-          <mat-cell *matCellDef="let account" class="text-center table-data">{{ account.bank }}</mat-cell>
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Bank</div></th>
+          <td mat-cell *matCellDef="let account" class="table-data"><div class="mx-auto text-center">{{ account.bank }}</div></td>
         </ng-container>
   
         <!-- Account Number Column -->
         <ng-container matColumnDef="number">
-          <mat-header-cell *matHeaderCellDef class="text-center column-title">Account Number</mat-header-cell>
-          <mat-cell 
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Account Number</div></th>
+          <td mat-cell 
             *matCellDef="let account"
             matTooltip="{{account.number}}"
             matTooltipPosition="after" 
-            class="text-center text-truncate table-data">
-            {{ account.number }}
-          </mat-cell>
+            class="text-truncate table-data">
+            <div class="mx-auto text-center">{{ account.number }}</div>
+          </td>
         </ng-container>
   
         <!-- Actions Column -->
         <ng-container matColumnDef="actions">
-          <mat-header-cell *matHeaderCellDef class="text-right column-title"></mat-header-cell>
-          <mat-cell *matCellDef="let account" class="text-right">
-            <button mat-icon-button matTooltip="Edit Account" matTooltipShowDelay="700" (click)="openBankAccountDialog(account)"><mat-icon>edit</mat-icon></button> 
-            <button mat-icon-button matTooltip="Delete Account" matTooltipShowDelay="700" (click)="openBankAccountDialog(account, 'delete')"><mat-icon>highlight_off</mat-icon></button>
-          </mat-cell>
+          <th mat-header-cell *matHeaderCellDef class="column-title"></th>
+          <td mat-cell *matCellDef="let account">
+            <div class="ml-auto text-right">
+              <button mat-icon-button matTooltip="Edit Account" matTooltipShowDelay="700" (click)="openBankAccountDialog(account)"><mat-icon>edit</mat-icon></button> 
+              <button mat-icon-button matTooltip="Delete Account" matTooltipShowDelay="700" (click)="openBankAccountDialog(account, 'delete')"><mat-icon>highlight_off</mat-icon></button>
+            </div>
+          </td>
         </ng-container>
       
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
-      <div *ngIf="accounts.data.length > 0" class="text-right pr-2"><small>* Refund Account</small></div>
+      </table>
+    </div>
+      <div *ngIf="accounts && accounts.data.length > 0" class="text-right pr-2"><small>* Refund Account</small></div>
   </mat-card-content>
 </mat-card>

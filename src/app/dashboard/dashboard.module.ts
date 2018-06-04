@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule, MatListModule, MatIconModule, MatDialogModule, MatTableModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatListModule, MatIconModule, MatDialogModule, MatTableModule, MatTooltipModule,
+  MatProgressBarModule, MatProgressSpinnerModule} from '@angular/material';
 import { DashboardComponent } from './dashboard.component';
 import { VitalStatsComponent } from './vital-stats/vital-stats.component';
 import { AppRoutingModule } from '../app-routing.module';
@@ -30,7 +31,9 @@ import { TuitionBalanceComponent } from '../account/tuition-balance/tuition-bala
     MatTooltipModule,
     ClassScheduleModule,
     AcademicPlanModule,
-    AccountModule
+    AccountModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     DashboardComponent,

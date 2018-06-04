@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileComponent } from './profile.component';
 import { AvatarModule } from 'ngx-avatar';
-import { NorseFeedComponent } from '../norse-feed/norse-feed.component';
+import { NorseFeedComponent } from '../dashboard/norse-feed/norse-feed.component';
 import { MatTabsModule, MatCardModule, MatListModule, MatIconModule, MatFormFieldModule,
   MatSlideToggleModule, MatDialogModule } from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
@@ -17,7 +17,7 @@ import { DegreeAuditComponent } from '../degree-audit/degree-audit.component';
 import { AcademicPlanComponent } from '../academic-plan/academic-plan.component';
 import { GradesComponent } from '../grades/grades.component';
 import { ClassScheduleComponent } from '../class-schedule/class-schedule.component';
-import { UpcomingClassesComponent } from '../dashboard/upcoming-classes/upcoming-classes.component';
+import { UpcomingClassesComponent } from '../class-schedule/upcoming-classes/upcoming-classes.component';
 import { VitalStatsComponent } from '../dashboard/vital-stats/vital-stats.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { APP_BASE_HREF } from '@angular/common';

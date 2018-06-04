@@ -48,7 +48,11 @@
                   <button mat-raised-button type="button" routerLink="grades" class="text-right" style="background-color:#28a745; color:white; width:100%"><span class="float-left">Current GPA&nbsp;&nbsp;</span><span class="badge badge-light">{{ gpa | number : '1.2-2' }}</span></button>
               </mat-list-item>
               <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
-                 <button mat-raised-button type="button" (click)="openHoldsDialog()" class="text-right" style="background-color:#dc3545; color:white; width:100%"><span class="float-left">Holds&nbsp;&nbsp;</span><span class="badge badge-light">{{ holdsCount }}</span></button>
+                <button mat-raised-button type="button" (click)="openHoldsDialog()" class="text-right" style="background-color:#dc3545; color:white; width:100%">
+                  <span class="float-left">Holds&nbsp;&nbsp;</span>
+                  <span class="badge badge-light" *ngIf="!errors['holds']">{{ holdsCount }}</span><span class="badge badge-light" *ngIf="errors['holds']">{{ '?' }}</span>
+                  <mat-spinner *ngIf="!holdsCount && !errors['holds']" diameter="20" color="accent" class="float-right mt-2"></mat-spinner>
+                </button>
               </mat-list-item>
               <mat-list-item style="height:auto; margin-bottom: .75em;" class="vital-stats-item">
                 <button mat-raised-button type="button" routerLink="account" class="text-right" style="background-color:#dc3545; color:white; width:100%; "><span class="float-left">Balance Due&nbsp;&nbsp;</span><span class="badge badge-light">{{ accountBalance | currency }}</span></button>

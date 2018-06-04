@@ -12,7 +12,8 @@
             [semester]="semester"
             [viewDate]="viewDate"
             [view]="view"
-            [title]="title">
+            [title]="title"
+            [error]="errors['listView']">
           </app-list-view>
         </div>
       </div>
@@ -30,7 +31,8 @@
             [viewDate]="viewDate" 
             [events]="events"
             [view]="view"
-            [title]="title">
+            [title]="title"
+            [error]="errors['schedule']">
           </app-daily-view>
         </div>
       </div>
@@ -48,7 +50,8 @@
             [viewDate]="viewDate" 
             [events]="events"
             [view]="view"
-            [title]="title">
+            [title]="title"
+            [error]="errors['schedule']">
           </app-weekly-view>
         </div>
       </div>
@@ -66,7 +69,8 @@
             [viewDate]="viewDate" 
             [events]="events"
             [view]="view"
-            [title]="title">
+            [title]="title"
+            [error]="errors['schedule']">
           </app-monthly-view>
         </div>
       </div>

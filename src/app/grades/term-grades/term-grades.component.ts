@@ -9,26 +9,49 @@ import { GradesService } from '../../services/grades.service';
 })
 export class TermGradesComponent implements OnInit {
   displayedColumns = ['course', 'grade', 'attemptedHours', 'earnedHours', 'qualityHours', 'qualityPoints'];
-  dataSource: MatTableDataSource<{}>;
-  midtermGrades: MatTableDataSource<{}>;
-  finalGrades: MatTableDataSource<{}>;
+  dataSource: MatTableDataSource<any>;
+  midtermGrades: MatTableDataSource<any>;
+  finalGrades: MatTableDataSource<any>;
   selectedTerm: string;
   selectedSemester: string;
   terms = ['Final Grades', 'Midterm Grades'];
   semesters = ['Spring 2017-2018', 'Fall 2018-2019', 'Spring 2018-2019'];
+  errors = {};
 
   constructor(private gradesService: GradesService) { }
 
   ngOnInit() {
-    this.finalGrades = new MatTableDataSource(this.gradesService.getGrades('spring', true));
-    this.midtermGrades = new MatTableDataSource(this.gradesService.getGrades('spring', false));
-    this.dataSource = this.finalGrades;
+    // get final grades
+    this.gradesService.getGrades('spring', true)
+        .subscribe(resp => {
+          // get headers
+          const keys = resp.headers.keys();
+          const headers = keys.map(key =>
+            `${key}: ${resp.headers.get(key)}`);
+          // set grades from response body
+          this.finalGrades = new MatTableDataSource(resp.body);
+          this.dataSource = this.finalGrades;
+        },
+        err => { this.errors['Final Grades'] = err; console.log(this.errors); }
+      );
+    // get midterm grades
+    this.gradesService.getGrades('spring', false)
+        .subscribe(resp => {
+          // get headers
+          const keys = resp.headers.keys();
+          const headers = keys.map(key =>
+            `${key}: ${resp.headers.get(key)}`);
+          // set grades from response body
+          this.midtermGrades = new MatTableDataSource(resp.body);
+        },
+        err => { this.errors['Midterm Grades'] = err; }
+      );
     this.selectedTerm = this.terms[0];
     this.selectedSemester = this.semesters[0];
   }
 
   changeSemester(event: MatSelectChange) {
-    console.log(event);
+    // placeholder
   }
 
   changeTerm(event: MatSelectChange) {

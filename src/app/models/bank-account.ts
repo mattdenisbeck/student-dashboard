@@ -1,6 +1,7 @@
 export class BankAccount {
 
     constructor(
+        public id?: number,
         public nickname?: string,
         public isRefund?: boolean,
         public holder?: string,

@@ -11,11 +11,28 @@ import { ClassDetailComponent } from '../../class-schedule/class-detail/class-de
 })
 export class UpcomingClassesComponent implements OnInit {
   upcomingClasses: ClassModel[];
+  error: string;
 
   constructor(private classScheduleService: ClassScheduleService, public classDialog: MatDialog) { }
 
   ngOnInit() {
-    this.upcomingClasses = this.classScheduleService.getUpcomingClasses(3);
+    this.classScheduleService.getClasses()
+        .subscribe(resp => {
+          // get headers
+          const keys = resp.headers.keys();
+          const headers = keys.map(key =>
+            `${key}: ${resp.headers.get(key)}`);
+          // set upcoming classes from response body
+          const classes = resp.body;
+          classes.forEach( (clazz) => {
+              clazz.startTime = new Date(clazz.startTime);
+              clazz.endTime = new Date(clazz.endTime);
+            }
+          );
+          this.upcomingClasses = this.classScheduleService.getUpcomingClasses(3, classes);
+        },
+        err => { this.error = err; }
+        );
   }
 
   openDialog(course: ClassModel) {

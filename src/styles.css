@@ -84,6 +84,9 @@ mat-card-actions.dashboard-card-actions.mat-card-actions:last-child {
     .mat-drawer-content {
         overflow-x: hidden !important;
     }
+    .mat-expansion-panel-body {
+        padding: 0 10px 0 !important;
+    }
 }
 
 @media (max-width: 815px) {
@@ -119,4 +122,8 @@ mat-card-actions.dashboard-card-actions.mat-card-actions:last-child {
 
 .cal-open {
     background-color: #ededed;
+}
+
+.avatar-container {
+    display: inline;
 }

@@ -10,7 +10,7 @@ import { ClassModel } from '../../models/class-model';
   styleUrls: ['./academic-plan-next-semester.component.scss']
 })
 export class AcademicPlanNextSemesterComponent implements OnInit {
-
+  error: string;
   academicPlan: SemesterPlan;
   dataSource: MatTableDataSource<ClassModel>;
   displayedColumns = ['course', 'days', 'time', 'credit', 'status'];
@@ -19,9 +19,20 @@ export class AcademicPlanNextSemesterComponent implements OnInit {
   constructor(private academicPlanService: AcademicPlanService) { }
 
   ngOnInit() {
-    this.academicPlan = this.academicPlanService.getNextSemesterPlan();
-    this.dataSource = new MatTableDataSource( this.academicPlan.courses );
-    this.upcomingSemester = this.academicPlan.semester;
+    this.academicPlanService.getFullPlan()
+        .subscribe(resp => {
+          // get headers
+          const keys = resp.headers.keys();
+          const headers = keys.map(key =>
+            `${key}: ${resp.headers.get(key)}`);
+
+          // set academic plan from response body
+          this.academicPlan = resp.body[0];
+          this.dataSource = new MatTableDataSource( this.academicPlan.courses );
+          this.upcomingSemester = this.academicPlan.semester;
+        },
+        err => { this.error = err; }
+        );
   }
 
   abreviateDay(day: string, short: boolean) {

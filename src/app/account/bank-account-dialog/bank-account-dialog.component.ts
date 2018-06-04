@@ -25,7 +25,7 @@ export class BankAccountDialogComponent implements OnInit {
       this.action = 'Add';
     }
     if (this.data.account) {
-      this.account = new BankAccount(this.data.account.nickname, this.data.account.isRefund, this.data.account.holder,
+      this.account = new BankAccount(this.data.account.id, this.data.account.nickname, this.data.account.isRefund, this.data.account.holder,
         this.data.account.routing, this.data.account.bank, this.data.account.number);
     } else {
       this.account = new BankAccount();
@@ -35,16 +35,29 @@ export class BankAccountDialogComponent implements OnInit {
   onSubmit() {
     switch (this.action) {
       case 'Delete':
-        this.accountService.deleteAccount(this.account);
+        this.accountService.deleteAccount(this.account)
+          .subscribe(
+            resp => { this.dialogRef.close(); },
+            err => { this.dialogRef.close(err); }
+          );
         break;
       case 'Add':
-        this.accountService.addAccount(this.account);
+        this.accountService.addAccount(this.account)
+          .subscribe(
+            resp => { this.dialogRef.close(); },
+            err => { this.dialogRef.close(err); }
+          );
         break;
       case 'Edit':
-        this.accountService.editAccount(this.account);
+        this.accountService.editAccount(this.account)
+          .subscribe(
+            resp => { this.dialogRef.close(); },
+            err => { this.dialogRef.close(err); }
+          );
         break;
+      default:
+        this.dialogRef.close();
     }
-    this.dialogRef.close();
   }
 
 }

@@ -22,58 +22,64 @@
       </h5>
     </mat-card-title>
   </mat-card-header>
-  <mat-card-content class="dashboard-card-content">
-    <mat-table [dataSource]="dataSource">
-      <!-- Course Column -->
-      <ng-container matColumnDef="course">
-        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-        <mat-cell 
-          *matCellDef="let element" 
-          matTooltip="{{element.courseNumber}} - {{element.courseSection}}: {{element.courseTitle}}"
-          matTooltipPosition="after" 
-          class="row-title text-truncate" > 
-          <b>{{element.courseNumber}}<span class="d-none d-sm-inline"> - {{element.courseSection}}</span></b><br>
-          <small class="d-none d-md-inline">{{element.courseTitle}}</small> 
-        </mat-cell>
-      </ng-container>
-    
-      <!-- Grade Column -->
-      <ng-container matColumnDef="grade">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Grade </mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-center"> {{element.grade}} </mat-cell>
-      </ng-container>
-    
-      <!-- Attempted Hours Column -->
-      <ng-container matColumnDef="attemptedHours">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Attempted Hours </mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-center"> {{element.attemptedHours | number:'1.1-2'}} </mat-cell>
-      </ng-container>
-    
-      <!-- Earned Hours Column -->
-      <ng-container matColumnDef="earnedHours">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Earned Hours </mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-center"> {{element.earnedHours | number:'1.1-2'}} </mat-cell>
-      </ng-container>
+  <mat-card-content class="dashboard-card-content pb-0">
+    <mat-progress-bar *ngIf="!dataSource && !errors[selectedTerm]" mode="indeterminate"></mat-progress-bar>
+    <div *ngIf="errors[selectedTerm]" class="alert alert-danger mb-0" role="alert">{{ errors[selectedTerm] }}</div>
+    <div class="table-container" *ngIf="dataSource">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Course Column -->
+        <ng-container matColumnDef="course">
+          <th mat-header-cell *matHeaderCellDef class="first-column-cell"></th>
+          <td mat-cell 
+            *matCellDef="let element" 
+            matTooltip="{{element.courseNumber}} - {{element.courseSection}}: {{element.courseTitle}}"
+            matTooltipPosition="after" 
+            class="row-title text-truncate">
+            <div> 
+              <b>{{element.courseNumber}}<span class="d-none d-sm-inline"> - {{element.courseSection}}</span></b><br>
+              <small class="d-none d-md-inline course-title">{{element.courseTitle}}</small> 
+            </div>
+        </td>
+        </ng-container>
+      
+        <!-- Grade Column -->
+        <ng-container matColumnDef="grade">
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Grade</div></th>
+          <td mat-cell *matCellDef="let element"><div class="mx-auto">{{element.grade}}</div></td>
+        </ng-container>
+      
+        <!-- Attempted Hours Column -->
+        <ng-container matColumnDef="attemptedHours">
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Attempted Hours</div></th>
+          <td mat-cell *matCellDef="let element"><div class="mx-auto">{{element.attemptedHours | number:'1.1-2'}}</div></td>
+        </ng-container>
+      
+        <!-- Earned Hours Column -->
+        <ng-container matColumnDef="earnedHours">
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Earned Hours</div></th>
+          <td mat-cell *matCellDef="let element"><div class="mx-auto">{{element.earnedHours | number:'1.1-2'}}</div></td>
+        </ng-container>
 
-      <!-- Quality Hours Column -->
-      <ng-container matColumnDef="qualityHours">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Quality Hours </mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-center"> {{element.qualityHours | number:'1.1-2'}} </mat-cell>
-      </ng-container>
+        <!-- Quality Hours Column -->
+        <ng-container matColumnDef="qualityHours">
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Quality Hours</div></th>
+          <td mat-cell *matCellDef="let element"><div class="mx-auto">{{element.qualityHours | number:'1.1-2'}}</div></td>
+        </ng-container>
 
-      <!-- Quality Points Column -->
-      <ng-container matColumnDef="qualityPoints">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title"> Quality Points </mat-header-cell>
-        <mat-cell *matCellDef="let element" class="text-center"> {{element.qualityPoints | number:'1.1-2'}} </mat-cell>
-      </ng-container>
-    
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-    <mat-card-actions style="width:100%">
-      <div class="col text-right pb-1">
+        <!-- Quality Points Column -->
+        <ng-container matColumnDef="qualityPoints">
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Quality Points</div></th>
+          <td mat-cell *matCellDef="let element"><div class="mx-auto">{{element.qualityPoints | number:'1.1-2'}}</div></td>
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </table>
+    </div>
+    <mat-card-actions>
+      <div class="col text-right">
         <button mat-icon-button id="pdfButton" type="button" matTooltip="Save PDF" matTooltipShowDelay="500"><mat-icon class="md-24">picture_as_pdf</mat-icon></button>
-        <button mat-icon-button id="downloadButton" type="button" class="mr-2" matTooltip="Download .CSV" matTooltipShowDelay="500"><mat-icon class="md-24">file_download</mat-icon></button>
+        <button mat-icon-button id="downloadButton" type="button" matTooltip="Download .CSV" matTooltipShowDelay="500"><mat-icon class="md-24">file_download</mat-icon></button>
       </div>
     </mat-card-actions>
   </mat-card-content>

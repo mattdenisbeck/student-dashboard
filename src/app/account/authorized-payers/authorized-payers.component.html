@@ -8,85 +8,91 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content class="dashboard-card-content">
-    <div *ngIf="payers.data.length === 0">There are no authorized payers associated with your username.</div>
-    <mat-table [dataSource]="payers" *ngIf="payers.data.length > 0">
-      <!-- Payer Name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef class="text-truncate">Name</mat-header-cell>
-        <mat-cell 
-          *matCellDef="let payer" 
-          matTooltip="{{payer.name}}"
-          matTooltipPosition="after"
-          class="row-title"> 
-          <b>{{ payer.name }}</b>
-        </mat-cell>
-      </ng-container>
-    
-      <!-- Start Date Column -->
-      <ng-container matColumnDef="startDate">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title">Start Date</mat-header-cell>
-        <mat-cell 
-          *matCellDef="let payer" 
-          matTooltip="{{payer.startDate.toLocaleDateString()}}"
-          matTooltipPosition="after"
-          class="text-center text-truncate table-data">
-          {{ payer.startDate.toLocaleDateString() }}
-        </mat-cell>
-      </ng-container>
-    
-      <!-- End Date Column -->
-      <ng-container matColumnDef="endDate">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title">End Date</mat-header-cell>
-        <mat-cell 
-          *matCellDef="let payer" 
-          matTooltip="{{payer.endDate.toLocaleDateString()}}"
-          matTooltipPosition="after"
-          class="text-center text-truncate table-data">
-            {{ payer.endDate.toLocaleDateString() }} 
-        </mat-cell>
-      </ng-container>
-    
-      <!-- Email Column -->
-      <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title">Email</mat-header-cell>
-        <mat-cell 
-          *matCellDef="let payer" 
-          matTooltip="{{payer.email}}"
-          matTooltipPosition="after"
-          class="text-center text-truncate table-data">
-          {{ payer.email }}
-        </mat-cell>
-      </ng-container>
+    <mat-progress-bar *ngIf="!payers && !error" mode="indeterminate"></mat-progress-bar>
+    <div *ngIf="error" class="alert alert-danger mb-0" role="alert">{{ error }}</div>
+    <div *ngIf="payers && payers.data.length === 0">There are no authorized payers associated with your username.</div>
+    <div class="table-container">
+      <table mat-table [dataSource]="payers" *ngIf="payers && payers.data.length > 0">
+        <!-- Payer Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="text-truncate">Name</th>
+          <td mat-cell 
+            *matCellDef="let payer" 
+            matTooltip="{{payer.name}}"
+            matTooltipPosition="after"
+            class="row-title"> 
+            <b>{{ payer.name }}</b>
+          </td>
+        </ng-container>
+      
+        <!-- Start Date Column -->
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Start Date</div></th>
+          <td mat-cell 
+            *matCellDef="let payer" 
+            matTooltip="{{payer.startDate.toLocaleDateString()}}"
+            matTooltipPosition="after"
+            class="text-center text-truncate table-data">
+            <div class="mx-auto text-center">{{ payer.startDate.toLocaleDateString() }}</div>
+          </td>
+        </ng-container>
+      
+        <!-- End Date Column -->
+        <ng-container matColumnDef="endDate">
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">End Date</div></th>
+          <td mat-cell 
+            *matCellDef="let payer" 
+            matTooltip="{{payer.endDate.toLocaleDateString()}}"
+            matTooltipPosition="after"
+            class="text-truncate table-data">
+            <div class="mx-auto text-center">{{ payer.endDate.toLocaleDateString() }}</div> 
+          </td>
+        </ng-container>
+      
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Email</div></th>
+          <td mat-cell 
+            *matCellDef="let payer" 
+            matTooltip="{{payer.email}}"
+            matTooltipPosition="after"
+            class="text-truncate table-data">
+            <div class="mx-auto text-center">{{ payer.email }}</div>
+          </td>
+        </ng-container>
 
-      <!-- Date Created Column -->
-      <ng-container matColumnDef="dateCreated">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title">Date Created</mat-header-cell>
-        <mat-cell 
-          *matCellDef="let payer"
-          matTooltip="{{payer.dateCreated.toLocaleDateString()}}"
-          matTooltipPosition="after" 
-          class="text-center text-truncate table-data">
-          {{ payer.dateCreated.toLocaleDateString() }}
-        </mat-cell>
-      </ng-container>
+        <!-- Date Created Column -->
+        <ng-container matColumnDef="dateCreated">
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Date Created</div></th>
+          <td mat-cell 
+            *matCellDef="let payer"
+            matTooltip="{{payer.dateCreated.toLocaleDateString()}}"
+            matTooltipPosition="after" 
+            class="text-truncate table-data">
+            <div class="mx-auto text-center">{{ payer.dateCreated.toLocaleDateString() }}</div>
+          </td>
+        </ng-container>
 
-      <!-- Changed By Column -->
-      <ng-container matColumnDef="changedBy">
-        <mat-header-cell *matHeaderCellDef class="text-center column-title">Edited By</mat-header-cell>
-        <mat-cell *matCellDef="let payer" class="text-center table-data">{{ payer.changedBy }}</mat-cell>
-      </ng-container>
+        <!-- Changed By Column -->
+        <ng-container matColumnDef="changedBy">
+          <th mat-header-cell *matHeaderCellDef class="column-title"><div class="mx-auto text-center">Edited By</div></th>
+          <td mat-cell *matCellDef="let payer" class="table-data"><div class="mx-auto text-center">{{ payer.changedBy }}</div></td>
+        </ng-container>
 
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef class="text-right column-title"></mat-header-cell>
-        <mat-cell *matCellDef="let payer" class="text-right">
-          <button mat-icon-button (click)="openAuthorizedPayersDialog(payer)"><mat-icon>edit</mat-icon></button> 
-          <button mat-icon-button (click)="openAuthorizedPayersDialog(payer, 'delete')"><mat-icon>highlight_off</mat-icon></button>
-        </mat-cell>
-      </ng-container>
-    
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="text-right column-title"></th>
+          <td mat-cell *matCellDef="let payer">
+            <div class="ml-auto text-right">
+              <button mat-icon-button (click)="openAuthorizedPayersDialog(payer)"><mat-icon>edit</mat-icon></button> 
+              <button mat-icon-button (click)="openAuthorizedPayersDialog(payer, 'delete')"><mat-icon>highlight_off</mat-icon></button>
+            </div>
+          </td>
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </table>
+    </div>
   </mat-card-content>
 </mat-card>

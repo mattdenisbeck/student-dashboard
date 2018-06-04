@@ -13,6 +13,7 @@ export class WeeklyViewComponent implements OnInit {
   @Input() events: CalendarEvent[];
   @Input() view: string;
   @Input() title: string;
+  @Input() error: string;
 
   constructor(public classDetailDialog: MatDialog) { }
 

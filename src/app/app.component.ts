@@ -11,6 +11,9 @@ import { SearchService } from './services/search.service';
 import { Student } from './models/student';
 import { StudentInfoService } from './services/student-info.service';
 
+import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -26,12 +29,14 @@ export class AppComponent implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
   showProfileAvatar: boolean;
   student: Student;
+  searchQuery: string;
+  inBrowser: boolean;
 
   private _mobileQueryListener: () => void;
 
   constructor( private navLinksService: NavLinksService, private location: Location, private router: Router,
     changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private showAvatarService: ShowProfileAvatarService,
-    private searchService: SearchService, private studentInfoService: StudentInfoService, ) {
+    private searchService: SearchService, private studentInfoService: StudentInfoService, @Inject(PLATFORM_ID) private platformId: Object) {
     this.mobileQuery = media.matchMedia('(max-width: 767px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -42,6 +47,7 @@ export class AppComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
+    this.inBrowser = isPlatformBrowser( this.platformId);
     // scroll back to top of page on navitation
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
@@ -62,6 +68,8 @@ export class AppComponent implements OnDestroy, OnInit {
     });
     this.showAvatarService.currentShowProfileAvatar.subscribe(isShown => this.showProfileAvatar = isShown);
     this.student = this.studentInfoService.getStudent();
+
+    this.searchQuery = this.searchService.getQuery();
   }
 
   toggleNav( fromMenu: boolean ) {
@@ -81,6 +89,7 @@ export class AppComponent implements OnDestroy, OnInit {
 
   searchOnKeyUp(query: string) {
     this.searchService.setQuery(query);
+    this.searchQuery = this.searchService.getQuery();
   }
 
   search() {

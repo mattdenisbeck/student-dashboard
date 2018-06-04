@@ -15,7 +15,6 @@ export class NavHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.route);
   }
 
   toggleNav() {

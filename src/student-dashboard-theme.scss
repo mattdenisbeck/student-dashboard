@@ -6,10 +6,10 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 $mat-nkugold: (
-  50: #ffc72c,
-  100: #ffc72c,
-  200: #ffc72c,
-  300: #ffc72c,
+  50: #ffe499,
+  100: #ffdd80,
+  200: #ffd666,
+  300: #ffcf4d,
   400: #ffc72c,
   500: #ffc72c,
   600: #ffc72c,
@@ -36,7 +36,7 @@ $mat-nkugold: (
     A400: $dark-primary-text,
     A700: $dark-primary-text,
   )
-);
+); 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.

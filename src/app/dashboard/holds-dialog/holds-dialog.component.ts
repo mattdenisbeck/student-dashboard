@@ -12,12 +12,29 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class HoldsDialogComponent implements OnInit {
   holds: HoldModel[];
+  error: string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private holdsService: HoldsService,
               public holdsDialogRef: MatDialogRef<HoldsDialogComponent>) { }
 
   ngOnInit() {
-    this.holds = this.holdsService.getHolds();
+    if (this.data) {
+      this.holds = this.data.holds;
+      this.error = this.data.errors['holds'];
+    } else {
+
+      this.holdsService.getHolds()
+        .subscribe(resp => {
+          // get headers
+          const keys = resp.headers.keys();
+          const headers = keys.map(key =>
+            `${key}: ${resp.headers.get(key)}`);
+          // set grades from response body
+          this.holds = resp.body;
+        },
+        err => { this.error = err; }
+        );
+    }
   }
 
   closeSelf() {

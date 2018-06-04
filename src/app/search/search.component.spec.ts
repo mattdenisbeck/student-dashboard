@@ -14,8 +14,8 @@ import { AcademicPlanComponent } from '../academic-plan/academic-plan.component'
 import { GradesComponent } from '../grades/grades.component';
 import { ClassScheduleComponent } from '../class-schedule/class-schedule.component';
 import { ProfileComponent } from '../profile/profile.component';
-import { NorseFeedComponent } from '../norse-feed/norse-feed.component';
-import { UpcomingClassesComponent } from '../dashboard/upcoming-classes/upcoming-classes.component';
+import { NorseFeedComponent } from '../dashboard/norse-feed/norse-feed.component';
+import { UpcomingClassesComponent } from '../class-schedule/upcoming-classes/upcoming-classes.component';
 import { VitalStatsComponent } from '../dashboard/vital-stats/vital-stats.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { AvatarModule } from 'ngx-avatar';

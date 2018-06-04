@@ -6,7 +6,7 @@ import { MatIconModule, MatDividerModule, MatCardModule, MatListModule, MatTabsM
 import { AppRoutingModule } from '../app-routing.module';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { VitalStatsComponent } from '../dashboard/vital-stats/vital-stats.component';
-import { UpcomingClassesComponent } from '../dashboard/upcoming-classes/upcoming-classes.component';
+import { UpcomingClassesComponent } from '../class-schedule/upcoming-classes/upcoming-classes.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { LogoutComponent } from '../logout/logout.component';
 import { SettingsComponent } from '../settings/settings.component';
@@ -19,7 +19,7 @@ import { AcademicPlanComponent } from '../academic-plan/academic-plan.component'
 import { GradesComponent } from '../grades/grades.component';
 import { ClassScheduleComponent } from '../class-schedule/class-schedule.component';
 import { ProfileComponent } from '../profile/profile.component';
-import { NorseFeedComponent } from '../norse-feed/norse-feed.component';
+import { NorseFeedComponent } from '../dashboard/norse-feed/norse-feed.component';
 import { AvatarModule } from 'ngx-avatar';
 import { APP_BASE_HREF } from '@angular/common';
 import { NavLinkModel } from '../models/nav-link-model';

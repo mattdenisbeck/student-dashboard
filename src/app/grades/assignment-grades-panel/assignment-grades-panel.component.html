@@ -1,0 +1,17 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let course of courseGrades">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{course.number}}</mat-panel-title>
+      <mat-panel-description>{{course.name}}</mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list dense>
+      <mat-list-item *ngFor="let assignment of course.assignments; let last = last;"> 
+        <mat-icon matListIcon>{{ assignment.type === 'assignment' ? 'assignment' : 'ballot'}}</mat-icon>
+        <p matLine>{{assignment.name}}</p>
+        <p class="float-right">{{assignment.grade}}</p>
+        <p matLine><small>{{assignment.description}}</small></p>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>

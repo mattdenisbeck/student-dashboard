@@ -1,7 +1,11 @@
 <mat-card class="dashboard-card schedule-card mb-3">
   <app-view-header [viewDate]="viewDate" [view]="view" [semester]="semester" [title]="title"></app-view-header>
   <mat-card-content class="dashboard-card-content">
-    <mat-nav-list>
+    <div class="my-2 mx-2">
+      <mat-progress-bar *ngIf="!classes && !error" mode="indeterminate" ></mat-progress-bar>
+      <div *ngIf="error" class="alert alert-danger mb-0" role="alert">{{ error }}</div>
+    </div>
+    <mat-nav-list *ngIf="classes">
       <span *ngFor="let class of classes" >
         <a mat-list-item style="height:auto;" (click)="openClassDetailDialog(class)">
           <mat-icon matListIcon>{{ class.icon }}</mat-icon>

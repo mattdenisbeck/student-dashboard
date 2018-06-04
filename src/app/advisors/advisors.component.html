@@ -10,7 +10,9 @@
         <mat-card-content class="dashboard-card-content" style="background-color: black; padding-top: 0; padding-bottom: 0;">
           <div class="row">
             <div class="col-12 col-sm-6 text-center pt-3 pb-3">
-              <ngx-avatar class="student-avatar" src="assets/images/avatar.jpg" size="80" [round]="true"></ngx-avatar>
+              <div class="avatar-container" style="width: 80px; height: 80px;">
+                <img class="avatar-content" src="assets/images/avatar.jpg" width="80" height="80" style="max-width: 100%; border-radius: 50%;">
+              </div>
               <br>
               <div class="mt-2">
                 <h5 style="color: #FFC72C;">{{ advisor.fName }} {{ advisor.lName }}</h5>

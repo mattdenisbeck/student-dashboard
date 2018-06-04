@@ -5,7 +5,6 @@ import { MatButtonModule, MatCheckboxModule, MatSidenavModule, MatToolbarModule}
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { AvatarModule } from 'ngx-avatar';
 import { AppComponent } from './app.component';
 import { NavLinksService } from './services/nav-links.service';
 import { AppRoutingModule } from './/app-routing.module';
@@ -38,6 +37,12 @@ import { StudentInfoService } from './services/student-info.service';
 import { AcademicPlanService } from './services/academic-plan.service';
 import { ProfileBannerService } from './services/profile-banner.service';
 import { NavHeaderComponent } from './nav-header/nav-header.component';
+import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { CallApiService } from './services/call-api.service';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './services/in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +53,9 @@ import { NavHeaderComponent } from './nav-header/nav-header.component';
     NavHeaderComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({
+      appId: 'student-dashboard'
+    }),
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -57,7 +64,6 @@ import { NavHeaderComponent } from './nav-header/nav-header.component';
     MatListModule,
     MatIconModule,
     MatDividerModule,
-    AvatarModule,
     AppRoutingModule,
     DashboardModule,
     ClassScheduleModule,
@@ -70,7 +76,11 @@ import { NavHeaderComponent } from './nav-header/nav-header.component';
     AdvisorsModule,
     AccountModule,
     SearchModule,
-    CalendarModule.forRoot()
+    CalendarModule.forRoot(),
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false, delay: 500 }
+    )
   ],
   providers: [
     NavLinksService,
@@ -87,7 +97,18 @@ import { NavHeaderComponent } from './nav-header/nav-header.component';
     StudentInfoService,
     AcademicPlanService,
     ProfileBannerService,
+    CallApiService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+
+  constructor( @Inject(PLATFORM_ID) private platformId: Object, @Inject(APP_ID) private appId: string ) {
+
+    const platform = isPlatformBrowser(platformId) ? 'in the browser' : 'on the server';
+    console.log(`Running ${platform} with appId=${appId}`);
+
+  }
+
+}

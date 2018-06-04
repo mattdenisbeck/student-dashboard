@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClassScheduleComponent } from './class-schedule.component';
 import { MatCardModule, MatDividerModule, MatIconModule, MatListModule,
-  MatDialogModule, MatButtonModule, MatTabsModule, MatTooltipModule } from '@angular/material';
+  MatDialogModule, MatButtonModule, MatTabsModule, MatTooltipModule, MatProgressBarModule } from '@angular/material';
 import { ClassDetailComponent } from './class-detail/class-detail.component';
 import { CalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,7 +27,8 @@ import { AppRoutingModule } from '../app-routing.module';
     BrowserAnimationsModule,
     MatTabsModule,
     MatTooltipModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatProgressBarModule
   ],
   declarations: [
     ClassScheduleComponent,

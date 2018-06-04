@@ -9,6 +9,11 @@
     top: 0px;
     /* Make sure the toolbar will stay on top of the content as it scrolls past.*/ 
     z-index: 2;
+    box-shadow: 0px 1px 2px rgb(132, 132, 132);
+}
+
+button:focus {
+    outline: none;
 }
 
 #search-input {
@@ -29,6 +34,7 @@
 #sidenav {
     background-color : black;
     color : #ffc72c;
+    box-shadow: 2px 0px 2px #505050;
 }
 
 mat-divider {
@@ -104,7 +110,7 @@ mat-divider {
 }
 
 .nav-footer mat-icon {
-    color : #ffc72cbf;
+    color : rgba(255, 199, 44, 0.75);
 }
 
 .nav-footer mat-icon.highlight {

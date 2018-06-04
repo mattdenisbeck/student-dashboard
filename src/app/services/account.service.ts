@@ -1,76 +1,61 @@
 import { Injectable } from '@angular/core';
 import { BankAccount } from '../models/bank-account';
 import { AuthorizedPayer } from '../models/authorized-payer';
+import { HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { CallApiService } from './call-api.service';
 
 @Injectable()
 export class AccountService {
 
+  private apiURL = 'assets/mockAPI/account/';
+
   private bankAccounts: BankAccount[];
   private balance: number;
-  private authorizedPayers: AuthorizedPayer[];
+  authorizedPayers: AuthorizedPayer[];
 
-  constructor() {
+  constructor(private callApiService: CallApiService) {
     this.bankAccounts = [
-      new BankAccount('My Checking', true, 'Nicholas Norse', 483620868, 'US Bank', 184734750),
-      new BankAccount('Parents\' Checking', false, 'Nellie Norse', 648635294, '5/3 Bank', 236184590)
-    ];
-    this.authorizedPayers = [
-      new AuthorizedPayer('Nathan Norse', new Date('01/01/2017'), new Date('12/31/2020'), 'nathan@gmail.com', new Date('01/01/2017'),
-      'Nicholas Norse')
+      new BankAccount(1, 'My Checking', true, 'Nicholas Norse', 483620868, 'US Bank', 184734750),
+      new BankAccount(2, 'Parents\' Checking', false, 'Nellie Norse', 648635294, '5/3 Bank', 236184590)
     ];
     this.balance = 2500.99;
   }
 
-  getBankAccounts() {
-    return this.bankAccounts;
+  getBankAccounts(): Observable<HttpResponse<BankAccount[]>> {
+    return this.callApiService.get('api/accounts', 'Bank Accounts');
   }
 
   getBalance() {
     return this.balance;
   }
 
-  getAuthorizedPayers() {
-    return this.authorizedPayers;
+  getAuthorizedPayers(): Observable<HttpResponse<AuthorizedPayer[]>> {
+    return this.callApiService.get('api/payers', 'Authorized Payers');
   }
 
   addAccount(newAccount: BankAccount) {
-    this.bankAccounts.push(newAccount);
-    // To Do: Persist account to database
+    return this.callApiService.post('api/accounts', 'Bank Accounts', newAccount);
   }
 
   deleteAccount(account: BankAccount) {
-    this.bankAccounts = this.bankAccounts.filter(
-      x => x.number !== account.number && x.routing !== account.routing
-    );
-    // To Do: Delete account in database
+    return this.callApiService.delete('api/accounts', 'Bank Accounts', account.id);
   }
 
   editAccount(newAccount: BankAccount) {
-    const index = this.bankAccounts.findIndex(
-      x => x.number === newAccount.number && x.routing === newAccount.routing
-    );
-    this.bankAccounts[index] = newAccount;
-    // To Do: Persist account edit to database
+    return this.callApiService.put('api/accounts', 'Bank Accounts', newAccount);
   }
 
   addPayer(newPayer: AuthorizedPayer) {
-    this.authorizedPayers.push(newPayer);
-    // To Do: Persist account to database
+    return this.callApiService.post('api/payers', 'Authorized Payers', newPayer);
   }
 
   deletePayer(payer: AuthorizedPayer) {
-    this.authorizedPayers = this.authorizedPayers.filter(
-      x => x.name !== payer.name && x.email !== payer.email
-    );
-    // To Do: Delete account in database
+    return this.callApiService.delete('api/payers', 'Authorized Payers', payer.id);
   }
 
   editPayer(newPayer: AuthorizedPayer) {
-    const index = this.authorizedPayers.findIndex(
-      x => x.name === newPayer.name
-    );
-    this.authorizedPayers[index] = newPayer;
-    // To Do: Persist account edit to database
+    return this.callApiService.put('api/payers', 'Authorized Payers', newPayer);
   }
 
   payBill(paymentAmt: number) {

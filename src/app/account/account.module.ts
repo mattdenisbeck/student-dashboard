@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountComponent } from './account.component';
 import { MatCardModule, MatInputModule, MatRadioModule, MatButtonModule, MatSelectModule, MatIconModule,
-  MatDividerModule, MatTooltipModule, MatTableModule, MatDialogModule, MatCheckboxModule, MatDatepickerModule} from '@angular/material';
+  MatDividerModule, MatTooltipModule, MatTableModule, MatDialogModule, MatCheckboxModule, MatDatepickerModule,
+  MatProgressBarModule, MatSnackBarModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { StatementComponent } from './statement/statement.component';
 import { ManageBankAccountsComponent } from './manage-bank-accounts/manage-bank-accounts.component';
@@ -31,6 +32,8 @@ import { AppRoutingModule } from '../app-routing.module';
     MatCheckboxModule,
     MatDatepickerModule,
     MatRadioModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
     AppRoutingModule
   ],
   declarations: [

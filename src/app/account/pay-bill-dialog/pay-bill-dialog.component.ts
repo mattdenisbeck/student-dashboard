@@ -13,13 +13,25 @@ export class PayBillDialogComponent implements OnInit {
   paymentAmt: number;
   accounts: BankAccount[];
   paymentAccount: string;
+  error: string;
 
   constructor( @Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<PayBillDialogComponent>,
   private accountService: AccountService ) { }
 
   ngOnInit() {
     this.paymentAmt = this.data.paymentAmt;
-    this.accounts = this.accountService.getBankAccounts();
+    this.accountService.getBankAccounts()
+        .subscribe(resp => {
+          // get headers
+          const keys = resp.headers.keys();
+          const headers = keys.map(key =>
+            `${key}: ${resp.headers.get(key)}`);
+
+          // set academic plan from response body
+          this.accounts = resp.body;
+        },
+        err => { this.error = err; }
+        );
   }
 
   onSubmit() {

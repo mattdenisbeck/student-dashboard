@@ -1,0 +1,25 @@
+<mat-card class="dashboard-card grades-card">
+    <mat-card-header class="dashboard-card-header">
+      <mat-card-title class="dashboard-card-title">
+        <h5>
+          <small>
+            Assignment Grades
+          </small>
+        </h5>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content pb-0">
+      <mat-progress-bar *ngIf="!courseGrades && !error" mode="indeterminate"></mat-progress-bar>
+      <div *ngIf="error" class="alert alert-danger mb-0" role="alert">{{ error }}</div>
+      <app-assignment-grades-panel *ngIf="courseGrades && !error" [courseGrades]="courseGrades"></app-assignment-grades-panel>
+      <mat-card-actions>
+        <div class="col text-right">
+          <button mat-icon-button id="pdfButton" type="button" matTooltip="Save PDF" matTooltipShowDelay="500"><mat-icon class="md-24">picture_as_pdf</mat-icon></button>
+          <button mat-icon-button id="downloadButton" type="button" matTooltip="Download .CSV" matTooltipShowDelay="500"><mat-icon class="md-24">file_download</mat-icon></button>
+        </div>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+  
+  
+  
