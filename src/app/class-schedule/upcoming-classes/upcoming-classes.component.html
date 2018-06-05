@@ -8,7 +8,7 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content class="dashboard-card-content">
-    <div class="py-2 mx-2">
+    <div class="py-2 mx-2" *ngIf="!upcomingClasses">
       <mat-progress-bar *ngIf="!upcomingClasses && !error" mode="indeterminate" ></mat-progress-bar>
       <div *ngIf="error" class="alert alert-danger mb-0" role="alert">{{ error }}</div>
     </div>

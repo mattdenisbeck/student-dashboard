@@ -1,3 +1,7 @@
+button:focus {
+    outline: none;
+}
+
 @media (max-width: 576px) {
     mat-card-content.dashboard-card-content {
         padding : 0;

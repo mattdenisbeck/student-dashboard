@@ -10,15 +10,9 @@ export class AccountService {
 
   private apiURL = 'assets/mockAPI/account/';
 
-  private bankAccounts: BankAccount[];
   private balance: number;
-  authorizedPayers: AuthorizedPayer[];
 
   constructor(private callApiService: CallApiService) {
-    this.bankAccounts = [
-      new BankAccount(1, 'My Checking', true, 'Nicholas Norse', 483620868, 'US Bank', 184734750),
-      new BankAccount(2, 'Parents\' Checking', false, 'Nellie Norse', 648635294, '5/3 Bank', 236184590)
-    ];
     this.balance = 2500.99;
   }
 

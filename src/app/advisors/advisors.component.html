@@ -1,4 +1,8 @@
 <div class="container-fluid pb-1">
+  <div class="py-3 mx-2" *ngIf="!advisors">
+    <mat-progress-bar *ngIf="!advisors && !error" mode="indeterminate" ></mat-progress-bar>
+    <div *ngIf="error" class="alert alert-danger mb-0" role="alert">{{ error }}</div>
+  </div>
   <div class="row justify-content-center" *ngFor="let advisor of advisors">
     <div class="col-xl-10">
       <mat-card class="dashboard-card mb-0">

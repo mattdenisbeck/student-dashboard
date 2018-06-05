@@ -43,6 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CallApiService } from './services/call-api.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { httpInterceptorProviders } from './http-interceptors';
+import { RequestCache, RequestCacheWithMap } from './services/request-cache.service';
 
 @NgModule({
   declarations: [
@@ -97,7 +99,9 @@ import { InMemoryDataService } from './services/in-memory-data.service';
     StudentInfoService,
     AcademicPlanService,
     ProfileBannerService,
-    CallApiService
+    CallApiService,
+    { provide: RequestCache, useClass: RequestCacheWithMap },
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

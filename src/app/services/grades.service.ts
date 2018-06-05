@@ -6,7 +6,6 @@ import { CallApiService } from './call-api.service';
 @Injectable()
 export class GradesService {
 
-  private courseGrades: {}[];
   private gpa: number;
   private majorGPA: number;
 

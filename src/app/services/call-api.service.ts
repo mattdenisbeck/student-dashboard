@@ -18,6 +18,7 @@ export class CallApiService {
   }
 
   get(resource: string, apiName: string): Observable<HttpResponse<any>> {
+
     return this.http.get( resource, { observe: 'response' })
       .pipe(
         retry(3), // retry failed request 3 times

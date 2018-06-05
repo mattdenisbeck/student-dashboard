@@ -1,3 +1,7 @@
 .appointment-form /deep/ .mat-form-field-infix {
     width: 100px !important;
 }
+
+button:focus {
+    outline: none;
+}

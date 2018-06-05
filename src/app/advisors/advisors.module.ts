@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdvisorsComponent } from './advisors.component';
 import { MatCardModule, MatIconModule, MatButtonModule, MatListModule, MatDialogModule, MatInputModule,
-  MatDatepickerModule, MatNativeDateModule, MatSelectModule, MatSnackBarModule} from '@angular/material';
+  MatDatepickerModule, MatNativeDateModule, MatSelectModule, MatSnackBarModule, MatProgressBarModule} from '@angular/material';
 import { AdvisorsService } from '../services/advisors.service';
 import { MessageDialogComponent } from './message-dialog/message-dialog.component';
 import { AppointmentDialogComponent } from './appointment-dialog/appointment-dialog.component';
@@ -23,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     FlexLayoutModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressBarModule
   ],
   declarations: [
     AdvisorsComponent,

@@ -14,6 +14,7 @@ export class AdvisorsComponent implements OnInit {
 
   advisors: AdvisorModel[];
   advisorMessage: {};
+  error: string;
 
   constructor( private advisorsService: AdvisorsService, public dialog: MatDialog) { }
 
@@ -27,7 +28,9 @@ export class AdvisorsComponent implements OnInit {
 
           // set advisors from response body
           this.advisors = resp.body;
-        });
+        },
+        err => { this.error = err; }
+        );
   }
 
   openDialog(email: string, type: string) {

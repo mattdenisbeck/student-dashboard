@@ -1,3 +1,7 @@
 .student-avatar /deep/ .avatar-container {
     display : inline;
 }
+
+button:focus {
+    outline: none;
+}
