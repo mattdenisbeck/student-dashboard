@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ShowProfileAvatarService } from '../services/show-profile-avatar.service';
 import { GradesService } from '../services/grades.service';
-import { AccountService } from '../services/account.service';
+import { AccountService } from '../account/account.service';
 import { StudentInfoService } from '../services/student-info.service';
 import { Student } from '../models/student';
 import { ProfileBannerService } from '../services/profile-banner.service';

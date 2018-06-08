@@ -14,6 +14,7 @@ import { PayBillDialogComponent } from './pay-bill-dialog/pay-bill-dialog.compon
 import { AllCardBalanceComponent } from './all-card-balance/all-card-balance.component';
 import { TuitionBalanceComponent } from './tuition-balance/tuition-balance.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { AccountService } from './account.service';
 
 @NgModule({
   imports: [
@@ -46,6 +47,9 @@ import { AppRoutingModule } from '../app-routing.module';
     PayBillDialogComponent,
     AllCardBalanceComponent,
     TuitionBalanceComponent,
+  ],
+  providers: [
+    AccountService
   ],
   entryComponents: [
     BankAccountDialogComponent,

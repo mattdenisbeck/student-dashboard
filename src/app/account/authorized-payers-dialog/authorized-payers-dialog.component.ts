@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { AccountService } from '../../services/account.service';
-import { AuthorizedPayer } from '../../models/authorized-payer';
+import { AccountService } from '../../account/account.service';
+import { AuthorizedPayer } from '../../account/models/authorized-payer';
 
 @Component({
   selector: 'app-authorized-payers-dialog',

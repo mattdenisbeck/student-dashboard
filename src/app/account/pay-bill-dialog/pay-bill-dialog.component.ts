@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { AccountService } from '../../services/account.service';
-import { BankAccount } from '../../models/bank-account';
+import { AccountService } from '../../account/account.service';
+import { BankAccount } from '../../account/models/bank-account';
 
 @Component({
   selector: 'app-pay-bill-dialog',

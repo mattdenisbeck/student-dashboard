@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { AccountService } from '../../services/account.service';
+import { AccountService } from '../../account/account.service';
 import { MatDialog } from '@angular/material';
 import { PayBillDialogComponent } from '../pay-bill-dialog/pay-bill-dialog.component';
 

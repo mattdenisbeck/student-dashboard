@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AcademicPlanModel } from '../models/academic-plan-model';
-import { SemesterPlan } from '../models/semester-plan';
-import { ClassModel } from '../models/class-model';
+import { AcademicPlanModel } from './models/academic-plan-model';
 import { HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CallApiService } from './call-api.service';
+import { CallApiService } from '../services/call-api.service';
 
 @Injectable()
 export class AcademicPlanService {

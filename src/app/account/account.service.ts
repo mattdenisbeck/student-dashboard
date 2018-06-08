@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BankAccount } from '../models/bank-account';
-import { AuthorizedPayer } from '../models/authorized-payer';
-import { HttpResponse } from '@angular/common/http';
+import { BankAccount } from './models/bank-account';
+import { AuthorizedPayer } from './models/authorized-payer';
+import { HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CallApiService } from './call-api.service';
+import { CallApiService } from '../services/call-api.service';
 
 @Injectable()
 export class AccountService {
@@ -16,7 +16,10 @@ export class AccountService {
     this.balance = 2500.99;
   }
 
-  getBankAccounts(): Observable<HttpResponse<BankAccount[]>> {
+  getBankAccounts(refreshCache?: boolean): Observable<HttpResponse<BankAccount[]>> {
+    if (refreshCache) {
+      return this.callApiService.get('api/accounts', 'Bank Accounts', true);
+    }
     return this.callApiService.get('api/accounts', 'Bank Accounts');
   }
 

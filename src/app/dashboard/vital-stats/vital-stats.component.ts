@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { HoldsDialogComponent } from '../holds-dialog/holds-dialog.component';
 import { HoldsService } from '../../services/holds.service';
-import { AccountService } from '../../services/account.service';
+import { AccountService } from '../../account/account.service';
 import { GradesService } from '../../services/grades.service';
 import { Student } from '../../models/student';
 import { StudentInfoService } from '../../services/student-info.service';

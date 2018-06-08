@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { AccountService } from '../../services/account.service';
-import { AuthorizedPayer } from '../../models/authorized-payer';
+import { AccountService } from '../../account/account.service';
+import { AuthorizedPayer } from '../../account/models/authorized-payer';
 import { AuthorizedPayersDialogComponent } from '../authorized-payers-dialog/authorized-payers-dialog.component';
 
 @Component({
@@ -54,8 +54,7 @@ export class AuthorizedPayersComponent implements OnInit {
           // set payers from response body
           const responses = [];
           resp.body.forEach(el => {
-            responses.push(new AuthorizedPayer( el.id, el.name, new Date(el.startDate),
-              new Date(el.endDate), el.email, new Date(el.dateCreated), el.changedBy) );
+            responses.push(new AuthorizedPayer(el) );
           });
           this.payers = new MatTableDataSource( responses );
         },

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { BankAccount } from '../../models/bank-account';
-import { AccountService } from '../../services/account.service';
+import { BankAccount } from '../../account/models/bank-account';
+import { AccountService } from '../../account/account.service';
 
 @Component({
   selector: 'app-bank-account-dialog',
@@ -19,15 +19,12 @@ export class BankAccountDialogComponent implements OnInit {
   ngOnInit() {
     if (this.data.action === 'delete') {
       this.action = 'Delete';
+      this.account = new BankAccount(this.data.account);
     } else if (this.data.account) {
       this.action = 'Edit';
+      this.account = new BankAccount(this.data.account);
     } else {
       this.action = 'Add';
-    }
-    if (this.data.account) {
-      this.account = new BankAccount(this.data.account.id, this.data.account.nickname, this.data.account.isRefund, this.data.account.holder,
-        this.data.account.routing, this.data.account.bank, this.data.account.number);
-    } else {
       this.account = new BankAccount();
     }
   }
@@ -37,21 +34,21 @@ export class BankAccountDialogComponent implements OnInit {
       case 'Delete':
         this.accountService.deleteAccount(this.account)
           .subscribe(
-            resp => { this.dialogRef.close(); },
+            resp => { this.dialogRef.close(resp); },
             err => { this.dialogRef.close(err); }
           );
         break;
       case 'Add':
         this.accountService.addAccount(this.account)
           .subscribe(
-            resp => { this.dialogRef.close(); },
+            resp => { this.dialogRef.close(resp); },
             err => { this.dialogRef.close(err); }
           );
         break;
       case 'Edit':
         this.accountService.editAccount(this.account)
           .subscribe(
-            resp => { this.dialogRef.close(); },
+            resp => { this.dialogRef.close(resp); },
             err => { this.dialogRef.close(err); }
           );
         break;

@@ -4,6 +4,7 @@ import { AcademicPlanComponent } from './academic-plan.component';
 import { AcademicPlanNextSemesterComponent } from './academic-plan-next-semester/academic-plan-next-semester.component';
 import { MatCardModule, MatIconModule, MatTableModule, MatTooltipModule, MatButton, MatButtonModule } from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
+import { AcademicPlanService } from './academic-plan.service';
 
 @NgModule({
   imports: [
@@ -18,6 +19,9 @@ import { AppRoutingModule } from '../app-routing.module';
   declarations: [
     AcademicPlanComponent,
     AcademicPlanNextSemesterComponent,
+  ],
+  providers: [
+    AcademicPlanService
   ],
   exports: [
     AcademicPlanNextSemesterComponent

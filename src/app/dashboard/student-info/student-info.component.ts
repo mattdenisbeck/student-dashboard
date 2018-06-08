@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentInfoService } from '../../services/student-info.service';
 import { Student } from '../../models/student';
-import { AdvisorsService } from '../../services/advisors.service';
-import { AdvisorModel } from '../../models/advisor-model';
+import { AdvisorsService } from '../../advisors/advisors.service';
+import { AdvisorModel } from '../../advisors/models/advisor-model';
 
 @Component({
   selector: 'app-student-info',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AdvisorsService } from '../services/advisors.service';
-import { AdvisorModel } from '../models/advisor-model';
+import { AdvisorsService } from '../advisors/advisors.service';
+import { AdvisorModel } from '../advisors/models/advisor-model';
 import { MessageDialogComponent } from './message-dialog/message-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AppointmentDialogComponent } from './appointment-dialog/appointment-dialog.component';
@@ -27,7 +27,10 @@ export class AdvisorsComponent implements OnInit {
             `${key}: ${resp.headers.get(key)}`);
 
           // set advisors from response body
-          this.advisors = resp.body;
+          this.advisors = [];
+          resp.body.forEach(el => {
+            this.advisors.push(new AdvisorModel(el) );
+          });
         },
         err => { this.error = err; }
         );

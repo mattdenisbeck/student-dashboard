@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { AcademicPlanService } from '../../services/academic-plan.service';
-import { SemesterPlan } from '../../models/semester-plan';
+import { AcademicPlanService } from '../academic-plan.service';
+import { SemesterPlan } from '../models/semester-plan';
 import { ClassModel } from '../../models/class-model';
 
 @Component({
@@ -27,7 +27,7 @@ export class AcademicPlanNextSemesterComponent implements OnInit {
             `${key}: ${resp.headers.get(key)}`);
 
           // set academic plan from response body
-          this.academicPlan = resp.body[0];
+          this.academicPlan = new SemesterPlan(resp.body[0]);
           this.dataSource = new MatTableDataSource( this.academicPlan.courses );
           this.upcomingSemester = this.academicPlan.semester;
         },

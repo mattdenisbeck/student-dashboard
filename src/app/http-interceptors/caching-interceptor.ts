@@ -41,8 +41,8 @@ export class CachingInterceptor implements HttpInterceptor {
 
 /** Is this request cachable? */
 function isCachable(req: HttpRequest<any>) {
-  // Only GET requests are cachable
-  return req.method === 'GET';
+  // Only GET requests are cachable and don't have refresh cache header
+  return req.method === 'GET' && !req.headers.get('refresh-cache');
 }
 
 /**

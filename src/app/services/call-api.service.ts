@@ -17,13 +17,20 @@ export class CallApiService {
     };
   }
 
-  get(resource: string, apiName: string): Observable<HttpResponse<any>> {
-
-    return this.http.get( resource, { observe: 'response' })
-      .pipe(
-        retry(3), // retry failed request 3 times
-        catchError(er => this.handleError(er, apiName, true)) // handle error
-      );
+  get(resource: string, apiName: string, refreshCache?: boolean): Observable<HttpResponse<any>> {
+    if (refreshCache ) {
+      return this.http.get( resource, { headers: new HttpHeaders( {'Refresh-Cache': 'true'} ), observe: 'response' } )
+        .pipe(
+          retry(3), // retry failed request 3 times
+          catchError(er => this.handleError(er, apiName, true)) // handle error
+        );
+    } else {
+      return this.http.get( resource, { observe: 'response' } )
+        .pipe(
+          retry(3), // retry failed request 3 times
+          catchError(er => this.handleError(er, apiName, true)) // handle error
+        );
+    }
   }
 
   post(resource: string, apiName: string, payload: any): Observable<any> {

@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { AppComponent } from './app.component';
 import { NavLinksService } from './services/nav-links.service';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { LogoutComponent } from './logout/logout.component';
 import { NavLinkComponent } from './nav-link/nav-link.component';
 import { DashboardModule } from './dashboard/dashboard.module';
@@ -32,9 +32,7 @@ import { SearchService } from './services/search.service';
 import { ClassScheduleService } from './services/class-schedule.service';
 import { CalendarModule } from 'angular-calendar';
 import { GradesService } from './services/grades.service';
-import { AccountService } from './services/account.service';
 import { StudentInfoService } from './services/student-info.service';
-import { AcademicPlanService } from './services/academic-plan.service';
 import { ProfileBannerService } from './services/profile-banner.service';
 import { NavHeaderComponent } from './nav-header/nav-header.component';
 import { PLATFORM_ID, APP_ID, Inject } from '@angular/core';
@@ -95,9 +93,7 @@ import { RequestCache, RequestCacheWithMap } from './services/request-cache.serv
     SearchService,
     ClassScheduleService,
     GradesService,
-    AccountService,
     StudentInfoService,
-    AcademicPlanService,
     ProfileBannerService,
     CallApiService,
     { provide: RequestCache, useClass: RequestCacheWithMap },

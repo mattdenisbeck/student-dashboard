@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatTableDataSource, MatDialog, MatSnackBar } from '@angular/material';
-import { BankAccount } from '../../models/bank-account';
-import { AccountService } from '../../services/account.service';
+import { BankAccount } from '../../account/models/bank-account';
+import { AccountService } from '../../account/account.service';
 import { BankAccountDialogComponent } from '../bank-account-dialog/bank-account-dialog.component';
 
 @Component({
@@ -36,21 +36,25 @@ export class ManageBankAccountsComponent implements OnInit {
         this.snackBar.open(result, 'Dismiss', { duration: 5000 });
         console.log(result);
       }
-      this.loadAccounts();
+      this.loadAccounts(true);
       this.changeDetectorRefs.detectChanges();
     });
   }
 
-  private loadAccounts() {
-    this.accountService.getBankAccounts()
+  private loadAccounts(refreshCache?: boolean) {
+    this.accountService.getBankAccounts(refreshCache)
         .subscribe(resp => {
           // get headers
           const keys = resp.headers.keys();
           const headers = keys.map(key =>
             `${key}: ${resp.headers.get(key)}`);
 
-          // set academic plan from response body
-          this.accounts = new MatTableDataSource( resp.body );
+          // set accounts from response body
+          const responses = [];
+          resp.body.forEach(el => {
+            responses.push(new BankAccount(el) );
+          });
+          this.accounts = new MatTableDataSource( responses );
         },
         err => { this.error = err; }
         );
