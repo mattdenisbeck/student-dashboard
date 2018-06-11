@@ -25,8 +25,7 @@ export class AuthorizedPayersDialogComponent implements OnInit {
       this.action = 'Add';
     }
     if (this.data.payer) {
-      this.payer = new AuthorizedPayer(this.data.payer.id, this.data.payer.name, this.data.payer.startDate, this.data.payer.endDate,
-        this.data.payer.email, this.data.payer.dateCreated, this.data.payer.changedBy);
+      this.payer = new AuthorizedPayer(this.data.payer);
     } else {
       this.payer = new AuthorizedPayer();
     }
